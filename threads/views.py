@@ -15,7 +15,6 @@ from django.contrib import messages
 def index(request):
     threads = Thread.objects.all().order_by("-likes")[:20]
     all_users = User.objects.all()
-    user_avatar = User.objects.filter(avatar=avatar)
     return render(
         request,
         "threads/index.html",

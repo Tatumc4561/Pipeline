@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(default="sun.png", upload_to="avatars", null=True)
+    avatar = models.ImageField(default="mario.jpg", upload_to="avatars", null=True)
     friends = models.ManyToManyField(User, blank=True, related_name="friends")
 
 

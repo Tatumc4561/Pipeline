@@ -9,8 +9,9 @@
 
         <div class="profile-only" id='create-post-wrap'>
 
-            <a href="{% url 'users:profile' %}">{{MEDIA_URL}}{{username.avatar.url}}
-                <img src="{{MEDIA_URL}}{{username.avatar.url}}" alt="" class="profile-avatar">
+            <a href="{% url 'users:profile' %}">
+                {% comment %} display user profile pic {% endcomment %}
+                <img src="{{MEDIA_URL}}{{user.customuser.avatar.url}}" alt="" class="profile-avatar">
             </a>
             <h1></h1>
             <a href="{% url 'threads:create_thread' %}">Create Post</a>
@@ -22,10 +23,12 @@
         </div>
 
         <div class="thumb-post-wrap">
-
             {% for thread in threads %}
             <div class="thumb-content" id="thread_id_{{thread.id}}">
                 <div class="thumb-content-text">
+                    <div class="thumb-content-avatar"><img class='profile-avatar'
+                            src="{{MEDIA_URL}}{{thread.user.customuser.avatar.url}}" alt="" srcset="">
+                    </div>
                     <div class="thumb-content-group">{{thread.group}}</div>
                     <div class="thumb-content-user">{{thread.user}}</div>
                     <div class="thumb-content-title">{{thread.title}}</div>
