@@ -11,10 +11,6 @@ from django.contrib import messages
 from threads.models import *
 
 
-def index(request):
-    return render(request, "users/index.html")
-
-
 @login_required
 def user_profile(request):
     threads = Thread.objects.filter(user=request.user)

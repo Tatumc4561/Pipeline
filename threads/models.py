@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import *
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 
 
 # Create your models here.

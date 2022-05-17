@@ -14,13 +14,14 @@ from django.contrib import messages
 # Create your views here.
 def index(request):
     threads = Thread.objects.all().order_by("-likes")[:20]
-    avatar = User.objects.all()
+    all_users = User.objects.all()
+    user_avatar = User.objects.filter(avatar=avatar)
     return render(
         request,
         "threads/index.html",
         {
             "threads": threads,
-            "avatar": avatar,
+            "all_users": all_users,
         },
     )
 
@@ -48,10 +49,10 @@ def submit_thread(request):
 
 
 @login_required
-def delete_thread(request, threads_id):
+def delete_thread(request, thread_id):
 
-    threads = Thread.objects.get(id=threads_id, user=request.user)
-    threads = get_list_or_404(Thread, id=threads_id, user=request.user)
+    threads = Thread.objects.get(id=thread_id, user=request.user)
+    threads = get_list_or_404(Thread, id=thread_id, user=request.user)
     threads.delete()
     return HttpResponseRedirect(reverse("threads:index"))
 
