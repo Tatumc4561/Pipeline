@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% block 'title' %}<title>Pipeline</title>{% endblock 'title' %}
+{% block 'content' %}
+
+<form action="" method="post">
+    {% csrf_token %}{{form}}
+    <button type="submit">Create User</button>
+</form>
+
+
+{% endblock 'content' %}

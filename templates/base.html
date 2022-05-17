@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+
+    {% comment %} enables features only allowed for user's that are logged in {% endcomment %}
+    {% if user.is_authenticated %}
+    <script defer src="{% static 'JS/loginApp.js' %}"></script>
+    {% else %}
+    <script defer src="{% static 'JS/nologinApp.js' %}"></script>
+    {% endif %}
+    {% block "title" %}{% endblock "title" %}
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <div class="home-link-wrap">
+            <a href="{% url "threads:index" %}">
+                <img src="" alt="Pipeline" srcset="">
+            </a>
+        </div>
+        <div class="profile-only" id='personal-dropdown-wrap'>
+            Drop Down Menu
+        </div>
+        <div class="search-wrap">
+            <img src="{% static "images/SearchMag.png" %}" alt="" srcset="" id="maglens">
+            <input type=" search" name="" id="search" placeholder='Search'>
+        </div>
+        <div class="quick-link-wrap">
+            {% comment %} load index page by preferred sorting {% endcomment %}
+            <a href="{% url 'threads:index' %}" class='profile-only'><img src="" id="" alt="Home" srcset=""></a>
+            <a href="{% url 'threads:index' %}" class='profile-only'><img src="" id="" alt="All" srcset=""></a>
+            <a href="{% url 'threads:index' %}" class='profile-only'><img src="" id="" alt="New" srcset=""></a>
+        </div>
+
+        <div class="login-create-wrap">
+            <a href="{% url "users:login" %}" id='login'>Login</a>
+            <a href="{% url "users:register" %}" id='create_user'>Create User</a>
+        </div>
+
+
+        <div class="profile-only" id='profile-options'>
+            <div id="notifications">Notifcations</div>
+            <div id="create-post">Create</div>
+        </div>
+
+        <div class="profile-only" id='nav-button-profile-wrapper'>
+            <div id='profile-text'>Profile Dropdown</div>
+            <div id="profile-dropdown">
+                <div class="nav-button-profile">Settings</div>
+                <div class="nav-button-profile">Something</div>
+                <div class="nav-button-profile">IDK</div>
+                <div class="nav-button-profile">Somethin Else</div>
+                <a href="{% url 'users:logout' %}">Logout</a>
+            </div>
+
+        </div>
+        <a href="{% url 'users:logout' %}">Logout</a>
+
+    </div>
+    {% block 'content' %}
+
+    {% endblock 'content' %}
+    <div id="loginAlert">Successful Login</div>
+</body>
+
+</html>
