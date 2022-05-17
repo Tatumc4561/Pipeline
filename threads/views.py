@@ -14,18 +14,12 @@ from django.contrib import messages
 # Create your views here.
 def index(request):
     threads = Thread.objects.all().order_by("-likes")[:20]
-    # threads_text = threads.text
-    # threads_group = threads.group
-    # threads_image = threads.image
     avatar = User.objects.all()
     return render(
         request,
         "threads/index.html",
         {
             "threads": threads,
-            # "threads_text": threads_text,
-            # "threads_group": threads_group,
-            # "threads_image": threads_image,
             "avatar": avatar,
         },
     )
@@ -63,24 +57,24 @@ def delete_thread(request, threads_id):
 
 
 @login_required
-def like_thread(request, threads_id):
-    if Thread.objects.filter(id=threads_id):
-        threads = Thread.objects.get(id=threads_id)
+def like_thread(request, thread_id):
+    if Thread.objects.filter(id=thread_id):
+        threads = Thread.objects.get(id=thread_id)
         threads.likes += 1
         threads.save()
     # Redirect to index page, but don't reload to the top of the page like normal, stay at current post
     return HttpResponseRedirect(
-        reverse("threads:index") + "#threads_id_%s" % (threads.id)
+        reverse("threads:index") + "#thread_id_%s" % (threads.id)
     )
 
 
 @login_required
-def dislike_thread(request, threads_id):
-    if Thread.objects.filter(id=threads_id):
-        threads = Thread.objects.get(id=threads_id)
+def dislike_thread(request, thread_id):
+    if Thread.objects.filter(id=thread_id):
+        threads = Thread.objects.get(id=thread_id)
         threads.dislikes += 1
         threads.save()
     # Redirect to index page, but don't reload to the top of the page like normal, stay at current post
     return HttpResponseRedirect(
-        reverse("threads:index") + "#threads_id_%s" % (threads.id)
+        reverse("threads:index") + "#thread_id_%s" % (threads.id)
     )

@@ -15,43 +15,6 @@ def index(request):
     return render(request, "users/index.html")
 
 
-def user_register(request):
-    if request.method == "POST":
-        form = request.POST
-        if form.is_valid():
-            new_user = form.save()
-            new_user = authenticate(
-                username=form.cleaned_data["username"],
-                password=form.cleaned_data["password"],
-            )
-            login(request, new_user)
-            return HttpResponse("loggeDIN")
-        else:
-            print(request.POST, form.errors)
-            return render(
-                request, "users/register.html", {"form": form, "error": form.errors}
-            )
-    else:
-        form = NewRegisterForm()
-        return render(request, "users/register.html", {"form": form})
-
-
-def user_login(request):
-    if request.method == "POST":
-        user = authenticate(
-            request,
-            username=request.POST["username"],
-            password=request.POST["password"],
-        )
-        if user is not None:
-            login(request, user)
-            return HttpResponse("logge DIN")
-        else:
-            return HttpResponse("login UNSUCCESSFUL")
-    else:
-        return render(request, "users/login.html")
-
-
 @login_required
 def user_profile(request):
     threads = Thread.objects.filter(user=request.user)
@@ -66,44 +29,44 @@ def user_logout(request):
     return HttpResponseRedirect(reverse("threads:index"))
 
 
-# def create_user(request):
-#     if request.method == "GET":
-#         form = NewSignupForm()
-#         return render(request, "pizza_app/create_user.html", {"form": form})
+def user_register(request):
+    if request.method == "GET":
+        form = NewRegisterForm()
+        return render(request, "users/create_user.html", {"form": form})
 
-#     elif request.method == "POST":
-#         form = NewSignupForm(request.POST)
-#         if form.is_valid():
-#             user = form.cleaned_data["username"]
-#             password = form.cleaned_data["password"]
-#             email = form.cleaned_data["email"]
-#             authenticate(request, user=user, password=password)
-#             user = form.save()
-#             login(request, user)
-#             return HttpResponseRedirect(reverse("pizza:index"))
-#             # else:
-#             #     form.add_error("username", "Invalid Credentials")
-#         return render(request, "pizza_app/create_user.html", {"form": form})
+    elif request.method == "POST":
+        form = NewRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.cleaned_data["username"]
+            password = form.cleaned_data["password1"]
+            email = form.cleaned_data["email"]
+            authenticate(request, user=user, password1=password)
+            user = form.save()
+            login(request, user)
+            return HttpResponseRedirect(reverse("threads:index"))
+            # else:
+            #     form.add_error("username", "Invalid Credentials")
+        return render(request, "users/create_user.html", {"form": form})
 
 
-# def user_login(request):
+def user_login(request):
 
-#     if request.method == "GET":
-#         return render(request, "pizza_app/login.html", {"form": NewLoginForm()})
-#     elif request.method == "POST":
-#         form = NewLoginForm(request.POST)
-#         if form.is_valid():
-#             password = form.cleaned_data["password"]
-#             user = authenticate(
-#                 request, username=form.cleaned_data["username"], password=password
-#             )
-#             if user is not None:
-#                 login(request, user)
-#                 return HttpResponseRedirect(reverse("pizza:index"))
+    if request.method == "GET":
+        return render(request, "users/login.html", {"form": NewLoginForm()})
+    elif request.method == "POST":
+        form = NewLoginForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data["password"]
+            user = authenticate(
+                request, username=form.cleaned_data["username"], password=password
+            )
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect(reverse("threads:index"))
 
-#             else:
-#                 form.add_error("username", "Invalid Credentials")
-#                 return render(request, "pizza_app/login.html", {"form": form})
+            else:
+                form.add_error("username", "Invalid Credentials")
+                return render(request, "users/login.html", {"form": form})
 
 
 @login_required

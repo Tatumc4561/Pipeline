@@ -23,18 +23,18 @@
 
         <div class="thumb-post-wrap">
 
-            {% for threads in threadss %}
-            <div class="thumb-content" id="threads_id_{{threads.id}}">
+            {% for thread in threads %}
+            <div class="thumb-content" id="thread_id_{{thread.id}}">
                 <div class="thumb-content-text">
-                    <div class="thumb-content-group">{{threads.group}}</div>
-                    <div class="thumb-content-user">{{threads.user}}</div>
-                    <div class="thumb-content-title">{{threads.title}}</div>
-                    <div class="thumb-content-text">{{threads.text|slice:":50"}}</div>
-                    <div class="thumb-content-image"><img src="{{MEDIA_URL}}{{threads.image}}" alt="" srcset=""></div>
+                    <div class="thumb-content-group">{{thread.group}}</div>
+                    <div class="thumb-content-user">{{thread.user}}</div>
+                    <div class="thumb-content-title">{{thread.title}}</div>
+                    <div class="thumb-content-text">{{thread.text|slice:":50"}}</div>
+                    <div class="thumb-content-image"><img src="{{MEDIA_URL}}{{thread.image}}" alt="" srcset=""></div>
                 </div>
                 <div class="likes-dislikes">
-                    <a href="{% url "threads:like_threads" threads.id %}"> Likes: {{threads.likes}} </a>
-                    <a href="{% url "threads:dislike_threads" threads.id %}"> Dislikes:{{threads.dislikes}} </a>
+                    <a href="{% url "threads:like_thread" thread.id %}"> Likes: {{thread.likes}} </a>
+                    <a href="{% url "threads:dislike_thread" thread.id %}"> Dislikes:{{thread.dislikes}} </a>
                 </div>
             </div>
 

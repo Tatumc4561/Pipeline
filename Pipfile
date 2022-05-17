@@ -1,0 +1,46 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+pillow = "*"
+django-environ = "*"
+django-heroku = "*"
+django-rest-framework = "*"
+djangorestframework = "*"
+filelock = "*"
+gunicorn = "*"
+idna = "*"
+itsdangerous = "*"
+javascript = "*"
+jinja2 = "*"
+pathspec = "*"
+python-dotenv = "*"
+platformdirs = "*"
+psycopg2 = "*"
+asgiref = "*"
+beautifulsoup4 = "*"
+black = "*"
+certifi = "*"
+charset-normalizer = "*"
+click = "*"
+colorama = "*"
+dj-database-url = "*"
+django-admin-honeypot = "*"
+pytz = "*"
+requests = "*"
+setuptools = "*"
+soupsieve = "*"
+sqlparse = "*"
+tomli = "*"
+tzdata = "*"
+urllib3 = "*"
+werkzeug = "*"
+whitenoise = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

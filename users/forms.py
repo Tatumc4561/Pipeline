@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 class NewRegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["username", "password", "email"]
+        fields = ["username", "email"]
 
 
 class NewLoginForm(forms.Form):

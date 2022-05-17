@@ -4,7 +4,7 @@
 {% block 'title' %}<title>Submit to the Pipeline</title>{% endblock 'title' %}
 {% block 'content' %}
 
-<form action="{% url 'threads:submit_threads' %}" method="post" enctype='multipart/form-data'>
+<form action="{% url 'threads:submit_thread' %}" method="post" enctype='multipart/form-data'>
     {% csrf_token %} {{form.as_p}}
     <input type="submit" value="">
 </form>
