@@ -49,15 +49,15 @@ class Thread(models.Model):
         diff = start - end
         # Get interval between two timstamps in minutes
         difference = diff.total_seconds() / 60
-        ans = f"{round(difference)} minutes"
+        ans = f"{round(difference)} minutes ago"
         if difference >= 60:
             # Get interval between two timstamps in hours
             difference = diff.total_seconds() / 3600
-            ans = f"{round(difference)} hours"
+            ans = f"{round(difference)} hours ago"
             if difference >= 48:
                 # Get interval between two timstamps in days
                 difference = diff.total_seconds() / 86400
-                ans = f"{round(difference)} days"
+                ans = f"{round(difference)} days ago"
 
         return f"{ans}"
 
