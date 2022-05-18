@@ -38,10 +38,12 @@
                         <img class='profile-avatar' src="{{MEDIA_URL}}{{thread.user.customuser.avatar.url}}" alt=""
                             srcset="">
                         <div class="thumb-content-group">{{thread.group}}</div>
-                        <div class="thumb-content-user">Posted by: {{thread.user}}
+                        {% comment %} link to user profile {% endcomment %}
+                        <div class="thumb-content-user">Posted by u/<a
+                                href="{{thread.user.customuser.avatar.url}}">{{thread.user}}</a> {{thread.posted_date}}
                             {% comment %} @register simple_tags not in use {% endcomment %}
                             {% comment %} {% HoursFrom thread.published_date %}</div> {% endcomment %}
-                        {{thread.posted_date}}
+
                     </div>
                     <div class="thumb-content-title">{{thread.title}}</div>
                     <div class="thumb-content-text">{{thread.text|slice:":50"}}</div>
