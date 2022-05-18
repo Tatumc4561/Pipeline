@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 {% extends 'base.html' %}
+{% load static %}
 {% block 'title' %}<title>Pipeline</title>{% endblock 'title' %}
 {% block 'content' %}
 
@@ -11,10 +12,15 @@
 
             <a href="{% url 'users:profile' %}">
                 {% comment %} display user profile pic {% endcomment %}
+                {% if not user.customuser.avatar.url  %}
+                <img src="{% static 'images/mario.jpg' %}" alt="" class="profile-avatar">
+                {% else %}
                 <img src="{{MEDIA_URL}}{{user.customuser.avatar.url}}" alt="" class="profile-avatar">
+                {% endif %}
             </a>
             <h1></h1>
-            <a href="{% url 'threads:create_thread' %}">Create Post</a>
+            <a href="{% url 'threads:create_thread' %}"><input type="text" name="" id=""
+                    placeholder='Create Thread'></a>
         </div>
 
 
