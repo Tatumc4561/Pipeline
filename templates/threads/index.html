@@ -2,6 +2,7 @@
 
 {% extends 'base.html' %}
 {% load static %}
+{% comment %} {% load time_tags %} {% endcomment %}
 {% block 'title' %}<title>Pipeline</title>{% endblock 'title' %}
 {% block 'content' %}
 
@@ -32,11 +33,16 @@
             {% for thread in threads %}
             <div class="thumb-content" id="thread_id_{{thread.id}}">
                 <div class="thumb-content-text">
-                    <div class="thumb-content-avatar"><img class='profile-avatar'
-                            src="{{MEDIA_URL}}{{thread.user.customuser.avatar.url}}" alt="" srcset="">
+                    <div class="thumb-content-avatar-group-user">
+
+                        <img class='profile-avatar' src="{{MEDIA_URL}}{{thread.user.customuser.avatar.url}}" alt=""
+                            srcset="">
+                        <div class="thumb-content-group">{{thread.group}}</div>
+                        <div class="thumb-content-user">Posted by: {{thread.user}}
+                            {% comment %} @register simple_tags not in use {% endcomment %}
+                            {% comment %} {% HoursFrom thread.published_date %}</div> {% endcomment %}
+                        {{thread.posted_date}}
                     </div>
-                    <div class="thumb-content-group">{{thread.group}}</div>
-                    <div class="thumb-content-user">{{thread.user}}</div>
                     <div class="thumb-content-title">{{thread.title}}</div>
                     <div class="thumb-content-text">{{thread.text|slice:":50"}}</div>
                     <div class="thumb-content-image"><img src="{{MEDIA_URL}}{{thread.image.url}}" alt="" srcset="">

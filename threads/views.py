@@ -15,6 +15,7 @@ from django.contrib import messages
 def index(request):
     threads = Thread.objects.all().order_by("-likes")[:20]
     all_users = User.objects.all()
+    hoursfrom = Thread
     return render(
         request,
         "threads/index.html",
