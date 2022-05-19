@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 
 {% extends 'base.html' %}
-{% block 'title' %}<title>Profile</title>{% endblock 'title' %}
+{% block 'title' %}<title>{{userID}}Profile</title>{% endblock 'title' %}
 {% block 'content' %}
 
-{% for thread in threadss %}
+
+
+{% for thread in threads %}
+
 {% comment %} Only display posts specific to user {% endcomment %}
 <div class="thumb-content" id="thread_id_{{thread.id}}">
     <div class="thumb-content-text">
@@ -15,11 +18,13 @@
         <div class="thumb-content-image"><img src="{{MEDIA_URL}}{{thread.image}}" alt="" srcset=""></div>
     </div>
     <div class="likes-dislikes">
-        <a href="{% url "threads:like_threads" thread.id %}"> Likes: {{thread.likes}} </a>
-        <a href="{% url "threads:dislike_threads" thread.id %}"> Dislikes:{{thread.dislikes}} </a>
+        <a href="{% url "threads:like_thread" thread.id %}"> Likes: {{thread.likes}} </a>
+        <a href="{% url "threads:dislike_thread" thread.id %}"> Dislikes:{{thread.dislikes}} </a>
     </div>
 </div>
 
+
+{% endfor %}
 <ul class="all_users">
 
     {% for user in avatar %}
@@ -38,8 +43,6 @@
 {% endfor %}
 
 
-
-{% endfor %}
 
 
 

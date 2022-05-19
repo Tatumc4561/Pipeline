@@ -88,3 +88,13 @@ def accept_friend_request(request, requestID):
         return HttpResponse("friend request accepted")
     else:
         return HttpResponse("friend request not accepted")
+
+
+def user_public_profile(request, userID):
+    threads = Thread.objects.filter(pk=userID)
+    public_user = User.objects.filter(pk=userID)
+    return render(
+        request,
+        "users/public_profile.html",
+        {"threads": threads, "public_user": public_user, "userID": userID},
+    )

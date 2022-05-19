@@ -19,4 +19,10 @@ urlpatterns = [
         views.accept_friend_request,
         name="accept_friend_request",
     ),
+    # --------public profile -------------,
+    path(
+        "profile/<str:userID>",
+        views.user_public_profile,
+        name="public_profile",
+    ),
 ]

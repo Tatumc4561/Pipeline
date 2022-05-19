@@ -40,7 +40,8 @@
                         <div class="thumb-content-group">{{thread.group}}</div>
                         {% comment %} link to user profile {% endcomment %}
                         <div class="thumb-content-user">Posted by u/<a
-                                href="{{thread.user.customuser.avatar.url}}">{{thread.user}}</a> {{thread.posted_date}}
+                                href="{% url "users:public_profile" thread.user.id %}">{{thread.user}}</a>
+                            {{thread.posted_date}}
                             {% comment %} @register simple_tags not in use {% endcomment %}
                             {% comment %} {% HoursFrom thread.published_date %}</div> {% endcomment %}
 
