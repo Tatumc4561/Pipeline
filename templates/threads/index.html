@@ -34,13 +34,16 @@
             <div class="thumb-content" id="thread_id_{{thread.id}}">
                 <div class="thumb-content-text">
                     <div class="thumb-content-avatar-group-user">
-
+                        {% if not thread.user.customuser.avatar.url  %}
+                        <img src="{% static 'images/mario.jpg' %}" alt="" class="profile-avatar">
+                        {% else %}
                         <img class='profile-avatar' src="{{MEDIA_URL}}{{thread.user.customuser.avatar.url}}" alt=""
                             srcset="">
+                        {% endif %}
                         <div class="thumb-content-group">{{thread.group}}</div>
                         {% comment %} link to user profile {% endcomment %}
                         <div class="thumb-content-user">Posted by u/<a
-                                href="{% url "users:public_profile" thread.user.id %}">{{thread.user}}</a>
+                                href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
                             {{thread.posted_date}}
                             {% comment %} @register simple_tags not in use {% endcomment %}
                             {% comment %} {% HoursFrom thread.published_date %}</div> {% endcomment %}
@@ -61,9 +64,8 @@
 
         </div>
     </div>
-
     <div class="sidebar-wrap">
-
+        <h1>sidebar where the fuck is htis</h1>
     </div>
 </div>
 

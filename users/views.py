@@ -91,8 +91,9 @@ def accept_friend_request(request, requestID):
 
 
 def user_public_profile(request, userID):
-    threads = Thread.objects.filter(pk=userID)
-    public_user = User.objects.filter(pk=userID)
+    threads = Thread.objects.all()
+    public_user = User.objects.all()
+    userID = userID
     return render(
         request,
         "users/public_profile.html",

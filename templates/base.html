@@ -11,13 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
 
+    {% block "title" %} {% endblock "title" %}
     {% comment %} enables features only allowed for user's that are logged in {% endcomment %}
     {% if user.is_authenticated %}
     <script defer src="{% static 'JS/loginApp.js' %}"></script>
     {% else %}
     <script defer src="{% static 'JS/nologinApp.js' %}"></script>
     {% endif %}
-    {% block "title" %}{% endblock "title" %}
 
 </head>
 
@@ -67,9 +67,11 @@
         <a href="{% url 'users:logout' %}">Logout</a>
 
     </div>
+
     {% block 'content' %}
 
     {% endblock 'content' %}
+
     <div id="loginAlert">Successful Login</div>
 </body>
 

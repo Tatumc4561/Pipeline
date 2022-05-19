@@ -1,30 +1,67 @@
 <!DOCTYPE html>
 
 {% extends 'base.html' %}
-{% block 'title' %}<title>{{userID}}Profile</title>{% endblock 'title' %}
+{% load static %}
+{% block 'title' %}<title>{{userID}} Profile</title>{% endblock 'title' %}
 {% block 'content' %}
 
 
 
-{% for thread in threads %}
+<div class="main-wrap">
+    <div class="content-wrap">
 
-{% comment %} Only display posts specific to user {% endcomment %}
-<div class="thumb-content" id="thread_id_{{thread.id}}">
-    <div class="thumb-content-text">
-        <div class="thumb-content-group">{{thread.group}}</div>
-        <div class="thumb-content-user">{{thread.user}}</div>
-        <div class="thumb-content-title">{{thread.title}}</div>
-        <div class="thumb-content-text">{{thread.text|slice:":50"}}</div>
-        <div class="thumb-content-image"><img src="{{MEDIA_URL}}{{thread.image}}" alt="" srcset=""></div>
+        <div class="sort-by-wrap">
+            New, Hot, Top
+        </div>
+
+        <div class="thumb-post-wrap">
+            {% for thread in threads %}
+            {% if thread.user.username == userID %}
+            <div class="thumb-content" id="thread_id_{{thread.id}}">
+                <div class="thumb-content-text">
+                    <div class="thumb-content-avatar-group-user">
+
+                        {% if not thread.user.customuser.avatar.url %}
+                        <img src="{% static 'images/mario.jpg' %}" alt="" class="profile-avatar">
+                        {% else %}
+                        <img class='profile-avatar' src="{{MEDIA_URL}}{{thread.user.customuser.avatar.url}}" alt=""
+                            srcset="">
+                        {% endif %}
+
+                        <div class="thumb-content-group">{{thread.group}}</div>
+                        {% comment %} link to user profile {% endcomment %}
+                        <div class="thumb-content-user">Posted by u/<a href="">{{thread.user}}</a>
+                            {{thread.posted_date}}
+                            {% comment %} @register simple_tags not in use {% endcomment %}
+                            {% comment %} {% HoursFrom thread.published_date %}</div> {% endcomment %}
+
+                    </div>
+                    <div class="thumb-content-title">{{thread.title}}</div>
+                    <div class="thumb-content-text">{{thread.text|slice:":50"}}</div>
+                    <div class="thumb-content-image"><img src="{{MEDIA_URL}}{{thread.image.url}}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="likes-dislikes">
+                    <a href="{% url "threads:like_thread" thread.id %}"> Likes: {{thread.likes}} </a>
+                    <a href="{% url "threads:dislike_thread" thread.id %}"> Dislikes:{{thread.dislikes}} </a>
+                </div>
+            </div>
+
+        </div>
+        {% else %}
+        {% endif %}
+        {% endfor %}
     </div>
-    <div class="likes-dislikes">
-        <a href="{% url "threads:like_thread" thread.id %}"> Likes: {{thread.likes}} </a>
-        <a href="{% url "threads:dislike_thread" thread.id %}"> Dislikes:{{thread.dislikes}} </a>
+
+    <div class="sidebar-wrap">
+
     </div>
 </div>
 
 
-{% endfor %}
+
+
+</div>
 <ul class="all_users">
 
     {% for user in avatar %}
