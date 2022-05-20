@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_list_or_404, redirect
 from django.contrib import messages
 
 
@@ -63,10 +63,8 @@ def like_thread(request, thread_id):
         threads = Thread.objects.get(id=thread_id)
         threads.likes += 1
         threads.save()
-    # Redirect to index page, but don't reload to the top of the page like normal, stay at current post
-    return HttpResponseRedirect(
-        reverse("threads:index") + "#thread_id_%s" % (threads.id)
-    )
+    # Redirect to previous page, and stay at current post
+    return redirect(request.META["HTTP_REFERER"] + "#thread_id_%s" % (threads.id))
 
 
 @login_required
@@ -75,7 +73,5 @@ def dislike_thread(request, thread_id):
         threads = Thread.objects.get(id=thread_id)
         threads.dislikes += 1
         threads.save()
-    # Redirect to index page, but don't reload to the top of the page like normal, stay at current post
-    return HttpResponseRedirect(
-        reverse("threads:index") + "#thread_id_%s" % (threads.id)
-    )
+    # Redirect to previous page, and stay at current post
+    return redirect(request.META["HTTP_REFERER"] + "#thread_id_%s" % (threads.id))

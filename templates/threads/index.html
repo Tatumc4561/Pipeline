@@ -23,7 +23,9 @@
             <a href="{% url 'threads:create_thread' %}"><input type="text" name="" id=""
                     placeholder='Create Thread'></a>
         </div>
+        <div>
 
+        </div>
 
         <div class="sort-by-wrap">
             Best, Hot, New, Top
@@ -55,7 +57,8 @@
                     </div>
                 </div>
                 <div class="likes-dislikes">
-                    <a href="{% url "threads:like_thread" thread.id %}"> Likes: {{thread.likes}} </a>
+                    <a href="{% url "threads:like_thread" thread.id %}?next={{request.path}}"> Likes:
+                        {{thread.likes}} </a>
                     <a href="{% url "threads:dislike_thread" thread.id %}"> Dislikes:{{thread.dislikes}} </a>
                 </div>
             </div>
