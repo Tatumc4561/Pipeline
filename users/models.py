@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to="avatars", blank=True)
-    followers = models.ManyToManyField(
+    my_followers = models.ManyToManyField(
         "self",
         through="Followers",
         blank=True,
@@ -13,7 +13,7 @@ class CustomUser(models.Model):
         symmetrical=False,
     )
 
-    following = models.ManyToManyField(
+    my_followings = models.ManyToManyField(
         "self",
         through="Following",
         blank=True,
