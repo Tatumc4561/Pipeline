@@ -10,7 +10,7 @@ urlpatterns = [
     path("logout/", views.user_logout, name="logout"),
     # -------friend requests-------
     path(
-        "follow/<str:userID>/",
+        "follow/",
         views.follow_user,
         name="follow_user",
     ),

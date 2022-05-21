@@ -18,3 +18,16 @@ class NewLoginForm(forms.Form):
     password = forms.CharField(
         widget=forms.PasswordInput, label="password", max_length=10
     )
+
+
+class NewLoginForm(forms.Form):
+    username = forms.CharField(label="Username", max_length=20)
+    password = forms.CharField(
+        widget=forms.PasswordInput, label="password", max_length=10
+    )
+
+
+class FollowForm(ModelForm):
+    class Meta:
+        model = MyFollowings
+        fields = "__all__"
