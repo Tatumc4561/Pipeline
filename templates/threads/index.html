@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="likes-dislikes">
-                    <a href="{% url "threads:like_thread" thread.id %}?next={{request.path}}"> Likes:
+                    <a href="{% url "threads:like_thread" thread.id %}"> Likes:
                         {{thread.likes}} </a>
                     <a href="{% url "threads:dislike_thread" thread.id %}"> Dislikes:{{thread.dislikes}} </a>
                 </div>
