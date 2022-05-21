@@ -62,22 +62,9 @@
 
 
 </div>
-<ul class="all_users">
-
-    {% for user in avatar %}
-    {% if not user.is_superuser %}
-    {% if user not in request.user.friends.all and user != request.user %}
-    <h1>{{user}} <a href="/send_friend_request/{{user.id}}/">send friend request</a></h1>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-</ul>
-{% for friend_request in all_friend_requests %}
-<h1>{{friend_request.from_user}}
-    <a href="/accept_friend_request/{{friend_request.id}}/">
-        accept friend request</a>
-</h1>
-{% endfor %}
+<div class="sidebar-wrap">
+    <a href="{% url 'users:follow_user' userID %}">{{userID}}</a>
+</div>
 
 
 
