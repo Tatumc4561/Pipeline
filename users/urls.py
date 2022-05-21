@@ -10,14 +10,9 @@ urlpatterns = [
     path("logout/", views.user_logout, name="logout"),
     # -------friend requests-------
     path(
-        "send_friend_request/<int:userID>/",
-        views.send_friend_request,
-        name="send_friend_request",
-    ),
-    path(
-        "accept_friend_request/<int:requestID>/",
-        views.accept_friend_request,
-        name="accept_friend_request",
+        "follow/<str:userID>/",
+        views.follow_user,
+        name="follow_user",
     ),
     # --------public profile -------------,
     path(
