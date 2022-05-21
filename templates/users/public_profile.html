@@ -63,9 +63,7 @@
 
 
 <div class="sidebar-wrap">
-    <form action="{% url 'users:follow_user' %}" method="post">
-        {{form}}{% csrf_token %} <input type="submit" value="follow">
-    </form>
+    <a href="{% url 'users:follow_user' userID %}">{{userID}}</a>
 </div>
 
 

@@ -68,19 +68,15 @@ def user_login(request):
 # @login_required
 # def follow_user(request, userID):
 #     follow_user = User.objects.get(username=userID)
-#     MyFollowings.objects.create(follower=request.user, following=follow_user)
+#     MyFollowings.set(user=follow_user, follower=request.user, following=follow_user)
 #     return redirect(request.META["HTTP_REFERER"])
 
 
 @login_required
-def follow_user(request):
-    form = FollowForm(request.POST)
-    if form.is_valid():
-
-        follow = form.save(commit=False)
-        follow.user = request.user
-        follow.save()
-
+def follow_user(request, userID):
+    follow = User.objects.get(username=userID)
+    MyFollowings.objects.create(follower=request.user, following=follow)
+    # MyFollowings.set(user=follow_user, follower=request.user, following=follow_user)
     return redirect(request.META["HTTP_REFERER"])
 
 
@@ -88,7 +84,7 @@ def user_public_profile(request, userID):
     threads = Thread.objects.all()
     public_user = User.objects.all()
     userID = userID
-    form = FollowForm()
+
     return render(
         request,
         "users/public_profile.html",
@@ -96,6 +92,5 @@ def user_public_profile(request, userID):
             "threads": threads,
             "public_user": public_user,
             "userID": userID,
-            "form": form,
         },
     )
