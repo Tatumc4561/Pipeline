@@ -6,11 +6,10 @@ class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to="avatars", blank=True)
     my_followers = models.ManyToManyField(
-        "self",
+        to="self",
         through="Following",
         related_name="user_followers",
         symmetrical=False,
-        null=True,
     )
 
 
@@ -25,6 +24,10 @@ class Following(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["user_follower", "target_following"], name="unique_followers"
-            )
+                name="unique_follow", fields=["user_follower", "target_following"]
+            ),
+            models.CheckConstraint(
+                name="check_unique",
+                check=~models.Q(user_follower=models.F("target_following")),
+            ),
         ]
