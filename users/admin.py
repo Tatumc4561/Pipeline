@@ -16,22 +16,24 @@ class CustomUserInline(admin.StackedInline):
     verbose_name_plural = "users"
 
 
-class FollowersInline(admin.StackedInline):
-    model = Followers
-    fk_name = "follower"
-
-
 class FollowingInline(admin.StackedInline):
     model = Following
-    fk_name = "following"
+    fk_name = "user_follower"
+    verbose_name_plural = "people I am following"
+
+
+class FollowerInline(admin.StackedInline):
+    model = Following
+    fk_name = "target_following"
+    verbose_name_plural = "my followers"
 
 
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
     inlines = (
         CustomUserInline,
-        FollowersInline,
         FollowingInline,
+        FollowerInline,
     )
 
 
@@ -40,4 +42,3 @@ class UserAdmin(BaseUserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Following)
-admin.site.register(Followers)

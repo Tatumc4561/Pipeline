@@ -75,7 +75,7 @@ def user_login(request):
 @login_required
 def follow_user(request, userID):
     follow = User.objects.get(username=userID)
-    MyFollowings.objects.create(follower=request.user, following=follow)
+    Following.objects.create(user_follower=request.user, target_following=follow)
     # MyFollowings.set(user=follow_user, follower=request.user, following=follow_user)
     return redirect(request.META["HTTP_REFERER"])
 

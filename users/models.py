@@ -7,28 +7,24 @@ class CustomUser(models.Model):
     avatar = models.ImageField(upload_to="avatars", blank=True)
     my_followers = models.ManyToManyField(
         "self",
-        through="Followers",
-        blank=True,
+        through="Following",
         related_name="user_followers",
         symmetrical=False,
-    )
-
-    my_followings = models.ManyToManyField(
-        "self",
-        through="Following",
-        blank=True,
-        related_name="user_followings",
-        symmetrical=False,
+        null=True,
     )
 
 
 class Following(models.Model):
-    following = models.ForeignKey(
+    user_follower = models.ForeignKey(
+        User, related_name="follower", on_delete=models.CASCADE, default=None
+    )
+    target_following = models.ForeignKey(
         User, related_name="followings", on_delete=models.CASCADE
     )
 
-
-class Followers(models.Model):
-    follower = models.ForeignKey(
-        User, related_name="follower", on_delete=models.CASCADE
-    )
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user_follower", "target_following"], name="unique_followers"
+            )
+        ]
