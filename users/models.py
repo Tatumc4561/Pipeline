@@ -22,10 +22,12 @@ class Following(models.Model):
     )
 
     class Meta:
+        # setup unique relationship
         constraints = [
             models.UniqueConstraint(
                 name="unique_follow", fields=["user_follower", "target_following"]
             ),
+            # check value of unique relationship
             models.CheckConstraint(
                 name="check_unique",
                 check=~models.Q(user_follower=models.F("target_following")),
