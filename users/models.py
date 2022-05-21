@@ -7,19 +7,21 @@ class CustomUser(models.Model):
     avatar = models.ImageField(upload_to="avatars", blank=True)
 
     # symetrical, one may be following the other
-    my_followers = models.OneToOneField(
+    my_followers = models.ForeignKey(
         "MyFollowings",
         blank=True,
         related_name="user_followers",
         on_delete=models.CASCADE,
+        null=True,
     )
 
     # symetrical, one may be following the other
-    my_followings = models.OneToOneField(
+    my_followings = models.ForeignKey(
         "MyFollowings",
         blank=True,
         related_name="user_followings",
         on_delete=models.CASCADE,
+        null=True,
     )
 
     def __str__(self):

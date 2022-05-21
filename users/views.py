@@ -77,7 +77,9 @@ def follow_user(request):
     form = FollowForm(request.POST)
     if form.is_valid():
 
-        form.save()
+        follow = form.save(commit=False)
+        follow.user = request.user
+        follow.save()
 
     return redirect(request.META["HTTP_REFERER"])
 
