@@ -38,13 +38,16 @@
 
                     {% comment %} likes/dislikes {% endcomment %}
                     <div class="likes-dislikes">
-                        <a href="{% url "threads:like_thread" thread.id %}"> Likes:
-                            {{thread.likes}} </a>
-                        <a href="{% url "threads:dislike_thread" thread.id %}"> Dislikes:{{thread.dislikes}} </a>
+                        <a href="{% url "threads:like_thread" thread.id %}">^</a>
+                        {{thread.likes}}
+                        <a href="{% url "threads:dislike_thread" thread.id %}">v</a>
                     </div>
 
-                    {% comment %} thread image {% endcomment %}
-                    <div class="thumb-content-image"><img src="{{MEDIA_URL}}{{thread.image.url}}" alt="" srcset="">
+                    {% comment %} thread image/link to more detail about post {% endcomment %}
+                    <div class="thumb-content-image">
+                        <a href="">
+                            <img src="{{MEDIA_URL}}{{thread.image.url}}" alt="" srcset="">
+                        </a>
                     </div>
 
                     {% comment %} thread title/user/group {% endcomment %}
@@ -52,17 +55,29 @@
                         {% comment %} flex 2 columns {% endcomment %}
 
                         <div class="thumb-content-avatar-group-user">
-                            <div class="thumb-content-avatar"><img src="" alt="" class="group_avatar"></div>
-                            <div class="thumb-content-group">{{thread.group}}</div>
-
-                            {% comment %} link to user profile / post date information {% endcomment %}
-                            <div class="thumb-content-user">Posted by u/<a
-                                    href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
-                                {{thread.posted_date}}
-                            </div>
                             <div class="thumb-content-title">{{thread.title}}</div>
-                            <div class="thumb-content-text">{{thread.text|slice:":50"}}</div>
 
+                            <div class="thumb-group-user-wrapper">
+                                <div class="thumb-content-avatar"><img src="{% static 'images/mario.jpg' %}" alt=""
+                                        class="group_avatar"></div>
+                                <div class="thumb-content-group"><a href="">p/{{thread.group}}</a> *</div>
+                                {% comment %} link to user profile / post date information {% endcomment %}
+                                <div class="thumb-content-user">Posted by u/<a
+                                        href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
+                                    {{thread.posted_date}}
+                                </div>
+                            </div>
+
+
+
+
+
+                            {% comment %} <div class="thumb-content-text">{{thread.text|slice:":50"}}</div>
+                            {% endcomment %}
+
+                        </div>
+                        <div class="thumb-content-subpanel-wrapper">
+                            <div>Icons: enlarge, comments, award, share, save, hide, report</div>
                         </div>
                     </div>
                 </div>
