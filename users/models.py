@@ -6,16 +6,17 @@ class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to="avatars", blank=True)
     my_followers = models.ManyToManyField(
-        to="self",
+        "self",
         through="Following",
         related_name="user_followers",
         symmetrical=False,
+        blank=False,
     )
 
 
 class Following(models.Model):
     user_follower = models.ForeignKey(
-        User, related_name="follower", on_delete=models.CASCADE, default=None
+        User, related_name="follower", on_delete=models.CASCADE
     )
     target_following = models.ForeignKey(
         User, related_name="followings", on_delete=models.CASCADE
