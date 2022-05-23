@@ -1,0 +1,129 @@
+
+.nav-wrapper {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    background-color: rgb(84, 82, 81);
+
+    border-bottom: solid 5px rgb(65, 30, 30);
+    padding: 15px;
+}
+
+.home-link-wrap {
+    display: flex;
+    align-items: center;
+    width: 15vw;
+    height: 32px;
+    padding-top: 3px;
+
+}
+
+#pipeline-icon_1{
+    height: 60px;
+    width: 60px;
+}
+
+#pipeline-icon_2{
+    height: 60px;
+    width: 100px;
+}
+
+#personal-dropdown-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 15vw;
+    height: 32px;
+    border-radius: 4px;
+    margin: 0 10px;
+    margin-top: 1px;
+}
+
+#personal-dropdown-wrap:hover {
+    border: 1px solid rgb(186, 184, 184);
+}
+
+.dropdown-icons{
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-icons img {
+    height: 30px;
+    width: 30px;
+}
+
+.dropdown-arrow {
+    display: flex;
+    align-items: center;
+}
+.dropdown-arrow img {
+    height: 30px;
+    width: 30px;
+}
+
+.search-wrap {
+    display: flex;
+    height: 32px;
+    width: 215px;
+}
+
+#maglens {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    z-index: 1;
+    padding: 1px 0;
+}
+
+#search {
+    background-color: rgb(136, 133, 131);
+    border: 1px solid rgb(186, 184, 184);
+    border-radius: 4px;
+    padding: 0 35px;
+    height: 32px;
+    width: 12vw;
+    max-width: 300px;
+}
+
+.quick-link-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 32px;
+    width: 7vw;
+    border-right: 2px solid black;
+}
+
+.quick-link-icons {
+    height: 30px;
+    padding-top: 6px;
+}
+
+#profile-options {
+    display: flex;
+    height: 32px;
+    width: 150px;
+    border-right: 2px solid black;
+}
+
+#nav-button-profile-wrapper {
+    height: 40px;
+    width: 20vw;
+    background-color: rgb(136, 133, 131);
+    border: 1px solid rgb(186, 184, 184);
+    border-radius: 4px;
+    margin-left: 10px;
+
+}
+
+#profile-text {
+
+    width: 300px;
+}
+
+
+#profile-dropdown * {
+    display: none;
+}
