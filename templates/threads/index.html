@@ -37,9 +37,13 @@
 
                     {% comment %} likes/dislikes {% endcomment %}
                     <div class="likes-dislikes">
-                        <a href="{% url "threads:like_thread" thread.id %}">^</a>
-                        {{thread.likes}}
-                        <a href="{% url "threads:dislike_thread" thread.id %}">v</a>
+                        <a href="{% url "threads:like_thread" thread.id %}">
+                            <img src="{% static 'images/upvote.png' %}" alt="" srcset="">
+                        </a>
+                        <div class="totallikes-wrap">{{thread.likes}}</div>
+                        <a href="{% url "threads:dislike_thread" thread.id %}">
+                            <img src="{% static 'images/downvote.png' %}" alt="" srcset="">
+                        </a>
                     </div>
 
                     {% comment %} thread image/link to more detail about post {% endcomment %}

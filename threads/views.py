@@ -13,7 +13,7 @@ from django.contrib import messages
 
 # Create your views here.
 def index(request):
-    threads = Thread.objects.all().order_by("-likes")[:20]
+    threads = Thread.objects.all().order_by("-likes")  # [:20]
     all_users = User.objects.all()
     hoursfrom = Thread
     return render(
@@ -64,14 +64,14 @@ def like_thread(request, thread_id):
         threads.likes += 1
         threads.save()
     # Redirect to previous page, and stay at current post
-    return redirect(request.META["HTTP_REFERER"] + "#thread_id_%s" % (threads.id))
+    return redirect(request.META["HTTP_REFERER"])
 
 
 @login_required
 def dislike_thread(request, thread_id):
     if Thread.objects.filter(id=thread_id):
         threads = Thread.objects.get(id=thread_id)
-        threads.dislikes += 1
+        threads.likes -= 1
         threads.save()
     # Redirect to previous page, and stay at current post
-    return redirect(request.META["HTTP_REFERER"] + "#thread_id_%s" % (threads.id))
+    return redirect(request.META["HTTP_REFERER"])

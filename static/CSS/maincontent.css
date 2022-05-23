@@ -93,8 +93,29 @@
 .likes-dislikes {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 35px;
     height: 100%;
+}
+
+.likes-dislikes a {
+    display: flex;
+    align-items: center;
+    height: 33%;
+    justify-content: center;
+}
+
+.likes-dislikes a img {
+    margin-top: -3px;
+}
+
+.totallikes-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 33%;
+    margin-top: -3px;
+    font-weight: 600;
 }
 
 .thumb-content-image img {
