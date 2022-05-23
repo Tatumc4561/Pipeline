@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% comment %} {% load el_pagination_tags %} {% endcomment %}
 
 
 
@@ -10,6 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+
+    {% comment %} JQuery for el_pagination_tags {% endcomment %}
+    <script src="jquery-3.6.0.min.js"></script>
 
     {% block "title" %} {% endblock "title" %}
     {% comment %} enables features only allowed for user's that are logged in {% endcomment %}
@@ -37,16 +41,20 @@
         </div>
         <div class="quick-link-wrap">
             {% comment %} load index page by preferred sorting {% endcomment %}
-            <a href="{% url 'threads:index' %}" class='profile-only'><img src="" id="" alt="Home" srcset=""></a>
-            <a href="{% url 'threads:index' %}" class='profile-only'><img src="" id="" alt="All" srcset=""></a>
-            <a href="{% url 'threads:index' %}" class='profile-only'><img src="" id="" alt="New" srcset=""></a>
+            <a href="{% url 'threads:index' %}" class=''><img src="{% static 'images/popular.png' %}" id=""
+                    alt="Popular" srcset=""></a>
+            <a href="{% url 'threads:index' %}" class=''><img src="{% static 'images/all.png' %}" id="" alt="All"
+                    srcset=""></a>
+            <a href="{% url 'threads:index' %}" class=''><img src="{% static 'images/new.png' %}" id="" alt="New"
+                    srcset=""></a>
         </div>
-
+        {% if user.is_authenticated %}
+        {% else %}
         <div class="login-create-wrap">
             <a href="{% url "users:login" %}" id='login'>Login</a>
             <a href="{% url "users:register" %}" id='create_user'>Create User</a>
         </div>
-
+        {% endif %}
 
         <div class="profile-only" id='profile-options'>
             <div id="notifications">Notifcations</div>
@@ -72,7 +80,10 @@
 
     {% endblock 'content' %}
 
+    {% if user.is_authenticated %}
     <div id="loginAlert">Successful Login</div>
+    {% endif %}
+
 </body>
 
 </html>

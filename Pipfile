@@ -39,6 +39,7 @@ tzdata = "*"
 urllib3 = "*"
 werkzeug = "*"
 whitenoise = "*"
+django-el-pagination = "*"
 
 [dev-packages]
 
