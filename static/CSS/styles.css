@@ -1,6 +1,8 @@
 
 @import url(topnav.css);
 @import url(maincontent.css);
+@import url(threads.css);
+
 
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

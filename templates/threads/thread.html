@@ -9,68 +9,77 @@
 <div class="main-wrap">
     <div class="content-wrap">
 
+
         <div class="thumb-post-wrap">
 
-            <div class="thumb-content" id="thread_id_{{read_thread.0.id}}">
+            <div class="thread-content" id="thread_id_{{read_thread.0.id}}">
                 <div class="thumb-content-text">
 
                     {% comment %} likes/dislikes {% endcomment %}
-                    <div class="likes-dislikes">
+                    <div class="thread_likes-dislikes">
                         <a href="{% url "threads:like_thread" read_thread.0.id %}">
                             <img src="{% static 'images/upvote.png' %}" alt="" srcset="">
                         </a>
-                        <div class="totallikes-wrap">{{read_thread.0.likes}}</div>
+                        <div class="thread_totallikes-wrap">{{read_thread.0.likes}}</div>
                         <a href="{% url "threads:dislike_thread" read_thread.0.id %}">
                             <img src="{% static 'images/downvote.png' %}" alt="" srcset="">
                         </a>
                     </div>
 
-                    {% comment %} thread image/link to more detail about post {% endcomment %}
-                    <div class="thumb-content-image">
-                        <a href="">
-                            <img src="{{MEDIA_URL}}{{read_thread.0.image.url}}" alt="" srcset="">
-                        </a>
-                        <div class="thread-content-text">{{read_thread.0.0.title}}</div>
-                    </div>
+
 
                     {% comment %} thread title/user/group {% endcomment %}
                     <div class="thumb-content-avatar-group-user-wrapper">
                         {% comment %} flex 2 columns {% endcomment %}
+                        <div class="thumb-group-user-wrapper">
+                            <div class="thumb-content-avatar"><img src="{% static 'images/mario.png' %}" alt=""
+                                    class="group_avatar"></div>
+                            <div class="thumb-content-group"><a href="">p/{{read_thread.0.group}}</a> *</div>
+                            {% comment %} link to user profile / post date information {% endcomment %}
+                            <div class="thumb-content-user">Posted by u/<a
+                                    href="{% url "users:public_profile" read_thread.0.user.username %}">{{read_thread.0.user}}</a>
+                                {{read_thread.0.posted_date}}
+                            </div>
+                        </div>
 
                         <div class="thumb-content-avatar-group-user">
                             <div class="thumb-content-title">{{read_thread.0.title}}</div>
 
-                            <div class="thumb-group-user-wrapper">
-                                <div class="thumb-content-avatar"><img src="{% static 'images/mario.png' %}" alt=""
-                                        class="group_avatar"></div>
-                                <div class="thumb-content-group"><a href="">p/{{read_thread.0.group}}</a> *</div>
-                                {% comment %} link to user profile / post date information {% endcomment %}
-                                {% comment %} <div class="thumb-content-user">Posted by u/<a
-                                        href="{% url "users:public_profile" read_thread.0.user.username %}">{{read_thread.0.user}}</a>
-                                    {{read_thread.0.posted_date}}
-                                </div> {% endcomment %}
+
+
+                        </div>
+                        <div class="thread-content-image">
+
+                            <img src="{{MEDIA_URL}}{{read_thread.0.image.url}}" alt="" srcset="" id="thread-full-image">
+
+                            <div class="thread-content-subpanel-wrapper">
+                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/comment.png' %}" alt="" srcset=""> Comments</a>
+                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
+                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/share.png' %}" alt="" srcset=""> Share</a>
+                                <a href="#" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/flag.png' %}" alt="" srcset=""> Report</a>
+                                <a href="#" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/.png' %}" alt="" srcset=""> Save</a>
+                                <a href="#" class='subicon-href'><img class='thread_subicons' src="" alt="" srcset="">
+                                    ...</a>
+
+                                {% comment %} <a href="" class='subicon-href'><img class='subicons'
+                                        src="{% static 'images/hide.png' %}" alt="" srcset=""> Hide</a> {% endcomment %}
+                                {% comment %} <a href="" class='subicon-href'><img class='subicons'
+                                        src="{% static 'images/expand.png' %}" alt="" srcset=""></a>
+                                {% endcomment %}
                             </div>
-
-
-
                         </div>
-                        <div class="thumb-content-subpanel-wrapper">
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/expand.png' %}"
-                                    alt="" srcset=""></a>
-                            <a href="" class='subicon-href'><img class='subicons'
-                                    src="{% static 'images/comment.png' %}" alt="" srcset=""> Comments</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/award.png' %}"
-                                    alt="" srcset=""> Award</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/share.png' %}"
-                                    alt="" srcset=""> Share</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/hide.png' %}"
-                                    alt="" srcset=""> Hide</a>
-                            <a href="#" class='subicon-href'><img class='subicons' src="{% static 'images/flag.png' %}"
-                                    alt="" srcset=""> Report</a>
-                        </div>
+
                     </div>
+
                 </div>
             </div>
+
+            {% comment %} thread image/link to more detail about post {% endcomment %}
 
 
         </div>
@@ -83,17 +92,3 @@
 
 
 {% endblock 'content' %}
-
-
-
-
-{% comment %} @register simple_tags not in use {% endcomment %}
-{% comment %} {% HoursFrom thread.published_date %}
-</div> {% endcomment %}
-
-
-{% comment %} {% if not thread.user.customuser.avatar.url  %}
-<img src="{% static 'images/mario.jpg' %}" alt="" class="profile-avatar">
-{% else %}
-<img class='profile-avatar' src="{{MEDIA_URL}}{{thread.user.customuser.avatar.url}}" alt="" srcset="">
-{% endif %} {% endcomment %}
