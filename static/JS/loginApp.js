@@ -1,20 +1,20 @@
 const profileOnly = document.querySelectorAll('.profile-only')
-const loggedAlert = document.querySelector('#loginAlert')
+const reportFlag = document.querySelectorAll('.report-flag')
 
 for(el of profileOnly){
     el.style = "visibility: visible;"
 }
 
 
-// function myFunction() {
-//   loggedAlert.style = 'visibility: visible'
-//   }
-
-// myFunction()
 
 
 
 // const sortbyNew = document.querySelector('#sortNew')
 // const sortbyBest = document.querySelector('#sortBest')
 
-// sortbyNew.setAttribute('onclick', "location.href='{'")
+// for(item in reportFlag){
+//     item.addEventListener('click', function(){
+//         item.innerHTML ="<img class='subicons' src='{% static 'images/flag_checked.png' %}' alt='' srcset=''> Report"
+//     })
+// }
+

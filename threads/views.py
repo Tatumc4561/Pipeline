@@ -15,12 +15,26 @@ from django.contrib import messages
 def index(request):
     threads = Thread.objects.all().order_by("-likes")  # [:20]
     all_users = User.objects.all()
-    hoursfrom = Thread
     return render(
         request,
         "threads/index.html",
         {
             "threads": threads,
+            "all_users": all_users,
+        },
+    )
+
+
+def read_thread(request, thread_id):
+    # display particular thread
+    read_thread = Thread.objects.filter(id=thread_id)
+    # display all profiles
+    all_users = User.objects.all()
+    return render(
+        request,
+        "threads/thread.html",
+        {
+            "read_thread": read_thread,
             "all_users": all_users,
         },
     )

@@ -164,6 +164,7 @@
     margin-left: 4px;
     background-color: rgb(84, 82, 81);
     text-decoration: none;
+    color: rgb(35, 35, 35);
 }
 
 
@@ -177,7 +178,12 @@
 
 .subicon-href {
     display: flex;
+    text-decoration: none;
+    align-items: center;
+    color: black;
+    margin-right: 10px;
 }
+
 
 .sidebar-wrap {
     display: flex;
