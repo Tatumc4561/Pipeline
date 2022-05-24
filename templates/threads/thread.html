@@ -77,15 +77,20 @@
 
                         </div>
 
+                        <div class="thread-input-wrap">
+                            Comment as
+                            <a href="{% url "users:public_profile" read_thread.0.user.username %}">
+                                {{read_thread.0.user}}
+                            </a>
+                            <input type="text" name="" id="">
+                        </div>
                     </div>
 
                 </div>
             </div>
 
-            {% comment %} thread image/link to more detail about post {% endcomment %}
-
-
         </div>
+
     </div>
     <div class="sidebar-wrap">
         <h1>sidebar</h1>
