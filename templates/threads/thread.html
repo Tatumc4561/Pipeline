@@ -51,7 +51,9 @@
                         <div class="thread-content-image">
 
                             <img src="{{MEDIA_URL}}{{read_thread.0.image.url}}" alt="" srcset="" id="thread-full-image">
-
+                            <div class="thread-content-text">
+                                {{read_thread.0.text}}
+                            </div>
                             <div class="thread-content-subpanel-wrapper">
                                 <a href="" class='subicon-href'><img class='thread_subicons'
                                         src="{% static 'images/comment.png' %}" alt="" srcset=""> Comments</a>
@@ -72,6 +74,7 @@
                                         src="{% static 'images/expand.png' %}" alt="" srcset=""></a>
                                 {% endcomment %}
                             </div>
+
                         </div>
 
                     </div>

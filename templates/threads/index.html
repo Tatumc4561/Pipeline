@@ -48,7 +48,7 @@
 
                     {% comment %} thread image/link to more detail about post {% endcomment %}
                     <div class="thumb-content-image">
-                        <a href="">
+                        <a href="{% url 'threads:read_thread' thread.id %}">
                             <img src="{{MEDIA_URL}}{{thread.image.url}}" alt="" srcset="">
                         </a>
                     </div>

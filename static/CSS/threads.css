@@ -1,4 +1,9 @@
 
+/* * > {
+    need to match icons first
+    color: rgb(208, 208, 208);
+} */
+
 .thread-content {
     display: flex;
     flex-direction: column;
@@ -12,8 +17,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 35px;
+    width: 40px;
     height: 100%;
+    margin-left: 5px;
 }
 
 .thread_totallikes-wrap {
@@ -28,13 +34,20 @@
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 60vw;
+    
    
 }
 
 #thread-full-image {
     height: 60vh;
+    width: 60vw;
     border-radius: 4px;
+}
+
+.thread-content-text {
+    margin-top: 10px;
+    font-weight: 600;
 }
 
 .thread-content-subpanel-wrapper {
