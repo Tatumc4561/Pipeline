@@ -89,3 +89,10 @@ def dislike_thread(request, thread_id):
         threads.save()
     # Redirect to previous page, and stay at current post
     return redirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def comment_thread(request, thread_id):
+    ThreadComment.add_root(numval=1, strval=thread_id)
+
+    return redirect(request.META["HTTP_REFERER"])

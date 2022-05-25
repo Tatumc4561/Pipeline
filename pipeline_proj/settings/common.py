@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.admindocs",
     "threads",
     # "el_pagination",
+    'treebeard' #API Library implements efficient tree navigation
 ]
 
 

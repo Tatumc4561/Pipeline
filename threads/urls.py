@@ -16,4 +16,5 @@ urlpatterns = [
     # path("publike/<int:thread_id>", views.publike_thread, name="publike_thread"),
     # -----------post commenting ---------------------
     path("read_thread/<int:thread_id>", views.read_thread, name="read_thread"),
+    path("comment/<int:thread_id>", views.comment_thread, name="comment_thread"),
 ]

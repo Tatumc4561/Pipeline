@@ -6,13 +6,17 @@ import datetime
 from django import template
 from django.conf import settings
 
+# Materialized Path tree
+from treebeard.mp_tree import MP_Node
+
 
 register = template.Library()
 
 
 # Create your models here.
 class Thread(models.Model):
-    # user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    # User posts
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_post")
     group = models.ForeignKey(
         Group, on_delete=models.CASCADE, related_name="group_post"
@@ -63,3 +67,30 @@ class Thread(models.Model):
 
     def __str__(self):
         return f"{self.user}: {self.group} | {self.title} - {self.published_date} "
+
+
+# Materialized Path Tree
+# Eveery node in tree has a path attribute where full path from root -> node is stored
+class ThreadComment(MP_Node):
+    # Initial Parent
+    root = models.ForeignKey(
+        Thread, on_delete=models.CASCADE, related_name="thread_comments"
+    )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="user_comment", default=None
+    )
+
+    # path = readonly
+    # depth = readonly
+    # numchild = readonly
+
+    # Post Attributes
+    text = models.CharField(max_length=1200)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
+    published_date = models.DateTimeField(auto_now_add=True)
+
+    node_order_by = ["id"]
+
+    def __str__(self):
+        return "Category: {}".format(self.id)
