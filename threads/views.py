@@ -93,6 +93,8 @@ def dislike_thread(request, thread_id):
 
 @login_required
 def comment_thread(request, thread_id):
-    ThreadComment.add_root(numval=1, strval=thread_id)
+
+    x = Thread.objects.get(id=thread_id)
+    ThreadComment.add_root(user=request.user, text="lklkhj", parent_thread=x)
 
     return redirect(request.META["HTTP_REFERER"])

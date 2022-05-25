@@ -73,8 +73,8 @@ class Thread(models.Model):
 # Eveery node in tree has a path attribute where full path from root -> node is stored
 class ThreadComment(MP_Node):
     # Initial Parent
-    root = models.ForeignKey(
-        Thread, on_delete=models.CASCADE, related_name="thread_comments"
+    parent_thread = models.ForeignKey(
+        Thread, on_delete=models.CASCADE, related_name="thread_comments", null=True
     )
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="user_comment", default=None
@@ -86,11 +86,11 @@ class ThreadComment(MP_Node):
 
     # Post Attributes
     text = models.CharField(max_length=1200)
-    likes = models.IntegerField(default=0)
-    dislikes = models.IntegerField(default=0)
-    published_date = models.DateTimeField(auto_now_add=True)
+    # likes = models.IntegerField(default=0)
+    # dislikes = models.IntegerField(default=0)
+    # published_date = models.DateTimeField(auto_now_add=True)
 
-    node_order_by = ["id"]
+    node_order_by = ["depth"]
 
     def __str__(self):
         return "Category: {}".format(self.id)
