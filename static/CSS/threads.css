@@ -48,6 +48,7 @@
 .thread-content-text {
     margin-top: 10px;
     font-weight: 600;
+    height: fit-content;
 }
 
 .thread-content-subpanel-wrapper {
@@ -62,4 +63,33 @@
 .thread_subicons {
     height: 20px;
     width: 20px;
+}
+
+
+.comment_input-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 175px;
+    width: 50vw;
+    border-radius: 4px;
+    border: 1px solid rgb(139, 138, 138);
+    background-color: rgb(84, 82, 81);
+    margin-bottom: 150px;
+}
+
+
+#comment_input {
+    margin-top: 2px;
+    height: 140px;
+    width: 47vw;
+    border: none;
+    background-color: rgb(84, 82, 81);
+
+
+}
+
+.input-text-button-wrap {
+    display: flex;
+
 }

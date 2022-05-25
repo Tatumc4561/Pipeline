@@ -82,7 +82,22 @@
                             <a href="{% url "users:public_profile" read_thread.0.user.username %}">
                                 {{read_thread.0.user}}
                             </a>
-                            <input type="text" name="" id="">
+                            <form action="" method="post">{% csrf_token %}
+
+                                <div class="comment_input-wrap">
+
+                                    <textarea name="" id="comment_input" cols="30" rows="10"
+                                        placeholder="What are your thoughts?"></textarea>
+
+                                    <div class="input-text-button-wrap">
+                                        Bold, italics, url, strikethrough, etc
+
+                                        <input type="submit" value="Comment">
+
+                                    </div>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
 

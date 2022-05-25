@@ -7,27 +7,22 @@
     background-color: rgb(84, 82, 81);
 
     border-bottom: solid 5px rgb(65, 30, 30);
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+
 }
 
 .home-link-wrap {
-    display: flex;
-    align-items: center;
     width: 15vw;
-    height: 32px;
-    padding-top: 3px;
-
+    height: 100%;
+    margin-bottom: 5px;
 }
 
 #pipeline-icon_1{
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 150px;
 }
 
-#pipeline-icon_2{
-    height: 60px;
-    width: 100px;
-}
 
 #personal-dropdown-wrap {
     display: flex;
