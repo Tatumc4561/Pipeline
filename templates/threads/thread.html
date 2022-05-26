@@ -95,6 +95,12 @@
                                         <input type="submit" value="Comment">
 
                                         <a href="{% url 'threads:comment_thread' read_thread.0.id %}">click me</a>
+                                        <br>
+                                        <a href="{% url 'threads:comment_thread_child' read_thread.0.id %}"> add child
+                                            me</a>
+
+                                        {% comment %} {{tree}} {% endcomment %}
+
 
                                     </div>
                                 </div>
@@ -111,6 +117,7 @@
     </div>
     <div class="sidebar-wrap">
         <h1>sidebar</h1>
+        {% comment %} {{get}} {% endcomment %}
     </div>
 </div>
 

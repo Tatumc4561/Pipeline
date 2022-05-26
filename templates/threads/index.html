@@ -11,7 +11,7 @@
 
         <div class="profile-only" id='create-post-wrap'>
 
-            <a href="{% url 'users:profile' %}">
+            <a href="{% url 'users:profile' request.user %}">
                 {% comment %} display user profile pic {% endcomment %}
                 {% if not user.customuser.avatar.url  %}
                 <img src="{% static 'images/mario.jpg' %}" alt="" class="profile-avatar">

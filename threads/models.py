@@ -86,11 +86,10 @@ class ThreadComment(MP_Node):
 
     # Post Attributes
     text = models.CharField(max_length=1200)
-    # likes = models.IntegerField(default=0)
-    # dislikes = models.IntegerField(default=0)
-    # published_date = models.DateTimeField(auto_now_add=True)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
 
-    node_order_by = ["depth"]
+    node_order_by = ["parent_thread", "user", "path"]
 
     def __str__(self):
-        return "Category: {}".format(self.id)
+        return f"Post Path ID: {self.id} --- {self.path}| User: {self.user}| Parent: {self.parent_thread.title} Group: {self.parent_thread.group}"

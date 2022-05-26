@@ -30,12 +30,20 @@ def read_thread(request, thread_id):
     read_thread = Thread.objects.filter(id=thread_id)
     # display all profiles
     all_users = User.objects.all()
+
+    parent_thread = Thread.objects.get(id=thread_id)
+    # get = ThreadComment.objects.get(parent_thread=parent_thread)
+
+    # tree = ThreadComment.get_tree(parent=get)
+
     return render(
         request,
         "threads/thread.html",
         {
             "read_thread": read_thread,
             "all_users": all_users,
+            # "tree": tree,
+            # "get": get,
         },
     )
 
@@ -93,8 +101,20 @@ def dislike_thread(request, thread_id):
 
 @login_required
 def comment_thread(request, thread_id):
-
     x = Thread.objects.get(id=thread_id)
+    # get = lambda parent_thread: ThreadComment.objects.get(parent_thread=x)
+
     ThreadComment.add_root(user=request.user, text="lklkhj", parent_thread=x)
 
+    return redirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def comment_thread_child(request, thread_id):
+    x = Thread.objects.get(id=thread_id)
+
+    y = ThreadComment.objects.get(path="0001")
+    y.add_child(user=request.user, text="childtext", parent_thread=x)
+
+    # if NodeAlreadySaved ThreadComment.addSibling()
     return redirect(request.META["HTTP_REFERER"])

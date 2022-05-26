@@ -11,12 +11,20 @@ from django.contrib import messages
 from threads.models import *
 
 
-@login_required
-def user_profile(request):
-    threads = Thread.objects.filter(user=request.user)
-    avatar = User.objects.all()
+def user_profile(request, userID):
+    threads = Thread.objects.all()
+    public_user = User.objects.all()
+    userID = userID
 
-    return render(request, "users/profile.html", {"threads": threads, "avatar": avatar})
+    return render(
+        request,
+        "users/profile.html",
+        {
+            "threads": threads,
+            "public_user": public_user,
+            "userID": userID,
+        },
+    )
 
 
 @login_required
