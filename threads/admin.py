@@ -7,12 +7,8 @@ from treebeard.admin import TreeAdmin
 
 
 class ThreadCommentAdmin(TreeAdmin):
-    list_display = (
-        "parent_thread",
-        "user",
-        "likes",
-    )
-    list_filter = ["user"]
+    list_display = ("parent_thread", "user", "likes", "created")
+    list_filter = ["user", "created", "likes"]
 
 
 admin.site.register(ThreadComment, ThreadCommentAdmin)

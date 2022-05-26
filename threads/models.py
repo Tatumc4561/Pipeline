@@ -8,6 +8,7 @@ from django.conf import settings
 
 # Materialized Path tree
 from treebeard.mp_tree import MP_Node
+import datetime
 
 
 register = template.Library()
@@ -66,7 +67,7 @@ class Thread(models.Model):
         return f"{ans}"
 
     def __str__(self):
-        return f"{self.user}: {self.group} | {self.title} - {self.published_date} "
+        return f"{self.title}"
 
 
 # Materialized Path Tree
@@ -80,16 +81,11 @@ class ThreadComment(MP_Node):
         User, on_delete=models.CASCADE, related_name="user_comment", default=None
     )
 
-    # path = readonly
-    # depth = readonly
-    # numchild = readonly
+    created = models.DateTimeField(default=datetime.datetime.now)
 
     # Post Attributes
     text = models.CharField(max_length=1200)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
 
-    node_order_by = ["parent_thread", "user", "path"]
-
-    def __str__(self):
-        return f"Path: {self.path} ID: {self.id} | User: {self.user}| Parent: {self.parent_thread.title} Group: {self.parent_thread.group}"
+    node_order_by = ["parent_thread", "user", "likes", "created"]
