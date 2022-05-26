@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.admindocs",
     "threads",
     # "el_pagination",
-    'treebeard' #API Library implements efficient tree navigation
+    "treebeard",  # API Library implements efficient tree navigation
 ]
 
 
@@ -63,7 +63,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "django.template.context_processors.request",  ## For EL-pagination
+                "django.template.context_processors.request",  ## For EL-pagination and Treebeard
             ],
         },
     },

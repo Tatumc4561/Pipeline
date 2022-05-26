@@ -92,4 +92,4 @@ class ThreadComment(MP_Node):
     node_order_by = ["parent_thread", "user", "path"]
 
     def __str__(self):
-        return f"Post Path ID: {self.id} --- {self.path}| User: {self.user}| Parent: {self.parent_thread.title} Group: {self.parent_thread.group}"
+        return f"Path: {self.path} ID: {self.id} | User: {self.user}| Parent: {self.parent_thread.title} Group: {self.parent_thread.group}"
