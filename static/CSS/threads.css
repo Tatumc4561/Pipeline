@@ -102,3 +102,16 @@
     padding-bottom: 500px;
     width: 45vw;
 }
+
+.comment-section-list {
+    margin: 0;
+    padding-bottom: 20px;
+
+}
+
+li {
+    border-left: 2px solid black;
+    list-style: none;
+
+}
+

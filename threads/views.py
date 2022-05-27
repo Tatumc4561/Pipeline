@@ -121,8 +121,8 @@ def comment_thread(request, thread_id):
 def comment_thread_child(request, thread_id):
     x = Thread.objects.get(id=thread_id)
 
-    y = ThreadComment.objects.get(path="000100010001")
-    y.add_child(user=request.user, text="child2text", parent_thread=x)
+    y = ThreadComment.objects.get(path="0002000100010001")
+    y.add_sibling(user=request.user, text="child2text", parent_thread=x)
 
     # if NodeAlreadySaved ThreadComment.addSibling()
     return redirect(request.META["HTTP_REFERER"])
