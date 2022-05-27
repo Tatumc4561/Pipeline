@@ -105,13 +105,27 @@
                                 </div>
                             </form>
                             <div class="comment-section-wrap">
+                                {% for each in roots %}
+                                {% for item, info in each %}
+                                {% if info.open %}
                                 <ul>
-                                    {% for each in roots %}
                                     <li>
-                                        {{each.0}}
+                                        {% else %}
                                     </li>
-                                    {% endfor %}
+                                    <li>
+                                        {% endif %}
+                                        {{item}}
+                                        <br>
+                                        likes - {{item.likes}}
+                                        user - {{item.user}}
+
+                                        {% for close in info.close %}
+                                    </li>
                                 </ul>
+                                {% endfor %}
+                                {% endfor %}
+                                {% endfor %}
+
                             </div>
                         </div>
                     </div>

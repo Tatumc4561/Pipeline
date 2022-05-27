@@ -41,7 +41,7 @@ def read_thread(request, thread_id):
     roots = []
     for each in tree:
         if each.parent_thread == parent_threads:
-            x = ThreadComment.dump_bulk(parent=each)
+            x = ThreadComment.get_annotated_list(parent=each)
             roots.append(x)
 
     return render(
