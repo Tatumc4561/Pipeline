@@ -7,10 +7,13 @@ from treebeard.admin import TreeAdmin
 
 
 class ThreadCommentAdmin(TreeAdmin):
+    # how it is displayed in admin panel
     list_display = ("parent_thread", "user", "likes", "created")
+    # filter options
     list_filter = ["user", "created", "likes"]
 
 
+# register Thread_Comment adding in ThreadCommentAdmin
 admin.site.register(ThreadComment, ThreadCommentAdmin)
 
 

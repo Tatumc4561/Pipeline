@@ -10,6 +10,7 @@
     height: 95px;
     width: 100%;
     padding-top: 3px;
+    
 }
 
 .thread_likes-dislikes {
@@ -91,5 +92,13 @@
 
 .input-text-button-wrap {
     display: flex;
+    
+}
 
+.comment-section-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 500px;
+    padding-bottom: 500px;
+    width: 45vw;
 }

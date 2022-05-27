@@ -31,10 +31,18 @@ def read_thread(request, thread_id):
     # display all profiles
     all_users = User.objects.all()
 
-    parent_thread = Thread.objects.get(id=thread_id)
-    # get = ThreadComment.objects.get(parent_thread=parent_thread)
+    # get api readable object id
+    parent_threads = Thread.objects.get(id=thread_id)
 
-    # tree = ThreadComment.get_tree(parent=get)
+    # Get First Comments aka Roots of each tree within the the thread
+    # tree = ThreadComment.get_annotated_list()
+    # tree = ThreadComment.get_tree()
+    tree = ThreadComment.objects.order_by("-likes")
+    roots = []
+    for each in tree:
+        if each.parent_thread == parent_threads:
+            x = ThreadComment.dump_bulk(parent=each)
+            roots.append(x)
 
     return render(
         request,
@@ -42,8 +50,8 @@ def read_thread(request, thread_id):
         {
             "read_thread": read_thread,
             "all_users": all_users,
-            # "tree": tree,
-            # "get": get,
+            "roots": roots,
+            "tree": tree,
         },
     )
 
@@ -113,8 +121,8 @@ def comment_thread(request, thread_id):
 def comment_thread_child(request, thread_id):
     x = Thread.objects.get(id=thread_id)
 
-    y = ThreadComment.objects.get(path="0003")
-    y.add_child(user=request.user, text="childtext", parent_thread=x)
+    y = ThreadComment.objects.get(path="000100010001")
+    y.add_child(user=request.user, text="child2text", parent_thread=x)
 
     # if NodeAlreadySaved ThreadComment.addSibling()
     return redirect(request.META["HTTP_REFERER"])

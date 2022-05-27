@@ -88,4 +88,7 @@ class ThreadComment(MP_Node):
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
 
-    node_order_by = ["parent_thread", "user", "likes", "created"]
+    node_order_by = ["parent_thread", "likes", "created"]
+
+    def __str__(self):
+        return f"Comment parent = {self.parent_thread}, {self.user}"
