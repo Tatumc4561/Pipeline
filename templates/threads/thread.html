@@ -104,30 +104,70 @@
 
                                 </div>
                             </form>
-                            <div class="comment-section-wrap">
-                                {% for each in roots %}
-                                {% for item, info in each %}
-                                {% if info.open %}
-                                <ul class='comment-section-list'>
-                                    <li>
-                                        {% else %}
-                                    </li>
-                                    <li>
-                                        {% endif %}
-                                        {{item}}
-                                        <br>
-                                        likes - {{item.likes}}
-                                        user - {{item.user}}
-
-                                        {% for close in info.close %}
-                                    </li>
-                                </ul>
-                                {% endfor %}
-                                {% endfor %}
-                                {% endfor %}
-
-                            </div>
                         </div>
+
+                        <div class="comment-section-wrap">
+                            {% for each in roots %}
+                            {% for item, info in each %}
+                            {% if info.open %}
+                            <ul class='comment-section-list'>
+
+
+                                {% if not item.user.customuser.avatar.url %}
+                                <img src="{% static 'images/mario.jpg' %}" alt="" class="comment-avatar">
+                                {% else %}
+                                <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                    class="comment-avatar">
+                                {% endif %}
+                                <li>
+                                    {% else %}
+                                </li>
+
+                                {% if not item.user.customuser.avatar.url %}
+                                <img src="{% static 'images/mario.jpg' %}" alt="" class="comment-avatar">
+                                {% else %}
+                                <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                    class="comment-avatar">
+                                {% endif %}
+                                <li>
+                                    {% endif %}
+                                    {{item}}
+                                    <br>
+                                    likes - {{item.likes}}
+                                    user - {{item.user}}
+
+                                    <div class="thread-content-subpanel-wrapper">
+                                        <a href="" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/comment.png' %}" alt="" srcset="">
+                                            Comments</a>
+                                        <a href="" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
+                                        <a href="" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/share.png' %}" alt="" srcset=""> Share</a>
+                                        <a href="#" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/flag.png' %}" alt="" srcset=""> Report</a>
+                                        <a href="#" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/.png' %}" alt="" srcset=""> Save</a>
+                                        <a href="#" class='subicon-href'><img class='thread_subicons' src="" alt=""
+                                                srcset="">
+                                            ...</a>
+
+                                        {% comment %} <a href="" class='subicon-href'><img class='subicons'
+                                                src="{% static 'images/hide.png' %}" alt="" srcset=""> Hide</a>
+                                        {% endcomment %}
+                                        {% comment %} <a href="" class='subicon-href'><img class='subicons'
+                                                src="{% static 'images/expand.png' %}" alt="" srcset=""></a>
+                                        {% endcomment %}
+                                    </div>
+                                    {% for close in info.close %}
+                                </li>
+                            </ul>
+                            {% endfor %}
+                            {% endfor %}
+                            {% endfor %}
+
+                        </div>
+
                     </div>
 
                 </div>
