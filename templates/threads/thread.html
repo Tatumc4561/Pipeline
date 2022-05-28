@@ -180,8 +180,8 @@
                                                     src="{% static 'images/flag.png' %}" alt="" srcset=""> Report</a>
                                             <a href="#" class='subicon-href'><img class='thread_subicons'
                                                     src="{% static 'images/.png' %}" alt="" srcset=""> Save</a>
-                                            <a href="" class='subicon-href'><img class='thread_subicons' src="" alt=""
-                                                    srcset="">
+                                            <a href="{% url 'users:follow_user' item.user %}" class='subicon-href'><img
+                                                    class='thread_subicons' src="" alt="" srcset="">
                                                 Follow</a>
 
                                             {% comment %} <a href="" class='subicon-href'><img class='subicons'

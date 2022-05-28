@@ -94,9 +94,11 @@
 
     <div class="sidebar-wrap">
         <h1>sidebar</h1>
-        {{public_user}}
-        dfasdf
+
+        {{userID}}
+
         <img src="{{public_user.}}" alt="" srcset="">
+        <a href="{% url "users:follow_user" userID %}">Follow</a>
     </div>
 
 
