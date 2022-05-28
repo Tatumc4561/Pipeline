@@ -115,7 +115,10 @@
 .comment-section-list {
     margin: 0;
     padding-bottom: 20px;
+}
 
+ul {
+    padding-left: 20px;
 }
 
 .comment-section-profile a {
@@ -123,6 +126,7 @@
     align-items: center;
     text-decoration: none;
     color: black;
+    width: fit-content;
 }
 
 .comment-avatar {
@@ -133,13 +137,13 @@
 }
 
 .thread-content-user {
-    margin-left: 4px;
+    margin-left: 5px;
     font-weight: 600;
 }
 
 .comment-text {
     color: black;
-    margin-left: 19px;
+    margin-left: 20px;
     margin-bottom: 15px;
     padding-top: 10px;
 }
@@ -148,7 +152,8 @@
 li {
     border-left: 2px solid black;
     list-style: none;
-    margin-bottom: 5px;
+    margin-bottom: 9px;
+    margin-top: 5px;
    
 
 }
