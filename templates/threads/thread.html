@@ -81,8 +81,8 @@
 
                         <div class="thread-input-wrap">
                             Comment as
-                            <a href="{% url "users:public_profile" read_thread.0.user.username %}">
-                                {{read_thread.0.user}}
+                            <a href="{% url "users:profile" request.user %}">
+                                {{request.user}}
                             </a>
                             <form action="{% url 'threads:comment_thread' read_thread.0.id %}" method="post">
                                 {% csrf_token %}
@@ -98,11 +98,6 @@
 
 
                                         <input type="submit" value="Comment">
-
-                                        <a href="{% url 'threads:comment_thread_child' read_thread.0.id %}"> add child
-                                            me</a>
-
-
                                     </div>
 
                                 </div>
@@ -173,11 +168,13 @@
                                                 </a>
                                             </div>
                                             {% comment %} --------------------------------- {% endcomment %}
+                                            <a href="" class='subicon-href'><img class='thread_subicons'
+                                                    src="{% static 'images/comment.png' %}" alt="" srcset="">
+                                                Reply
+                                            </a>
+                                            {% comment %} on click load form {% endcomment %}
                                             <form action="{% url 'threads:comment_thread_child' item.path %}"
                                                 method='POST'>{% csrf_token %}
-                                                <a href="" class='subicon-href'><img class='thread_subicons'
-                                                        src="{% static 'images/comment.png' %}" alt="" srcset="">
-                                                    Reply</a>
                                                 <button type="submit">submit</button>
                                             </form>
                                             <a href="" class='subicon-href'><img class='thread_subicons'
