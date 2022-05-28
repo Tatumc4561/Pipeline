@@ -101,8 +101,10 @@
 .comment-section-wrap {
     display: flex;
     flex-direction: column;
-    width: 45vw;
+    width: 100%;
     padding-bottom: 100px;
+    padding-top: 100px;
+    margin-left: -30px;
 }
 
 #linebreak {
@@ -116,6 +118,13 @@
 
 }
 
+.comment-section-profile a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
 .comment-avatar {
     height: 28px;
     width: 28px;
@@ -123,9 +132,24 @@
     margin-left: -12px;
 }
 
+.thread-content-user {
+    margin-left: 4px;
+    font-weight: 600;
+}
+
+.comment-text {
+    color: black;
+    margin-left: 19px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+
 li {
     border-left: 2px solid black;
     list-style: none;
+    margin-bottom: 5px;
+   
 
 }
 

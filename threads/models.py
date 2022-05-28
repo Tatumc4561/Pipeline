@@ -26,7 +26,7 @@ class Thread(models.Model):
     text = models.CharField(max_length=400)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
-    published_date = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to="post_images", null=True, blank=True)
 
     def posted_date(self):
@@ -36,12 +36,12 @@ class Thread(models.Model):
         """
         current = str(datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"))
 
-        post_date_year = str(self.published_date.year)
-        post_date_month = str(self.published_date.month)
-        post_date_day = str(self.published_date.day)
-        post_date_hour = str(self.published_date.hour)
-        post_date_minute = str(self.published_date.minute)
-        post_date_second = str(self.published_date.second)
+        post_date_year = str(self.created.year)
+        post_date_month = str(self.created.month)
+        post_date_day = str(self.created.day)
+        post_date_hour = str(self.created.hour)
+        post_date_minute = str(self.created.minute)
+        post_date_second = str(self.created.second)
 
         post_date = f"{post_date_year}-{post_date_month}-{post_date_day} {post_date_hour}:{post_date_minute}:{post_date_second}"
 
@@ -89,6 +89,8 @@ class ThreadComment(MP_Node):
     dislikes = models.IntegerField(default=0)
 
     node_order_by = ["parent_thread", "likes", "created"]
+
+    posted_date = Thread.posted_date
 
     def __str__(self):
         return f"Comment parent = {self.parent_thread}, {self.user}"

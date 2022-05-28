@@ -94,7 +94,9 @@ def like_thread(request, thread_id):
         threads.likes += 1
         threads.save()
     # Redirect to previous page, and stay at current post
-    return redirect(request.META["HTTP_REFERER"])
+    return HttpResponseRedirect(
+        reverse("threads:index") + "#threads_id_%s" % (threads.id)
+    )
 
 
 @login_required
@@ -104,7 +106,9 @@ def dislike_thread(request, thread_id):
         threads.likes -= 1
         threads.save()
     # Redirect to previous page, and stay at current post
-    return redirect(request.META["HTTP_REFERER"])
+    return HttpResponseRedirect(
+        reverse("threads:index") + "#threads_id_%s" % (threads.id)
+    )
 
 
 @login_required
@@ -125,4 +129,24 @@ def comment_thread_child(request, thread_id):
     y.add_sibling(user=request.user, text="child2text", parent_thread=x)
 
     # if NodeAlreadySaved ThreadComment.addSibling()
+    return redirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def like_comment(request, item_id):
+    if ThreadComment.objects.filter(id=item_id):
+        threads = ThreadComment.objects.get(id=item_id)
+        threads.likes += 1
+        threads.save()
+    # Redirect to previous page, and stay at current post
+    return redirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def dislike_comment(request, item_id):
+    if ThreadComment.objects.filter(id=item_id):
+        threads = ThreadComment.objects.get(id=item_id)
+        threads.likes -= 1
+        threads.save()
+    # Redirect to previous page, and stay at current post
     return redirect(request.META["HTTP_REFERER"])
