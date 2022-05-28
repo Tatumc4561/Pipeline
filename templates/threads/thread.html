@@ -84,20 +84,21 @@
                             <a href="{% url "users:public_profile" read_thread.0.user.username %}">
                                 {{read_thread.0.user}}
                             </a>
-                            <form action="" method="post">{% csrf_token %}
+                            <form action="{% url 'threads:comment_thread' read_thread.0.id %}" method="post">
+                                {% csrf_token %}
+
 
                                 <div class="comment_input-wrap">
 
-                                    <textarea name="" id="comment_input" cols="30" rows="10"
+                                    <textarea name="text" id="comment_input" cols="30" rows="10"
                                         placeholder="What are your thoughts?"></textarea>
 
                                     <div class="input-text-button-wrap">
                                         Bold, italics, url, strikethrough, etc
 
+
                                         <input type="submit" value="Comment">
 
-                                        <a href="{% url 'threads:comment_thread' read_thread.0.id %}">click me</a>
-                                        <br>
                                         <a href="{% url 'threads:comment_thread_child' read_thread.0.id %}"> add child
                                             me</a>
 
@@ -172,10 +173,13 @@
                                                 </a>
                                             </div>
                                             {% comment %} --------------------------------- {% endcomment %}
-
-                                            <a href="" class='subicon-href'><img class='thread_subicons'
-                                                    src="{% static 'images/comment.png' %}" alt="" srcset="">
-                                                Reply</a>
+                                            <form action="{% url 'threads:comment_thread_child' item.path %}"
+                                                method='POST'>{% csrf_token %}
+                                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                                        src="{% static 'images/comment.png' %}" alt="" srcset="">
+                                                    Reply</a>
+                                                <button type="submit">submit</button>
+                                            </form>
                                             <a href="" class='subicon-href'><img class='thread_subicons'
                                                     src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
                                             <a href="" class='subicon-href'><img class='thread_subicons'

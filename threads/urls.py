@@ -18,7 +18,7 @@ urlpatterns = [
     path("read_thread/<int:thread_id>", views.read_thread, name="read_thread"),
     path("comment/<int:thread_id>", views.comment_thread, name="comment_thread"),
     path(
-        "commenthhh/<int:thread_id>",
+        "comment*/<str:thread_id>",
         views.comment_thread_child,
         name="comment_thread_child",
     ),

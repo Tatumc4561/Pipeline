@@ -114,19 +114,25 @@ def dislike_thread(request, thread_id):
 @login_required
 def comment_thread(request, thread_id):
     x = Thread.objects.get(id=thread_id)
-    # get = lambda parent_thread: ThreadComment.objects.get(parent_thread=x)
 
-    ThreadComment.add_root(user=request.user, text="lklkhj", parent_thread=x)
+    if request.method == "POST":
+
+        text = request.POST.get("text")
+        ThreadComment.add_root(user=request.user, text=text, parent_thread=x)
 
     return redirect(request.META["HTTP_REFERER"])
 
 
 @login_required
 def comment_thread_child(request, thread_id):
-    x = Thread.objects.get(id=thread_id)
+    x = ThreadComment.objects.get(path=thread_id)
+    parent = x.parent_thread
+    y = ThreadComment.objects.get(path=thread_id)
 
-    y = ThreadComment.objects.get(path="0002000100010001")
-    y.add_sibling(user=request.user, text="child2text", parent_thread=x)
+    if request.method == "POST":
+
+        # text = request.POST.get("text")
+        y.add_child(user=request.user, text="child2text", parent_thread=parent)
 
     # if NodeAlreadySaved ThreadComment.addSibling()
     return redirect(request.META["HTTP_REFERER"])
