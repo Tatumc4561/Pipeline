@@ -23,5 +23,5 @@ urlpatterns = [
         name="comment_thread_child",
     ),
     path("like-/<int:item_id>", views.like_comment, name="like_comment"),
-    path("dislike-/<int:item_id>", views.like_comment, name="dislike_comment"),
+    path("dislike-/<int:item_id>", views.dislike_comment, name="dislike_comment"),
 ]

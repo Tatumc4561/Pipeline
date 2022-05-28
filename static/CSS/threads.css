@@ -66,6 +66,14 @@
     width: 20px;
 }
 
+.thread-content-likes {
+    display: flex;
+    align-items: center;
+    margin-left: -3px;
+    margin-right: 8px;
+}
+
+
 .thread-input-wrap {
     width: 100%;
     height: 200px;

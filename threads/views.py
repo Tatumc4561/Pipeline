@@ -150,3 +150,5 @@ def dislike_comment(request, item_id):
         threads.save()
     # Redirect to previous page, and stay at current post
     return redirect(request.META["HTTP_REFERER"])
+    # return redirect(request.META["HTTP_REFERER"]) + "#threads_id_%s" % (threads.id)
+    # )
