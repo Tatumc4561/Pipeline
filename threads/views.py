@@ -116,10 +116,10 @@ def comment_thread(request, thread_id):
     x = Thread.objects.get(id=thread_id)
 
     if request.method == "POST":
-        if text == "":
-            return redirect(request.META["HTTP_REFERER"])
-
         text = request.POST.get("text")
+        # if text == "":
+        #     return redirect(request.META["HTTP_REFERER"])
+
         ThreadComment.add_root(user=request.user, text=text, parent_thread=x)
 
     return redirect(request.META["HTTP_REFERER"])
@@ -133,9 +133,9 @@ def comment_thread_child(request, thread_id):
 
     if request.method == "POST":
 
-        text = request.POST.get("text")
-        if text == "":
-            return redirect(request.META["HTTP_REFERER"])
+        text = request.POST.get("reply")
+        # if text == "":
+        #     return redirect(request.META["HTTP_REFERER"])
 
         y.add_child(user=request.user, text=text, parent_thread=parent)
 

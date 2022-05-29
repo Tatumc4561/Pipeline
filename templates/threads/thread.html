@@ -154,6 +154,7 @@
 
 
 
+                                        {% if user.is_authenticated %}
 
                                         <div class="thread-content-subpanel-wrapper">
 
@@ -201,7 +202,7 @@
                                                 method='POST'>{% csrf_token %}
                                                 <div class="comment_input-wrap">
 
-                                                    <textarea name="text" id="comment_input" cols="30" rows="10"
+                                                    <textarea name="reply" id="comment_input" cols="30" rows="10"
                                                         placeholder="What are your thoughts?"></textarea>
 
                                                     <div class="input-text-button-wrap">
@@ -213,6 +214,7 @@
                                                 </div>
                                             </form>
                                         </div>
+                                        {% endif %}
                                     </div>
                                     {% for close in info.close %}
                                 </li>
@@ -233,6 +235,13 @@
     </div>
     <div class="sidebar-wrap">
         <h1>sidebar</h1>
+        <ul>
+            {% for each in roots %}
+            </li>
+            {{each}}
+            <li>
+                {% endfor %}
+        </ul>
 
     </div>
 </div>
