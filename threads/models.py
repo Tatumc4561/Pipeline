@@ -93,4 +93,4 @@ class ThreadComment(MP_Node):
     posted_date = Thread.posted_date
 
     def __str__(self):
-        return f"Comment parent = {self.parent_thread}, {self.user}"
+        return f"Comment parent = {self.parent_thread}, {self.user} {self.text[:20]}"

@@ -235,13 +235,17 @@
     </div>
     <div class="sidebar-wrap">
         <h1>sidebar</h1>
+        {% for each in treez %}
         <ul>
-            {% for each in roots %}
-            </li>
-            {{each}}
             <li>
-                {% endfor %}
+                {{each}}
+            </li>
         </ul>
+        <br>
+
+
+        {% endfor %}
+
 
     </div>
 </div>

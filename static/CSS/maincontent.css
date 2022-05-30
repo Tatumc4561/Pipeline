@@ -194,5 +194,6 @@
     width: 25vw;
     border: 1px solid rgb(139, 138, 138);
     background-color: rgb(84, 82, 81);
+    overflow-y: scroll;
 
 }

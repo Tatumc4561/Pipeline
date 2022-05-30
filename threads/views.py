@@ -43,6 +43,22 @@ def read_thread(request, thread_id):
         if each.parent_thread == parent_threads:
             x = ThreadComment.get_annotated_list(parent=each)
             roots.append(x)
+    treezi = []
+    wtf = []
+
+    for all in tree:
+        if all.parent_thread == parent_threads:
+            y = ThreadComment.dump_bulk(parent=all)
+            treezi.append(y)
+
+    seen = set()
+    treez = []
+    for d in treezi:
+        for dict in d:
+            t = tuple(dict)
+            if t not in seen:
+                seen.add(t)
+                treez.append(dict)
 
     return render(
         request,
@@ -51,7 +67,7 @@ def read_thread(request, thread_id):
             "read_thread": read_thread,
             "all_users": all_users,
             "roots": roots,
-            "tree": tree,
+            "treez": treez,
         },
     )
 
