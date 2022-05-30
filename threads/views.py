@@ -1,3 +1,4 @@
+import re
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from .forms import *
@@ -35,30 +36,32 @@ def read_thread(request, thread_id):
     parent_threads = Thread.objects.get(id=thread_id)
 
     # Get First Comments aka Roots of each tree within the the thread
-    # tree = ThreadComment.get_annotated_list()
-    # tree = ThreadComment.get_tree()
-    tree = ThreadComment.objects.order_by("-likes")
-    roots = []
-    for each in tree:
-        if each.parent_thread == parent_threads:
-            x = ThreadComment.get_annotated_list(parent=each)
-            roots.append(x)
-    temp = []
-    wtf = []
+    # tree = Thread.get_annotated_list()
+    # tree = Thread.get_tree()
+    tree = Thread.objects.order_by("-likes")
+    roots = Thread.get_annotated_list(parent=parent_threads)
 
-    for all in tree:
-        if all.parent_thread == parent_threads:
-            y = ThreadComment.dump_bulk(parent=all)
-            temp.append(y)
+    # roots = []
+    # for each in tree:
+    #     if each.id == parent_threads:
+    #         x = Thread.get_annotated_list(parent=each)
+    #         roots.append(x)
+    # temp = []
+    # wtf = []
 
-    seen = set()
-    treez = []
-    for d in temp:
-        for branch in d:
-            t = tuple(branch)
-            if t not in seen:
-                seen.add(t)
-                treez.append(branch)
+    # for all in tree:
+    #     if all.parent_thread == parent_threads:
+    #         y = Thread.dump_bulk(parent=all)
+    #         temp.append(y)
+
+    # seen = set()
+    # treez = []
+    # for d in temp:
+    #     for branch in d:
+    #         t = tuple(branch)
+    #         if t not in seen:
+    #             seen.add(t)
+    #             treez.append(branch)
 
     return render(
         request,
@@ -67,7 +70,7 @@ def read_thread(request, thread_id):
             "read_thread": read_thread,
             "all_users": all_users,
             "roots": roots,
-            "treez": treez,
+            # "treez": treez,
         },
     )
 
@@ -86,10 +89,15 @@ def submit_thread(request):
     if request.method == "POST":
         form = NewThreadForm(request.POST, request.FILES)
         if form.is_valid():
+            group_id = request.POST.get("group")
+            title = request.POST.get("title")
+            text = request.POST.get("text")
+            image = request.FILES.get("image")
+            group = Group.objects.get(id=group_id)
 
-            create = form.save(commit=False)
-            create.user = request.user
-            form.save()
+            Thread.add_root(
+                user=request.user, group=group, title=title, text=text, image=image
+            )
 
     return HttpResponseRedirect(reverse("threads:index"))
 
@@ -129,40 +137,39 @@ def dislike_thread(request, thread_id):
 
 @login_required
 def comment_thread(request, thread_id):
-    x = Thread.objects.get(id=thread_id)
+    x = Thread.objects.get(path=thread_id)
 
     if request.method == "POST":
         text = request.POST.get("text")
         # if text == "":
         #     return redirect(request.META["HTTP_REFERER"])
 
-        ThreadComment.add_root(user=request.user, text=text, parent_thread=x)
+        Thread.add_root(user=request.user, text=text, parent_thread=x)
 
     return redirect(request.META["HTTP_REFERER"])
 
 
 @login_required
 def comment_thread_child(request, thread_id):
-    x = ThreadComment.objects.get(path=thread_id)
-    parent = x.parent_thread
-    y = ThreadComment.objects.get(path=thread_id)
+    x = Thread.objects.get(path=thread_id)
+    y = Thread.objects.get(path=thread_id)
 
     if request.method == "POST":
 
-        text = request.POST.get("reply")
+        text = request.POST.get("text")
         # if text == "":
         #     return redirect(request.META["HTTP_REFERER"])
 
-        y.add_child(user=request.user, text=text, parent_thread=parent)
+        y.add_child(user=request.user, text=text, group=y.group)
 
-    # if NodeAlreadySaved ThreadComment.addSibling()
+    # if NodeAlreadySaved Thread.addSibling()
     return redirect(request.META["HTTP_REFERER"])
 
 
 @login_required
 def like_comment(request, item_id):
-    if ThreadComment.objects.filter(id=item_id):
-        threads = ThreadComment.objects.get(id=item_id)
+    if Thread.objects.filter(id=item_id):
+        threads = Thread.objects.get(id=item_id)
         threads.likes += 1
         threads.save()
     # Redirect to previous page, and stay at current post
@@ -171,8 +178,8 @@ def like_comment(request, item_id):
 
 @login_required
 def dislike_comment(request, item_id):
-    if ThreadComment.objects.filter(id=item_id):
-        threads = ThreadComment.objects.get(id=item_id)
+    if Thread.objects.filter(id=item_id):
+        threads = Thread.objects.get(id=item_id)
         threads.likes -= 1
         threads.save()
     # Redirect to previous page, and stay at current post
