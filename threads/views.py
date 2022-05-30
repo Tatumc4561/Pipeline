@@ -15,6 +15,7 @@ from django.contrib import messages
 # Create your views here.
 def index(request):
     threads = Thread.objects.all().order_by("-likes")  # [:20]
+
     all_users = User.objects.all()
     return render(
         request,

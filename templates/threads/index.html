@@ -31,7 +31,9 @@
         </div>
 
         <div class="thumb-post-wrap">
+
             {% for thread in threads %}
+            {% if thread.title %}
             <div class="thumb-content" id="thread_id_{{thread.id}}">
                 <div class="thumb-content-text">
 
@@ -97,7 +99,7 @@
                     </div>
                 </div>
             </div>
-
+            {% endif %}
             {% endfor %}
 
         </div>
