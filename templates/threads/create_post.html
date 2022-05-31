@@ -1,8 +1,128 @@
 <!DOCTYPE html>
 
 {% extends 'base.html' %}
+{% load static %}
 {% block 'title' %}<title>Submit to the Pipeline</title>{% endblock 'title' %}
 {% block 'content' %}
+
+<div class="create-main-wrap">
+    <div class="create-wrap">
+        <form action="{% url 'threads:submit_thread' %}" method="post" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <div class="create-header">
+                <h2>Create a post</h2>
+                <h3>
+                    Drafts
+                    num=0
+                </h3>
+            </div>
+
+            <div class="create-group-choice">
+                <div class="header-dropdown-left">
+                    <img src="" alt="" srcset="">
+                    <div class="header-text">Choose a community</div>
+                </div>
+                <div class="header-dropdown-right">
+                    <img src="{% static 'images/down-expand.png' %}" alt="" srcset="">
+                </div>
+            </div>
+            <div class="create-box-wrap">
+
+
+                <div class="create-choices">
+                    <div class="post-option-wrap">
+                        <img src="" alt="" srcset="">
+                        <div class='post-option-button' id='post-option-post'>Post</div>
+                    </div>
+                    <div class="post-option-wrap">
+                        <img src="" alt="" srcset="">
+                        <div class='post-option-button' id='post-option-images'>Images & Video</div>
+                    </div>
+                    <div class="post-option-wrap">
+                        <img src="" alt="" srcset="">
+                        <div class='post-option-button' id='post-option-link'>Link</div>
+                    </div>
+
+                    <div class="post-option-wrap">
+                        <img src="" alt="" srcset="">
+                        <div class='post-option-button' id='post-option-poll'>Poll</div>
+                    </div>
+
+                    <div class="post-option-wrap">
+                        <img src="" alt="" srcset="">
+                        <div class='post-option-button' id='post-option-talk'>Talk</div>
+                    </div>
+                </div>
+                <div class="title-box">
+                    <input type="text" name="create-title" id="create_post" placeholder='Title'>
+                    <h5 id="char-count">0/300</h5>
+                </div>
+                <div class="create-text-wrap">
+                    <div class="create-text-options">
+                        bold, italic, url, s, A, T, III, Markdown Mode
+                    </div>
+                    <div class="create-text">
+                        <textarea name="create-post" id="comment_input" cols="30" rows="10"
+                            placeholder='Text'></textarea>
+                    </div>
+                </div>
+                <div class="create-button-flair">
+                    <button id="oc-flair">+ OC</button>
+                    <button id="spoiler-flair">+ Spoiler</button>
+                    <button id="NSFW">+ NSFW</button>
+                    <button id="flair-dropdown">Flair -v-</button>
+                </div>
+                <div class="button-wrap">
+                    <input type="image" src="" name='image' alt="">
+                    <button id="save-draft">Save Draft</button>
+                    <button id="submit-post">Post</button>
+                </div>
+            </div>
+            <div class="create-footer">
+                <input type="checkbox" name="notifiy" id="">
+                <h5>Send me post reply notifications</h5><br>
+                <h5>Connect accounts to share your post</h5>
+            </div>
+        </form>
+    </div>
+
+    <div class="create-sidebar-wrap">
+        <div class="sidebar-rules">
+            <div class="sidebar-header">
+                <img src="{% static 'images/flag.png' %}" alt="" srcset="">
+                Posting to Pipeline
+            </div>
+            <div class="sidebar-list">
+
+                <div class='sidebar-li'>Remmeber the human</div>
+                <div class='sidebar-li'>Behave divke you would in real divfe</div>
+                <div class='sidebar-li'>Look for the original source of content</div>
+                <div class='sidebar-li'>Search for duplicates before posting</div>
+                <div class='sidebar-li'>Read the community's rules</div>
+
+            </div>
+        </div>
+        <div class="sidebar-policy">
+            <h5>Please be mindful of pipeline's <a href="">content policy</a> and practice good ettiquette</h5>
+        </div>
+        <div class="sidebar-options">
+            <div class="options-top-wrap">
+                <div class="options-top-left-wrap">
+                    Help <br>Pipeline Coins <br>Pipeline Premium
+                </div>
+                <div class="options-top-right-wrap">
+                    About <br>Careers <br>Presss<br>Advertise<br>Blog<br>Terms<br>Content Policy<br>Privacy
+                    Policy<br>Mod Policy<br>
+                </div>
+            </div>
+            <div class="options-bottom-wrap">
+                Pipeline Inc Copyright 2022. All rights reserved
+            </div>
+        </div>
+    </div>
+
+
+</div>
 
 <form action="{% url 'threads:submit_thread' %}" method="post" enctype='multipart/form-data'>
     {% csrf_token %} {{form.as_p}}

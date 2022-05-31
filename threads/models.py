@@ -65,7 +65,7 @@ class Thread(MP_Node):
     #             ans = f"{round(difference)} days ago"
 
     #     return f"{ans}"
-    node_order_by = ["title", "likes", "created"]
+    node_order_by = ["likes"]
 
     def __str__(self):
         return f"{self.path} - {self.title} {self.text}"
