@@ -28,15 +28,17 @@
     background-color: rgb(84, 82, 81);
     margin-bottom: 15px;
     align-items: center;
-    
+  
 }
 
 #create_post {
     background-color: rgb(136, 133, 131);
     border: 1px solid rgb(186, 184, 184);
     margin-left: 10px;
-    width: 55vw;
+    width: 95%;
     height: 40px;
+    margin-right: 10px;
+    padding: 0;
 }
 
 .profile-avatar {

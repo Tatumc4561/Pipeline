@@ -78,10 +78,17 @@ def read_thread(request, thread_id):
 
 @login_required
 def create_thread(request):
+    all_users = User.objects.all()
+    groups = Group.objects.all()
+
     return render(
         request,
         "threads/create_post.html",
-        {"form": NewThreadForm()},
+        {
+            "form": NewThreadForm(),
+            "all_users": all_users,
+            "groups": groups,
+        },
     )
 
 

@@ -97,22 +97,20 @@
     flex-direction: column;
     align-items: center;
     min-height: 175px;
-    width: 50vw;
-    border-radius: 4px;
+    width: 95%;
     height: fit-content;
-    border: 1px solid rgb(139, 138, 138);
     background-color: rgb(84, 82, 81);
 }
 
 
 #comment_input {
-    margin-top: 2px;
+    margin: 0;
     height: 140px;
-    width: 47vw;
+    width: 99.3%;
     border: none;
     background-color: rgb(84, 82, 81);
     resize: none;
-
+    border: 1px solid rgb(186, 184, 184);
 
 
 }

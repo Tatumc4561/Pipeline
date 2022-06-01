@@ -10,60 +10,86 @@
         <form action="{% url 'threads:submit_thread' %}" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
             <div class="create-header">
-                <h2>Create a post</h2>
+                <h3>Create a post</h3>
                 <h3>
                     Drafts
                     num=0
                 </h3>
             </div>
 
-            <div class="create-group-choice">
-                <div class="header-dropdown-left">
-                    <img src="" alt="" srcset="">
-                    <div class="header-text">Choose a community</div>
+            <div class="create-group-choice-wrap">
+                <div class="create-group-choice">
+                    <div class="header-dropdown-left">
+                        <img src="" alt="" srcset="">
+                        <div class="header-text">{{form.group}}</div>
+                    </div>
+                    <div class="header-dropdown-right">
+                        <img src="{% static 'images/down-expand.png' %}" alt="" srcset="">
+                    </div>
                 </div>
-                <div class="header-dropdown-right">
-                    <img src="{% static 'images/down-expand.png' %}" alt="" srcset="">
+                <div class="dropdown-wrap">
+
+                    {% for group in groups %}
+
+                    <ul>
+                        <li>
+                            {{group}}
+                        </li>
+                    </ul>
+
+                    {% endfor %}
                 </div>
             </div>
             <div class="create-box-wrap">
 
 
                 <div class="create-choices">
-                    <div class="post-option-wrap">
-                        <img src="" alt="" srcset="">
-                        <div class='post-option-button' id='post-option-post'>Post</div>
+
+                    <div class="post-option-wrap" id='post-option-images'>
+                        <img class='post-option-image' src="{% static 'images/add_image.png' %}" alt="" srcset="">
+                        <div class='post-option-button'>Images</div>
                     </div>
                     <div class="post-option-wrap">
-                        <img src="" alt="" srcset="">
-                        <div class='post-option-button' id='post-option-images'>Images & Video</div>
-                    </div>
-                    <div class="post-option-wrap">
-                        <img src="" alt="" srcset="">
+                        <img class='post-option-image' src="{% static 'images/addurl.png' %}" alt="" srcset="">
                         <div class='post-option-button' id='post-option-link'>Link</div>
                     </div>
 
                     <div class="post-option-wrap">
-                        <img src="" alt="" srcset="">
+                        <img class='post-option-image' src="{% static 'images/poll.png' %}" alt="" srcset="">
                         <div class='post-option-button' id='post-option-poll'>Poll</div>
                     </div>
 
                     <div class="post-option-wrap">
-                        <img src="" alt="" srcset="">
+                        <img class='post-option-image' src="{% static 'images/talk.png' %}" alt="" srcset="">
                         <div class='post-option-button' id='post-option-talk'>Talk</div>
                     </div>
                 </div>
                 <div class="title-box">
-                    <input type="text" name="create-title" id="create_post" placeholder='Title'>
-                    <h5 id="char-count">0/300</h5>
+                    <input type="text" name="title" class='comment_input_title' id="" placeholder='Title'>
+                    {% comment %} <h5 id="char-count">0/300</h5> {% endcomment %}
+                </div>
+                <div class="hidden-image-box" id='create_thread_image'>
+
+                    <input type="button" class='comment_input_title' id="image_input_button" value="Add Image" />
+                    <input type="file" style="display:none;" id="image_input" name="image" />
+
                 </div>
                 <div class="create-text-wrap">
                     <div class="create-text-options">
-                        bold, italic, url, s, A, T, III, Markdown Mode
+                        <img src="{% static 'images/bold.png' %}" alt="" srcset="" class="create-text-options-img">
+                        <img src="{% static 'images/italic.png' %}" alt="" srcset="" class="create-text-options-img">
+                        <img src="{% static 'images/addurlsmall.png' %}" alt="" srcset=""
+                            class="create-text-options-img">
+                        <img src="{% static 'images/strikethrough.png' %}" alt="" srcset=""
+                            class="create-text-options-img">
+                        <img src="{% static 'images/spoiler.png' %}" alt="" srcset="" class="create-text-options-img">
+                        <img src="{% static 'images/bulletlist.png' %}" alt="" srcset=""
+                            class="create-text-options-img">
+                        <img src="{% static 'images/numlist.png' %}" alt="" srcset="" class="create-text-options-img">
+                        <img src="{% static 'images/quote.png' %}" alt="" srcset="" class="create-text-options-img">
                     </div>
-                    <div class="create-text">
-                        <textarea name="create-post" id="comment_input" cols="30" rows="10"
-                            placeholder='Text'></textarea>
+                    <div class="comment_input-wrap">
+                        <textarea name="text" id="comment_input" cols="30" rows="10" placeholder='Text'></textarea>
                     </div>
                 </div>
                 <div class="create-button-flair">
@@ -73,18 +99,18 @@
                     <button id="flair-dropdown">Flair -v-</button>
                 </div>
                 <div class="button-wrap">
-                    <input type="image" src="" name='image' alt="">
                     <button id="save-draft">Save Draft</button>
                     <button id="submit-post">Post</button>
                 </div>
-            </div>
-            <div class="create-footer">
-                <input type="checkbox" name="notifiy" id="">
-                <h5>Send me post reply notifications</h5><br>
-                <h5>Connect accounts to share your post</h5>
+                <div class="create-footer">
+                    <input type="checkbox" name="notifiy" id="">
+                    <h5>Send me post reply notifications</h5><br>
+                    <h5>Connect accounts to share your post</h5>
+                </div>
             </div>
         </form>
     </div>
+
 
     <div class="create-sidebar-wrap">
         <div class="sidebar-community-wrap">

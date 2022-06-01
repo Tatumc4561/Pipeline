@@ -1,13 +1,40 @@
 const profileOnly = document.querySelectorAll('.profile-only')
-const reportFlag = document.querySelectorAll('.report-flag')
-const replyButton = document.querySelectorAll('.reply-button')
-const replyComment = document.querySelectorAll('.comment-reply-dropdown')
-
 
 // load profile only content on page load
 for(el of profileOnly){
     el.style = "visibility: visible;"
 }
+
+
+// groups
+
+
+
+// subicons
+const reportFlag = document.querySelectorAll('.report-flag')
+
+// thread options
+const replyButton = document.querySelectorAll('.reply-button')
+const replyComment = document.querySelectorAll('.comment-reply-dropdown')
+
+// images
+const addImageTab = document.querySelector('#post-option-images')
+const addImageDiv = document.querySelector('#create_thread_image')
+
+addImageTab.addEventListener('click', function(){
+    addImageDiv.classList.toggle('title-box')
+})
+
+
+const imageButton = document.querySelector('#image_input_button')
+const imageInput = document.querySelector('#image_input')
+
+imageButton.addEventListener('click', function(){
+    imageInput.click()
+})
+
+
+
 
 // set on page-load id attributes for dropdown reply boxes
 num=0

@@ -23,18 +23,31 @@
     justify-content: space-between;
     color: white;
     align-items: center;
+    border-bottom: 1px solid rgb(186, 184, 184);
+    margin-bottom: 10px;
+
+}
+
+.create-group-choice-wrap {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(186, 184, 184);
+    background-color: rgb(84, 82, 81);
+    width: 30%;
+    min-height: 50px;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    max-height: 100%;
+    z-index: 10;
 }
 
 .create-group-choice {
     display: flex;
-    border: 1px solid rgb(139, 138, 138);
-    background-color: rgb(84, 82, 81);
-    width: 30%;
-    height: 50px;
+    width: 100%;
+    height: 100%;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-radius: 4px;
+
 }
 
 .header-dropdown-left {
@@ -44,12 +57,20 @@
 
 .header-dropdown-right {}
 
+.dropdown-wrap {
+    width: 100%;
+    height: 50vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: none;
+}
+
 .create-box-wrap {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 50vw;
     border-radius: 4px;
-    border: 1px solid rgb(139, 138, 138);
+    border: 1px solid rgb(186, 184, 184);
     background-color: rgb(84, 82, 81);
 }
 
@@ -61,11 +82,18 @@
 
 .post-option-wrap {
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 60px;
-    width: 20%;
-    border-right: 1px solid rgb(139, 138, 138);
-    border-bottom: 1px solid rgb(139, 138, 138);
+    width: 25%;
+    border-right: 1px solid rgb(186, 184, 184);
+    border-bottom: 1px solid rgb(186, 184, 184);
 }
+
+.post-option-image {
+    height: 24px;
+    width: 24px;
+} 
 
 #post-option-talk {
     border-right: none;
@@ -76,39 +104,66 @@
     height: 100%; 
 }
 
+.hidden-image-box {
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
 .title-box {
     display: flex;
     height: 70px;
     width: 100%;
-    margin-bottom: 15px;
-    align-items: center;}
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgb(186, 184, 184);
+    visibility: visible;
+    opacity: 1;
+}
+
+.comment_input_title {
+    background-color: rgb(136, 133, 131);
+    border: 1px solid rgb(186, 184, 184);
+    width: 95%;
+    height: 40px;
+    padding: 0;  
+}
+
+#char-count {
+    margin-left: -40px;
+}
+
+
 
 .create-text-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 175px;
-    width: 50vw;
-    border-radius: 4px;
+    width: 100%;
     height: fit-content;
-    border: 1px solid rgb(139, 138, 138);
+    border-bottom: 1px solid rgb(186, 184, 184);
     background-color: rgb(84, 82, 81);
+    justify-content: center;
+    padding-top: 15px;
+
 }
 
 .create-text-options {
     display: flex;
+    border: 1px solid rgb(186, 184, 184);
+    border-bottom: none;
+    background-color: rgb(136, 133, 131);
+    height: 40px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
 }
 
-.create-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 175px;
-    width: 50vw;
-    border-radius: 4px;
-    height: fit-content;
-    border: 1px solid rgb(139, 138, 138);
-    background-color: rgb(84, 82, 81);
+.create-text-options-img {
+    height: 24px;
+    width: 24px;
 }
 
 .create-button-flair {
@@ -117,10 +172,13 @@
 
 .button-wrap {
     display: flex;
+    width: 100%;
+
 }
 
 .create-footer {
     display: flex;
+    background-color: rgb(136, 133, 131);
 }
 
 
@@ -143,7 +201,7 @@
 .sidebar-rules {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(139, 138, 138);
+    border: 1px solid rgb(186, 184, 184);
     background-color: rgb(84, 82, 81);
     width: 25vw;
 }
@@ -151,11 +209,11 @@
 .sidebar-header {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid rgb(139, 138, 138);
+    border-bottom: 1px solid rgb(186, 184, 184);
 }
 
 .sidebar-li {
-    border-bottom: 1px solid rgb(139, 138, 138);
+    border-bottom: 1px solid rgb(186, 184, 184);
     margin: 10px;
 }
 
@@ -169,7 +227,7 @@
 .sidebar-options {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(139, 138, 138);
+    border: 1px solid rgb(186, 184, 184);
     background-color: rgb(84, 82, 81);
     width: 25vw;
     height: 260px;
