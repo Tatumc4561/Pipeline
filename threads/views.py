@@ -97,11 +97,11 @@ def submit_thread(request):
     if request.method == "POST":
         form = NewThreadForm(request.POST, request.FILES)
         if form.is_valid():
-            group_id = request.POST.get("group")
+            # group = request.POST.get("group")
+            group = form.cleaned_data["group"]
             title = request.POST.get("title")
             text = request.POST.get("text")
             image = request.FILES.get("image")
-            group = Group.objects.get(id=group_id)
 
             Thread.add_root(
                 user=request.user, group=group, title=title, text=text, image=image

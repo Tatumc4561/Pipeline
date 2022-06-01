@@ -11,10 +11,16 @@
             {% csrf_token %}
             <div class="create-header">
                 <h3>Create a post</h3>
-                <h3>
-                    Drafts
-                    num=0
-                </h3>
+                <div class="draft_num-wrap">
+                    <h3>
+                        Drafts
+                    </h3>
+                    <div id="draft_num">
+                        <div class="draftnumz">
+                            0
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="create-group-choice-wrap">
@@ -22,6 +28,7 @@
                     <div class="header-dropdown-left">
                         <img src="" alt="" srcset="">
                         <div class="header-text">{{form.group}}</div>
+
                     </div>
                     <div class="header-dropdown-right">
                         <img src="{% static 'images/down-expand.png' %}" alt="" srcset="">

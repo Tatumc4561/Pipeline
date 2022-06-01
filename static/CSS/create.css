@@ -28,6 +28,24 @@
 
 }
 
+.draft_num-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 13%;
+
+}
+
+#draft_num {
+    background-color: rgb(173, 72, 41);
+    width: fit-content;
+    height: fit-content;
+    padding: .5px 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .create-group-choice-wrap {
     display: flex;
     flex-direction: column;
