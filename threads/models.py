@@ -1,6 +1,5 @@
 from django.db import models
-from users.models import *
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User, Group
 
 import datetime
 from django import template
@@ -11,6 +10,7 @@ from treebeard.mp_tree import MP_Node
 import datetime
 
 
+# Pagination Template tags
 register = template.Library()
 
 
@@ -20,7 +20,7 @@ class Thread(MP_Node):
     # User posts
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_post")
     group = models.ForeignKey(
-        Group, on_delete=models.CASCADE, related_name="group_post"
+        Group, on_delete=models.CASCADE, related_name="group_threads"
     )
     title = models.CharField(max_length=120)
     text = models.CharField(max_length=400)
@@ -65,7 +65,7 @@ class Thread(MP_Node):
     #             ans = f"{round(difference)} days ago"
 
     #     return f"{ans}"
-    node_order_by = ["likes"]
+    node_order_by = ["likes", "group"]
 
     def __str__(self):
         return f"{self.path} - {self.title} {self.text}"

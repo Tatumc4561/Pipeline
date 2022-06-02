@@ -6,12 +6,12 @@ from treebeard.admin import TreeAdmin
 # Register your models here.
 
 
-class ThreadCommentAdmin(TreeAdmin):
+class ThreadAdmin(TreeAdmin):
     # how it is displayed in admin panel
-    list_display = ("path", "title", "user", "likes", "created")
+    list_display = ("path", "title", "group", "user", "likes", "created")
     # filter options
-    list_filter = ["title", "user", "created", "likes"]
+    list_filter = ["title", "group", "user", "created", "likes"]
 
 
 # register Thread_Comment adding in ThreadCommentAdmin
-admin.site.register(Thread, ThreadCommentAdmin)
+admin.site.register(Thread, ThreadAdmin)

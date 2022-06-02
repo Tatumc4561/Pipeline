@@ -14,10 +14,16 @@ urlpatterns = [
         views.follow_user,
         name="follow_user",
     ),
-    # --------public profile -------------,
+    # --------public profile -------------
     path(
         "pub_profile/<str:userID>",
         views.user_public_profile,
         name="public_profile",
+    ),
+    # ---------Group Page -----------------
+    path(
+        "groups/<str:groupID>",
+        views.group_page,
+        name="group_page",
     ),
 ]

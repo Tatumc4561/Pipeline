@@ -8,8 +8,8 @@ from .models import *
 # Remove fields from User, AuthorAdmin page
 
 
-# Define an inline admin descriptor for Employee model
-# which acts a bit like a singleton
+# Define an inline admin descriptor for Customuser model
+# which adds all the fields to current user model
 class CustomUserInline(admin.StackedInline):
     model = CustomUser
     can_delete = False
@@ -28,12 +28,19 @@ class FollowerInline(admin.StackedInline):
     verbose_name_plural = "my followers"
 
 
+class JoinGroupInline(admin.StackedInline):
+    model = JoinGroup
+    fk_name = "join_group"
+    verbose_name_plural = "my groups"
+
+
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
     inlines = (
         CustomUserInline,
         FollowingInline,
         FollowerInline,
+        JoinGroupInline,
     )
 
 
@@ -42,3 +49,5 @@ class UserAdmin(BaseUserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Following)
+admin.site.register(Channel)
+admin.site.register(JoinGroup)

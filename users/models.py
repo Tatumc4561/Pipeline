@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# from groups.models import *
+from threads.models import Thread
+
 
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -9,6 +12,13 @@ class CustomUser(models.Model):
         "self",
         through="Following",
         related_name="user_followers",
+        symmetrical=False,
+        blank=False,
+    )
+    my_groups = models.ManyToManyField(
+        "self",
+        through="JoinGroup",
+        related_name="my_user_groups",
         symmetrical=False,
         blank=False,
     )
@@ -34,3 +44,46 @@ class Following(models.Model):
                 check=~models.Q(user_follower=models.F("target_following")),
             ),
         ]
+
+
+class Channel(models.Model):
+    # channel name
+    name = models.CharField(max_length=120, null=True)
+    # associated threads
+    threads = models.ManyToManyField(Thread)
+    # group mascot
+    avatar = models.ImageField(upload_to="group_avatars", blank=True)
+    group_users = models.ManyToManyField(
+        "self",
+        through="JoinGroup",
+        related_name="group_members",
+        symmetrical=False,
+        blank=False,
+    )
+
+
+class JoinGroup(models.Model):
+    join_group = models.ForeignKey(
+        User, related_name="join_a_group", on_delete=models.CASCADE
+    )
+    target_group = models.ForeignKey(
+        Channel, related_name="add_to_group", on_delete=models.CASCADE
+    )
+
+    class Meta:
+        # setup unique relationship
+        constraints = [
+            models.UniqueConstraint(
+                name="unique_togroup", fields=["join_group", "target_group"]
+            ),
+            # check value of unique relationship
+            models.CheckConstraint(
+                name="check_group",
+                check=~models.Q(join_group=models.F("target_group")),
+            ),
+        ]
+
+
+# manage.py migrate [-h] [--noinput] [--database DATABASE] [--fake] [--fake-initial] [--plan] [--run-syncdb] [--check] [--version] [-v {0,1,2,3}] [--settings SETTINGS] [--pythonpath PYTHONPATH] [--traceback]
+#                          [--no-color] [--force-color] [--skip-checks]
+#                          [app_label] [migration_name]

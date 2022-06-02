@@ -102,3 +102,16 @@ def user_public_profile(request, userID):
             "userID": userID,
         },
     )
+
+
+def group_page(request, groupID):
+    group = Channel.objects.get(name=groupID)
+    threads = Thread.objects.all().filter(group=group)
+    return render(
+        request,
+        "groups/group.html",
+        {
+            "threads": threads,
+            "group": group,
+        },
+    )

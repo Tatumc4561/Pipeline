@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {% load time_tags %} {% endcomment %}
+{% block 'title' %}<title>Pipeline</title>{% endblock 'title' %}
+{% block 'content' %}
+
+<div class="main-wrap">
+    <div class="content-wrap">
+
+
+        <div class="thumb-post-wrap">
+
+            <div class="thread-content" id="thread_id_{{read_thread.0.id}}">
+                <div class="thumb-content-text">
+
+                    {% comment %} likes/dislikes {% endcomment %}
+                    <div class="thread_likes-dislikes">
+                        <a href="{% url "threads:like_thread" read_thread.0.id %}">
+                            <img src="{% static 'images/upvote.png' %}" alt="" srcset="">
+                        </a>
+                        <div class="thread_totallikes-wrap">{{read_thread.0.likes}}</div>
+                        <a href="{% url "threads:dislike_thread" read_thread.0.id %}">
+                            <img src="{% static 'images/downvote.png' %}" alt="" srcset="">
+                        </a>
+                    </div>
+
+
+
+                    {% comment %} thread title/user/group {% endcomment %}
+                    <div class="thumb-content-avatar-group-user-wrapper">
+                        {% comment %} flex 2 columns {% endcomment %}
+                        <div class="thumb-group-user-wrapper">
+                            <div class="thumb-content-avatar"><img src="{% static 'images/mario.png' %}" alt=""
+                                    class="group_avatar"></div>
+                            <div class="thumb-content-group"><a href="">p/{{read_thread.0.group}}</a> *</div>
+                            {% comment %} link to user profile / post date information {% endcomment %}
+                            <div class="thumb-content-user">Posted by u/<a
+                                    href="{% url "users:public_profile" read_thread.0.user.username %}">{{read_thread.0.user}}</a>
+                                {{read_thread.0.posted_date}}
+                            </div>
+                        </div>
+
+                        <div class="thumb-content-avatar-group-user">
+                            <div class="thumb-content-title">{{read_thread.0.title}}</div>
+
+
+
+                        </div>
+                        <div class="thread-content-image">
+                            {% if read_thread.0.image %}
+                            <img src="{{MEDIA_URL}}{{read_thread.0.image.url}}" alt="" srcset="" id="thread-full-image">
+                            {% endif %}
+                            <div class="thread-content-text">
+                                {{read_thread.0.text}}
+                            </div>
+                            <div class="thread-content-subpanel-wrapper">
+                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/comment.png' %}" alt="" srcset=""> Comments</a>
+                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
+                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/share.png' %}" alt="" srcset=""> Share</a>
+                                <a href="#" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/flag.png' %}" alt="" srcset=""> Report</a>
+                                <a href="#" class='subicon-href'><img class='thread_subicons'
+                                        src="{% static 'images/save.png' %}" alt="" srcset=""> Save</a>
+                                <a href="{% url 'users:follow_user' read_thread.0.user %}" class='subicon-href'>
+                                    <img class='thread_subicons' src="{% static 'images/follow.png' %}" alt=""
+                                        srcset="">
+                                    Follow</a>
+
+                                {% comment %} <a href="" class='subicon-href'><img class='subicons'
+                                        src="{% static 'images/hide.png' %}" alt="" srcset=""> Hide</a> {% endcomment %}
+                                {% comment %} <a href="" class='subicon-href'><img class='subicons'
+                                        src="{% static 'images/expand.png' %}" alt="" srcset=""></a>
+                                {% endcomment %}
+                            </div>
+
+                        </div>
+
+                        <div class="thread-input-wrap">
+                            Comment as
+                            <a href="{% url "users:profile" request.user %}">
+                                {{request.user}}
+                            </a>
+                            <form action="{% url 'threads:comment_thread_child' read_thread.0.path %}" method="post">
+                                {% csrf_token %}
+
+
+                                <div class="comment_input-wrap">
+
+                                    <textarea name="text" id="comment_input" cols="30" rows="10"
+                                        placeholder="What are your thoughts?"></textarea>
+
+                                    <div class="input-text-button-wrap">
+                                        Bold, italics, url, strikethrough, etc
+
+
+                                        <input type="submit" value="Comment">
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="comment-section-wrap">
+
+                            {% comment %} {% for each in roots %} {% endcomment %}
+                            {% for item, info in roots|slice:"1:" %}
+                            {% if info.open %}
+
+                            {% comment %} {% verbatim  %} {% if item.path  %}{% endif %} {% endverbatim  %}
+                            {% endcomment %}
+                            <ul class='comment-section-list'>
+
+                                <div class="comment-section-profile">
+                                    <a href="{% url "users:public_profile" item.user.username %}">
+                                        {% if not item.user.customuser.avatar.url %}
+                                        <img src="{% static 'images/mario.jpg' %}" alt="" class="comment-avatar">
+                                        {% else %}
+                                        <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                            class="comment-avatar">
+                                        {% endif %}
+                                        <div class="thread-content-user">
+                                            u/{{item.user}}
+                                            {% comment %} {{item.posted_date}} not displaying correct time
+                                            {% endcomment %}
+                                            {{item.created}}
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <li>
+                                    {% else %}
+                                </li>
+                                <div class="comment-section-profile">
+                                    <a href="{% url "users:public_profile" item.user.username %}">
+                                        {% if not item.user.customuser.avatar.url %}
+                                        <img src="{% static 'images/mario.jpg' %}" alt="" class="comment-avatar">
+                                        {% else %}
+                                        <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                            class="comment-avatar">
+                                        {% endif %}
+                                        <div class="thread-content-user">
+                                            u/{{item.user}}
+                                            {% comment %} {{item.posted_date}} not displaying correct time
+                                            {% endcomment %}
+                                            {{item.created}}
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <li>
+                                    {% endif %}
+                                    <div class="comment-text">
+                                        {{item.text}}
+
+
+
+                                        {% if user.is_authenticated %}
+
+                                        <div class="thread-content-subpanel-wrapper">
+
+                                            {% comment %} upvote/downvote {% endcomment %}
+                                            <div class="thread-content-likes">
+                                                <a href="{% url 'threads:like_comment' item.id %}">
+                                                    <img src="{% static 'images/upvote.png' %}" alt="" srcset="">
+                                                </a>
+                                                <h5>
+                                                    {{item.likes}}
+                                                </h5>
+                                                <a href="{% url 'threads:dislike_comment' item.id %}">
+                                                    <img src="{% static 'images/downvote.png' %}" alt="" srcset="">
+                                                </a>
+
+                                                {% comment %} --------------------------------- {% endcomment %}
+                                                <div class="subicon-href-reply">
+                                                    <img class='thread_subicons' src="{% static 'images/comment.png' %}"
+                                                        alt="" srcset="">
+                                                    <div class='reply-button' id='reply-button'>
+                                                        Reply
+                                                    </div>
+                                                </div>
+                                                {% comment %} on click load form {% endcomment %}
+
+                                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                                        src="{% static 'images/award.png' %}" alt="" srcset="">
+                                                    Award</a>
+                                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                                        src="{% static 'images/share.png' %}" alt="" srcset="">
+                                                    Share</a>
+                                                <a href="#" class='subicon-href'><img class='thread_subicons'
+                                                        src="{% static 'images/flag.png' %}" alt="" srcset="">
+                                                    Report</a>
+                                                <a href="#" class='subicon-href'><img class='thread_subicons'
+                                                        src="{% static 'images/save.png' %}" alt="" srcset=""> Save</a>
+                                                <a href="{% url 'users:follow_user' item.user %}"
+                                                    class='subicon-href'><img class='thread_subicons'
+                                                        src="{% static 'images/follow.png' %}" alt="" srcset="">
+                                                    Follow</a>
+                                            </div>
+                                        </div>
+                                        <div class="comment-reply-dropdown">
+                                            <form action="{% url 'threads:comment_thread_child' item.path %}"
+                                                method='POST'>{% csrf_token %}
+                                                <div class="comment_input-wrap">
+
+                                                    <textarea name="text" id="comment_input" cols="30" rows="10"
+                                                        placeholder="What are your thoughts?"></textarea>
+
+                                                    <div class="input-text-button-wrap">
+                                                        Bold, italics, url, strikethrough, etc
+
+
+                                                        <input type="submit" value="Reply">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    {% for close in info.close %}
+                                </li>
+                            </ul>
+                            {% endfor %}
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="sidebar-wrap">
+        <h1>sidebar</h1>
+        {% for each in treez %}
+        {% if each.children == True %}
+        <ul>
+            <li>
+                {% else %}
+            </li>
+        </ul>
+        {% endif %}
+
+        {{each.data.text}}
+        {% for ind in each.children %}
+
+
+        {% for word in ind.data %}
+
+        {{word}}
+        {% if each.children == False %}
+        </li>
+        </ul>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+
+        {% comment %} {{each.children}} {% endcomment %}
+
+        {% comment %} {% if  %}
+        <ul>
+            <li>
+                {% else %}
+            </li>
+        </ul>
+        {% endif %}
+        {{each}}
+
+        {% for  in  %}
+        </li>
+        </ul>
+        {% endfor %}
+
+        {% endcomment %}
+        {% endfor %}
+
+
+    </div>
+</div>
+
+
+
+{% endblock 'content' %}
