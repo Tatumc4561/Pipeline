@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.admin import GenericTabularInline
 
 from .models import *
 
@@ -44,10 +45,20 @@ class UserAdmin(BaseUserAdmin):
     )
 
 
+class TargetGroupInline(admin.StackedInline):
+    model = JoinGroup
+    fk_name = "target_group"
+    extra = 1
+
+
+class ChannelAdmin(admin.ModelAdmin):
+    inlines = (TargetGroupInline,)
+
+
 # Re-register UserAdmin
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Following)
-admin.site.register(Channel)
+admin.site.register(Channel, ChannelAdmin)
 admin.site.register(JoinGroup)

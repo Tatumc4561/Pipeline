@@ -6,4 +6,4 @@ from django.forms import ModelForm
 class NewThreadForm(ModelForm):
     class Meta:
         model = Thread
-        fields = ["title", "text", "image"]
+        fields = ["group", "title", "text", "image"]

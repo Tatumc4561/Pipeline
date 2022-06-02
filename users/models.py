@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # from groups.models import *
-from threads.models import Thread
+# from threads.models import Thread
 
 
 class CustomUser(models.Model):
@@ -50,8 +51,16 @@ class Channel(models.Model):
     # channel name
     name = models.CharField(max_length=120, null=True)
     # associated threads
-    threads = models.ManyToManyField(Thread)
+
+    threads = models.ManyToManyField(
+        "self",
+        through="threads.Thread",
+        related_name="channel_threads",
+        symmetrical=False,
+        blank=False,
+    )
     # group mascot
+
     avatar = models.ImageField(upload_to="group_avatars", blank=True)
     group_users = models.ManyToManyField(
         "self",
@@ -60,6 +69,9 @@ class Channel(models.Model):
         symmetrical=False,
         blank=False,
     )
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class JoinGroup(models.Model):
