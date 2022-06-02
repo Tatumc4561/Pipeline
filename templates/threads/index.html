@@ -14,7 +14,7 @@
             <a href="{% url 'users:profile' request.user %}">
                 {% comment %} display user profile pic {% endcomment %}
                 {% if not user.customuser.avatar.url  %}
-                <img src="{% static 'images/mario.jpg' %}" alt="" class="profile-avatar">
+                <img src="{% static 'images/mario_mushroom.png' %}" alt="" class="profile-avatar">
                 {% else %}
                 <img src="{{MEDIA_URL}}{{user.customuser.avatar.url}}" alt="" class="profile-avatar">
                 {% endif %}
