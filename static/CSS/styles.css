@@ -61,3 +61,12 @@ body {
 
     }
 }
+
+
+
+/* eliminate flash of unstyled content */
+
+html {
+    visibility: visible;
+    opacity: 1;
+}

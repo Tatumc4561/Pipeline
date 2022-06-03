@@ -41,7 +41,7 @@
                         <div id="group-profiletext">Your Profile</div>
                         <div class="group-wrap-profile-img-wrap">
                             <img src="{{request.user.customuser.avatar.url}}" alt="" srcset=""
-                                id="group-dd-profile-avatar">
+                                class="group-dd-profile-avatar">
                             <div class="group-username">u/{{request.user}}</div>
                         </div>
 
@@ -50,11 +50,12 @@
                         <div id="group-profiletext">Your Communites</div>
 
                         {% for group in groups %}
+                        {% if group  %}
                         <div class="group-selection-wrap">
                             <input type="radio" name="group" id="{{group}}" class='group-radios' value='{{group.id}}'
                                 style='display:none;'>
                             <label class='group-label-wrap' for="{{group}}">
-                                <img src="{{group.avatar.url}}" alt="" srcset="" id='group-dd-profile-avatar'>
+                                <img src="{{group.avatar.url}}" alt="" srcset="" class='group-dd-profile-avatar'>
                                 <div class="group-username">
                                     <p>
                                         p/{{group}}
@@ -67,6 +68,7 @@
                             </label>
                         </div>
 
+                        {% endif %}
 
                         {% endfor %}
                     </div>

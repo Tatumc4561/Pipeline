@@ -11,6 +11,7 @@ const chooseGroup = document.querySelector('#group-choice')
 const chooseGroupDropdown = document.querySelector('.hidden-content')
 const groupSelection = document.querySelectorAll('.group-radios')
 const headerDropdownImg = document.querySelector('#group-popup-img')
+const headerDropdownName = document.querySelector('#dropdown-group-text')
 
 
 chooseGroup.addEventListener('click', function(){
@@ -23,10 +24,31 @@ chooseGroup.addEventListener('click', function(){
 
 for(each of groupSelection){
     each.addEventListener('click', function(e){
-        groupID = e.target.value -1
-        console.log(groupID)
+        
+        // img url
+        groupIMG = e.target.nextSibling.nextSibling.childNodes[1].src
+        
+        // text info
+        groupName = e.target.nextSibling.nextSibling.htmlFor
+
+        console.log(groupName)
         chooseGroupDropdown.classList.toggle('dropdown-wrap')
-        headerDropdownImg.setAttribute('src', '{{groups.'+`${groupID}`+'.avatar.url}}')
+
+        // groupID = e.target.value -1
+        // headerDropdownImg.setAttribute('src', '{{groups.'+`${groupID}`+'.avatar.url}}')
+        headerDropdownImg.setAttribute('src', groupIMG)
+        headerDropdownName.innerHTML = `p/${groupName}`
+
+
+        // AJAX
+        // let xhttp = new XMLHttpRequest()
+        // xhttp.onreadystatechange = function() {
+        //     if (this.readyState == 4 && this.status == 200){
+        //     }
+        // }
+        // console.log(headerDropdownImg)
+        // xhttp.open('GET', 'create_thread', true);
+        // xhttp.send()
 
     })            
 } 
