@@ -70,6 +70,15 @@ class Channel(models.Model):
         blank=False,
     )
 
+    def member_names(self):
+        a = Channel.objects.get(name=self)
+        b = a.id
+        c = Channel.objects.all()[b - 1]
+        members = []
+        for x in c.group_users.all():
+            members.append(x)
+        return members
+
     def member_count(self):
         z = Channel.objects.get(name=self)
         gid = z.id
