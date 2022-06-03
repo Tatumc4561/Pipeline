@@ -12,6 +12,8 @@ const chooseGroupDropdown = document.querySelector('.hidden-content')
 const groupSelection = document.querySelectorAll('.group-radios')
 const headerDropdownImg = document.querySelector('#group-popup-img')
 const headerDropdownName = document.querySelector('#dropdown-group-text')
+const sidebarIMG = document.querySelector('#sidebar-groupimg')
+const sidebarText = document.querySelector('#sidebar-grouptext')
 
 
 chooseGroup.addEventListener('click', function(){
@@ -38,6 +40,8 @@ for(each of groupSelection){
         // headerDropdownImg.setAttribute('src', '{{groups.'+`${groupID}`+'.avatar.url}}')
         headerDropdownImg.setAttribute('src', groupIMG)
         headerDropdownName.innerHTML = `p/${groupName}`
+        sidebarIMG.setAttribute('src', groupIMG)
+        sidebarText.innerHTML = `p/${groupName}`
 
 
         // AJAX

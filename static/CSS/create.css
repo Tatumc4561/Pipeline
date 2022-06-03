@@ -14,7 +14,6 @@
     padding-left: 20px;
     padding-top: 20px;
     padding-right: 20px;
-    overflow-y: scroll;
 }
 
 .create-wrap {
@@ -294,11 +293,8 @@ p {
 .create-sidebar-wrap {
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 100%;
     width: 25vw;
-    overflow-y: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
     border-radius: 4px;
 }
 
@@ -317,8 +313,21 @@ p {
 
 .sidebar-header {
     display: flex;
-    justify-content: center;
     border-bottom: 1px solid rgb(186, 184, 184);
+    align-items: center;
+}
+
+#sidebar-groupimg {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+#sidebar-grouptext {
+    color: rgba(255, 255, 255, 0.553);
+    font-size: 20px;
+    font: 800;
 }
 
 .sidebar-li {
