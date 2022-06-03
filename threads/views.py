@@ -79,7 +79,7 @@ def read_thread(request, thread_id):
 @login_required
 def create_thread(request):
     all_users = User.objects.all()
-    groups = Group.objects.all()
+    groups = Channel.objects.all()
 
     return render(
         request,

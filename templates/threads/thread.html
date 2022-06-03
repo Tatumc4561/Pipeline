@@ -118,7 +118,8 @@
                                 <div class="comment-section-profile">
                                     <a href="{% url "users:public_profile" item.user.username %}">
                                         {% if not item.user.customuser.avatar.url %}
-                                        <img src="{% static 'images/mario.jpg' %}" alt="" class="comment-avatar">
+                                        <img src="{% static 'images/mario_mushroom.png' %}" alt=""
+                                            class="comment-avatar">
                                         {% else %}
                                         <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
                                             class="comment-avatar">
@@ -137,10 +138,11 @@
                                 </li>
                                 <div class="comment-section-profile">
                                     <a href="{% url "users:public_profile" item.user.username %}">
-                                        {% if not item.user.customuser.avatar.url %}
-                                        <img src="{% static 'images/mario.jpg' %}" alt="" class="comment-avatar">
-                                        {% else %}
+                                        {% if item.user.customuser.avatar.url %}
                                         <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                            class="comment-avatar">
+                                        {% else %}
+                                        <img src="{% static 'images/mario_mushroom.png' %}" alt=""
                                             class="comment-avatar">
                                         {% endif %}
                                         <div class="thread-content-user">
@@ -179,7 +181,7 @@
                                                 <div class="subicon-href-reply">
                                                     <img class='thread_subicons' src="{% static 'images/comment.png' %}"
                                                         alt="" srcset="">
-                                                    <div class='reply-button' id='reply-button'>
+                                                    <div class='reply-button' id=''>
                                                         Reply
                                                     </div>
                                                 </div>

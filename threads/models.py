@@ -22,7 +22,7 @@ class Thread(MP_Node):
     group = models.ForeignKey(
         Channel, on_delete=models.CASCADE, related_name="group_threads"
     )
-    title = models.CharField(max_length=120)
+    title = models.CharField(max_length=120, blank=True)
     text = models.CharField(max_length=400)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)

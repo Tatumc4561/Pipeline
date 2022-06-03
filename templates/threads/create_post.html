@@ -24,28 +24,54 @@
             </div>
 
             <div class="create-group-choice-wrap">
-                <div class="create-group-choice">
+                <div class="create-group-choice" id='group-choice'>
                     <div class="header-dropdown-left">
-                        <img src="" alt="" srcset="">
-                        <div class="header-text">{{form.group}}</div>
+                        <img src="{% static 'images/group_circle.png' %}" alt="" srcset="" id='group-popup-img'
+                            class='group-dd-profile-avatar'>
+                        {% comment %} <img src="{{groups.0.avatar.url}}" alt="" srcset="" class='group-popup-img'>
+                        {% endcomment %}
+
+                        <p id="dropdown-group-text">Choose a community</p>
+                        <div class="header-text"></div>
 
                     </div>
-                    <div class="header-dropdown-right">
-                        <img src="{% static 'images/down-expand.png' %}" alt="" srcset="">
+                </div>
+                <div class="hidden-content" id='group-dropdown'>
+                    <div class="group-wrap-profile">
+                        <div id="group-profiletext">Your Profile</div>
+                        <div class="group-wrap-profile-img-wrap">
+                            <img src="{{request.user.customuser.avatar.url}}" alt="" srcset=""
+                                id="group-dd-profile-avatar">
+                            <div class="group-username">u/{{request.user}}</div>
+                        </div>
+
+                    </div>
+                    <div class="group-wrap-profile">
+                        <div id="group-profiletext">Your Communites</div>
+
+                        {% for group in groups %}
+                        <div class="group-selection-wrap">
+                            <input type="radio" name="group" id="{{group}}" class='group-radios' value='{{group.id}}'
+                                style='display:none;'>
+                            <label class='group-label-wrap' for="{{group}}">
+                                <img src="{{group.avatar.url}}" alt="" srcset="" id='group-dd-profile-avatar'>
+                                <div class="group-username">
+                                    <p>
+                                        p/{{group}}
+                                    </p>
+                                    <p class='member-count'>
+                                        {{group.member_count}}
+                                    </p>
+                                </div>
+
+                            </label>
+                        </div>
+
+
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="dropdown-wrap">
 
-                    {% for group in groups %}
-
-                    <ul>
-                        <li>
-                            {{group}}
-                        </li>
-                    </ul>
-
-                    {% endfor %}
-                </div>
             </div>
             <div class="create-box-wrap">
 

@@ -63,12 +63,19 @@ class Channel(models.Model):
 
     avatar = models.ImageField(upload_to="group_avatars", blank=True)
     group_users = models.ManyToManyField(
-        "self",
+        User,
         through="JoinGroup",
         related_name="group_members",
         symmetrical=False,
         blank=False,
     )
+
+    def member_count(self):
+        z = Channel.objects.get(name=self)
+        gid = z.id
+        x = Channel.objects.all()[gid - 1]
+        y = x.group_users.count()
+        return f"{y} members"
 
     def __str__(self):
         return f"{self.name}"
