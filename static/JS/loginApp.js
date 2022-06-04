@@ -26,8 +26,11 @@ const chooseGroupDropdown = document.querySelector('.hidden-content')
 const groupSelection = document.querySelectorAll('.group-radios')
 const headerDropdownImg = document.querySelector('#group-popup-img')
 const headerDropdownName = document.querySelector('#dropdown-group-text')
+const sidebarCreate = document.querySelector('#community_sidebar')
 const sidebarIMG = document.querySelector('#sidebar-groupimg')
 const sidebarText = document.querySelector('#sidebar-grouptext')
+
+
 
 
 chooseGroup.addEventListener('click', function(){
@@ -55,7 +58,10 @@ for(each of groupSelection){
         headerDropdownImg.setAttribute('src', groupIMG)
         headerDropdownName.innerHTML = `p/${groupName}`
         sidebarIMG.setAttribute('src', groupIMG)
-        sidebarText.innerHTML = `p/${groupName}`
+        sidebarText.innerHTML = `p/${groupName}`;
+        sidebarCreate.setAttribute('class', 'community-rules-wrap')
+      
+       
 
 
         // AJAX
