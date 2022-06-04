@@ -10,10 +10,10 @@
     <div class="content-wrap">
 
 
-        <div class="thumb-post-wrap">
+        <div class="thread-post-wrap">
 
             <div class="thread-content" id="thread_id_{{read_thread.0.id}}">
-                <div class="thumb-content-text">
+                <div class="thread-content-text">
 
                     {% comment %} likes/dislikes {% endcomment %}
                     <div class="thread_likes-dislikes">
@@ -32,9 +32,11 @@
                     <div class="thumb-content-avatar-group-user-wrapper">
                         {% comment %} flex 2 columns {% endcomment %}
                         <div class="thumb-group-user-wrapper">
-                            <div class="thumb-content-avatar"><img src="{% static 'images/mario.png' %}" alt=""
+
+                            <div class="thumb-content-avatar"><img src="{{read_thread.0.group.avatar.url}}" alt=""
                                     class="group_avatar"></div>
-                            <div class="thumb-content-group"><a href="">p/{{read_thread.0.group}}</a> *</div>
+                            <div class="thumb-content-group"><a href="">p/{{read_thread.0.group}}
+                                </a> *</div>
                             {% comment %} link to user profile / post date information {% endcomment %}
                             <div class="thumb-content-user">Posted by u/<a
                                     href="{% url "users:public_profile" read_thread.0.user.username %}">{{read_thread.0.user}}</a>
@@ -88,31 +90,43 @@
                             <form action="{% url 'threads:comment_thread_child' read_thread.0.path %}" method="post">
                                 {% csrf_token %}
 
-
-                                <div class="comment_input-wrap">
-
-                                    <textarea name="text" id="comment_input" cols="30" rows="10"
-                                        placeholder="What are your thoughts?"></textarea>
-
-                                    <div class="input-text-button-wrap">
-                                        Bold, italics, url, strikethrough, etc
-
-
-                                        <input type="submit" value="Comment">
+                                <div class="create-text-wrap">
+                                    <div class="create-text-options">
+                                        <img src="{% static 'images/bold.png' %}" alt="" srcset=""
+                                            class="create-text-options-img">
+                                        <img src="{% static 'images/italic.png' %}" alt="" srcset=""
+                                            class="create-text-options-img">
+                                        <img src="{% static 'images/addurlsmall.png' %}" alt="" srcset=""
+                                            class="create-text-options-img">
+                                        <img src="{% static 'images/strikethrough.png' %}" alt="" srcset=""
+                                            class="create-text-options-img">
+                                        <img src="{% static 'images/spoiler.png' %}" alt="" srcset=""
+                                            class="create-text-options-img">
+                                        <img src="{% static 'images/bulletlist.png' %}" alt="" srcset=""
+                                            class="create-text-options-img">
+                                        <img src="{% static 'images/numlist.png' %}" alt="" srcset=""
+                                            class="create-text-options-img">
+                                        <img src="{% static 'images/quote.png' %}" alt="" srcset=""
+                                            class="create-text-options-img">
                                     </div>
-
+                                    <div class="comment_input-wrap">
+                                        <textarea name="text" id="comment_input" cols="30" rows="10"
+                                            placeholder='What are your thoughts?'></textarea>
+                                    </div>
+                                    <button id="" class='comment-post'>Post</button>
                                 </div>
+
                             </form>
                         </div>
 
                         <div class="comment-section-wrap">
 
                             {% comment %} {% for each in roots %} {% endcomment %}
-                            {% for item, info in roots|slice:"1:" %}
+                            {% for item, info in roots|slice:"1:" %} {% comment %} slice to access index's after parent
+                            node{% endcomment %}
                             {% if info.open %}
 
-                            {% comment %} {% verbatim  %} {% if item.path  %}{% endif %} {% endverbatim  %}
-                            {% endcomment %}
+
                             <ul class='comment-section-list'>
 
                                 <div class="comment-section-profile">
@@ -138,11 +152,11 @@
                                 </li>
                                 <div class="comment-section-profile">
                                     <a href="{% url "users:public_profile" item.user.username %}">
-                                        {% if item.user.customuser.avatar.url %}
-                                        <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                        {% if not item.user.customuser.avatar.url %}
+                                        <img src="{% static 'images/mario_mushroom.png' %}" alt=""
                                             class="comment-avatar">
                                         {% else %}
-                                        <img src="{% static 'images/mario_mushroom.png' %}" alt=""
+                                        <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
                                             class="comment-avatar">
                                         {% endif %}
                                         <div class="thread-content-user">
@@ -181,7 +195,7 @@
                                                 <div class="subicon-href-reply">
                                                     <img class='thread_subicons' src="{% static 'images/comment.png' %}"
                                                         alt="" srcset="">
-                                                    <div class='reply-button' id=''>
+                                                    <div class='reply-button' id='reply-button'>
                                                         Reply
                                                     </div>
                                                 </div>

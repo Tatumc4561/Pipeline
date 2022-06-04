@@ -6,6 +6,20 @@ for(el of profileOnly){
 }
 console.log('hello')
 
+
+
+// top-nav
+
+const profileDropdownButton = document.querySelector('#profile-btn-top')
+const profileDropdownMenu = document.querySelector('#profile-dropdown')
+
+profileDropdownButton.addEventListener('click', function(){
+    
+    profileDropdownMenu.classList.toggle('profile-dropdown-wrap')
+    console.log('profiledropdown')
+})
+
+
 // groups
 const chooseGroup = document.querySelector('#group-choice')
 const chooseGroupDropdown = document.querySelector('.hidden-content')

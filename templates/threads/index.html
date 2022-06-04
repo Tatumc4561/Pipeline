@@ -67,7 +67,7 @@
                             <div class="thumb-content-title">{{thread.title}}</div>
 
                             <div class="thumb-group-user-wrapper">
-                                <div class="thumb-content-avatar"><img src="{% static 'images/mario.png' %}" alt=""
+                                <div class="thumb-content-avatar"><img src="{{thread.group.avatar.url}}" alt=""
                                         class="group_avatar"></div>
                                 <div class="thumb-content-group"><a href="">p/{{thread.group}}</a> *</div>
                                 {% comment %} link to user profile / post date information {% endcomment %}

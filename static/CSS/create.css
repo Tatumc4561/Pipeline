@@ -284,6 +284,10 @@ p {
 
 }
 
+.comment-post{
+    z-index: 10;
+}
+
 .create-footer {
     display: flex;
     background-color: rgb(136, 133, 131);

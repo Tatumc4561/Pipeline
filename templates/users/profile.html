@@ -34,7 +34,11 @@
                     {% comment %} thread image/link to more detail about post {% endcomment %}
                     <div class="thumb-content-image">
                         <a href="{% url 'threads:read_thread' thread.id %}">
+                            {% if thread.image %}
                             <img src="{{MEDIA_URL}}{{thread.image.url}}" alt="" srcset="">
+                            {% else %}
+                            <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="">
+                            {% endif %}
                         </a>
                     </div>
 
@@ -93,11 +97,24 @@
 
 
     <div class="sidebar-wrap">
-        <img src="{{user.customuser.avatar.url}}" alt="" srcset="">
+        <div class="top-sidebar-wrap">
+            <div class="cover-photo">
+                <input type="file" name="" id="cover-photoimg" style='display:none'>
+                <label for="cover-photoimg" id='cover-photolabel'>
+                    <div id="sidebarimg-wrap">
+                        <img src="{% static 'images/camera.png' %}" alt="" srcset="" id='sidebar-camera-icon'>
+                    </div>
+                </label>
+
+            </div>
+            <img src="{{user.customuser.avatar.url}}" alt="" srcset="" class='sidebar-avatar'>
+            <h1 id="sidebar-username">u/{{request.user}}</h1>
+        </div>
     </div>
+</div>
 
 
 
 
 
-    {% endblock 'content' %}
+{% endblock 'content' %}

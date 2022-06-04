@@ -3,11 +3,12 @@
 .main-wrap {
     display: flex;
     flex-direction: row;
-    width: 100vw;
-    height: 100vh;
-    padding-left: 20px;
+    width: 100%;
+    height: 100%;
     padding-top: 20px;
-    padding-right: 20px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    justify-content: center;
 }
 
 .content-wrap {
@@ -15,9 +16,10 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
-    width: 75vw;
+    width: 67vw;
     max-width: 900px;
     margin-right: 20px;
+
 }
 
 #create-post-wrap {
@@ -28,7 +30,7 @@
     background-color: rgb(84, 82, 81);
     margin-bottom: 15px;
     align-items: center;
-  
+    border-radius: 4px;
 }
 
 #create_post {
@@ -39,12 +41,14 @@
     height: 40px;
     margin-right: 10px;
     padding: 0;
+    border-radius: 4px;
 }
 
 .profile-avatar {
     height: 47px;
     width: 47px;
     margin-left: 10px;
+    border-radius: 50%;
 
 }
 
@@ -54,6 +58,7 @@
     border: 1px solid rgb(139, 138, 138);
     background-color: rgb(84, 82, 81);
     margin-bottom: 15px;
+    border-radius: 4px;
 
 }
 
@@ -63,26 +68,23 @@
     align-items: center;
     /* overflow-y: scroll;
     overflow-x: hidden; */
-    height: 100%;
+    height: fit-content;
     width: 100%;
     border: 1px solid rgb(139, 138, 138);
-    /* -ms-overflow-style: none;  /* IE and Edge */
-    /* scrollbar-width: none;   /* Firefox */
     background-color: rgb(84, 82, 81);
+    border-radius: 4px;
 }
 
 
-/* .thumb-post-wrap::-webkit-scrollbar {
-    display: none;
-  } */
+
 
 .thumb-content {
     display: flex;
-    flex-direction: column;
-    height: 95px;
+    height: 85px;
     width: 100%;
     border: 1px solid rgb(139, 138, 138);
     padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 
@@ -144,16 +146,20 @@
 .thumb-content-title {
     font-size: 20px;
     font-weight: 700;
+    padding-bottom: 8px;
 }
 
 .thumb-group-user-wrapper {
     display: flex;
     font-size: 14px;
+    margin-bottom: 4px;
 }
 
 .thumb-group-user-wrapper img {
     height: 20px;
     width: 20px;
+    border-radius: 100%;
+    margin-right: 4px;
 }
 
 .thumb-content-group > * {
@@ -196,5 +202,5 @@
     width: 25vw;
     border: 1px solid rgb(139, 138, 138);
     background-color: rgb(84, 82, 81);
-
+    border-radius: 4px;
 }

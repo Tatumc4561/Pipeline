@@ -2,6 +2,8 @@
 @import url(maincontent.css);
 @import url(threads.css);
 @import url(create.css);
+@import url(profile.css);
+
 
 
 * {
@@ -15,9 +17,14 @@ body {
     background-color: rgb(27, 27, 27);
     overflow-y: scroll;
     overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;   /* Firefox */
+
 }
 
-
+body::-webkit-scrollbar {
+    display: none;
+  }
 
 #loginAlert {
     display: flex;

@@ -1,4 +1,5 @@
 import re
+from tokenize import group
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from .forms import *
@@ -63,6 +64,8 @@ def read_thread(request, thread_id):
     #         if t not in seen:
     #             seen.add(t)
     #             treez.append(branch)
+
+    groups = Channel.objects.all()
 
     return render(
         request,

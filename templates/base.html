@@ -77,33 +77,42 @@
         {% endif %}
 
         <div class="profile-only" id='profile-options'>
-            <div id="notifications">Notifcations</div>
-            <div id="create-post">Create</div>
+            <div id="notifications"><img src="{% static 'images/create_post.png' %}" alt="" srcset=""
+                    class='quick-link-icons'></div>
+            <div id="create-post"><img src="{% static 'images/notifications.png' %}" alt="" srcset=""
+                    class='quick-link-icons'></div>
         </div>
 
-        <div class="profile-only" id='nav-button-profile-wrapper'>
-            <div id='profile-text'>Profile Dropdown</div>
-            <div id="profile-dropdown">
-                <div class="nav-button-profile">Settings</div>
-                <div class="nav-button-profile">Something</div>
-                <div class="nav-button-profile">IDK</div>
-                <div class="nav-button-profile">Somethin Else</div>
-                <a href="{% url 'users:logout' %}">Logout</a>
+        <div class="profile-only" id='nav-profile-wrapper'>
+            <div id="nav-profile-button-wrap">
+                <div id="profile-btn-top">
+                    <div class='profile-btn-left'>
+                        <img src="{{request.user.customuser.avatar.url}}" alt="" srcset="" id='nav-profile-avatar'>
+                        <div id='profile-text'>u/{{request.user}}</div>
+                    </div>
+                    <div class='profile-btn-right'>
+
+                        <img src="{% static 'images/down-expand.png' %}" alt="" srcset="" id='dropdown-icon_2'>
+                    </div>
+                </div>
+
+
+
+                <div class='hidden-nav' id="profile-dropdown">
+                    <div class="nav-button-profile">Settings</div>
+                    <div class="nav-button-profile">Something</div>
+                    <div class="nav-button-profile">IDK</div>
+                    <div class="nav-button-profile">Somethin Else</div>
+                    <a href="{% url 'users:logout' %}">Logout</a>
+                </div>
             </div>
-
         </div>
-        <a href="{% url 'users:logout' %}">Logout</a>
 
     </div>
 
     {% block 'content' %}
 
     {% endblock 'content' %}
-
-    {% if user.is_authenticated %}
-    <div id="loginAlert">Successful Login</div>
-    {% endif %}
-
 
 
     <div class="javascriptselectorsnull" style='display:none;'>
