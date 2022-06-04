@@ -42,6 +42,7 @@
             </a>
         </div>
 
+        {% if user.is_authenticated %}
         <div class="profile-only" id='personal-dropdown-wrap'>
             <div class='dropdown-icons' id="dropdown-icon_1">
                 <img src="{% static 'images/home.png'%}" alt="" srcset="">
@@ -52,6 +53,7 @@
                 <img src="{% static 'images/down-expand.png' %}" alt="" srcset="" id='dropdown-icon_2'>
             </div>
         </div>
+        {% endif %}
 
         <div class="search-wrap">
             <img src="{% static "images/SearchMag.png" %}" alt="" srcset="" id="maglens">
@@ -68,26 +70,32 @@
             <a href="{% url 'threads:index' %}" class=''><img class="quick-link-icons"
                     src="{% static 'images/new.png' %}" id="" alt="New" srcset=""></a>
         </div>
-        {% if user.is_authenticated %}
-        {% else %}
+        {% if not user.is_authenticated %}
         <div class="login-create-wrap">
             <a href="{% url "users:login" %}" id='login'>Login</a>
             <a href="{% url "users:register" %}" id='create_user'>Create User</a>
         </div>
         {% endif %}
 
+        {% if user.is_authenticated %}
         <div class="profile-only" id='profile-options'>
             <div id="notifications"><img src="{% static 'images/create_post.png' %}" alt="" srcset=""
                     class='quick-link-icons'></div>
             <div id="create-post"><img src="{% static 'images/notifications.png' %}" alt="" srcset=""
                     class='quick-link-icons'></div>
         </div>
+        {% endif %}
 
         <div class="profile-only" id='nav-profile-wrapper'>
             <div id="nav-profile-button-wrap">
+                {% if user.is_authenticated %}
                 <div id="profile-btn-top">
                     <div class='profile-btn-left'>
+                        {% if request.user.customuser.avatar %}
                         <img src="{{request.user.customuser.avatar.url}}" alt="" srcset="" id='nav-profile-avatar'>
+                        {% else %}
+                        <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="">
+                        {% endif %}
                         <div id='profile-text'>u/{{request.user}}</div>
                     </div>
                     <div class='profile-btn-right'>
@@ -95,6 +103,8 @@
                         <img src="{% static 'images/down-expand.png' %}" alt="" srcset="" id='dropdown-icon_2'>
                     </div>
                 </div>
+                {% endif %}
+
 
 
 

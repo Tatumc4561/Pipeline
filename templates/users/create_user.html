@@ -4,10 +4,27 @@
 {% block 'title' %}<title>Pipeline</title>{% endblock 'title' %}
 {% block 'content' %}
 
-<form action="" method="post">
-    {% csrf_token %}{{form}}
-    <button type="submit">Create User</button>
-</form>
+
+<div class="main-content">
+    <div class="create-user-wrap">
+        <form action="" method="post">
+            {% csrf_token %}{{form.username}}Username
+
+            <br>
+            {{form.email}}Email
+            <br>
+            {{form.password1}}Password
+            <br>
+            {{form.password2}}Password
+            <br>
+            <input type="file" name="avatar" id="create_avatar">
+            <br>
+            {{form.submit}}
+            <button type="submit">Create User</button>
+        </form>
+
+    </div>
+</div>
 
 
 {% endblock 'content' %}

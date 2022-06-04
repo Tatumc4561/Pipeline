@@ -81,7 +81,7 @@
                             </div>
 
                         </div>
-
+                        {% if user.is_authenticated %}
                         <div class="thread-input-wrap">
                             Comment as
                             <a href="{% url "users:profile" request.user %}">
@@ -118,6 +118,8 @@
 
                             </form>
                         </div>
+                        {% endif %}
+
 
                         <div class="comment-section-wrap">
 
