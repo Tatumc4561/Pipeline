@@ -15,7 +15,7 @@ def user_profile(request, userID):
     threads = Thread.objects.all()
     public_user = User.objects.all()
     userID = userID
-    search = Channel.objects.all()
+    search = Channel.objects.all().order_by("-name")
 
     return render(
         request,
@@ -57,7 +57,7 @@ def user_register(request):
 
 def user_login(request):
 
-    search = Channel.objects.all()
+    search = Channel.objects.all().order_by("-name")
 
     if request.method == "GET":
         return render(
@@ -98,7 +98,7 @@ def user_public_profile(request, userID):
     threads = Thread.objects.all()
     public_user = User.objects.all()
     userID = userID
-    search = Channel.objects.all()
+    search = Channel.objects.all().order_by("-name")
 
     return render(
         request,
@@ -115,7 +115,7 @@ def user_public_profile(request, userID):
 def group_page(request, groupID):
     group = Channel.objects.get(id=groupID)
     threads = Thread.objects.all().filter(group=group)
-    search = Channel.objects.all()
+    search = Channel.objects.all().order_by("-name")
 
     return render(
         request,
@@ -130,7 +130,7 @@ def group_page(request, groupID):
 
 @login_required
 def group_register(request):
-    search = Channel.objects.all()
+    search = Channel.objects.all().order_by("-name")
 
     if request.method == "GET":
         return render(request, "users/create_group.html", {"search": search})
