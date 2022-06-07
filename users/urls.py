@@ -26,4 +26,10 @@ urlpatterns = [
         views.group_page,
         name="group_page",
     ),
+    path("register_group/", views.group_register, name="group_register"),
+    path(
+        "join/<str:groupID>",
+        views.join_group,
+        name="join_group",
+    ),
 ]

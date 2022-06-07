@@ -11,7 +11,6 @@
     width: 100%;
     height: 50px;
     align-items: flex-end;
-    justify-content: space-between;
     background-color: rgb(84, 82, 81);
 
     border-bottom: solid 5px rgb(65, 30, 30);
@@ -121,14 +120,13 @@
 #nav-profile-wrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
     height: 100%;
-    width: 20%;
     z-index: 10;
-    align-items: flex-end;
     margin-right: 30px;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: flex-end;
     
-
 }
 
 .nav-profile-button-wrap {
@@ -137,14 +135,17 @@
     border-radius: 4px;
     width: 100%;
     height: 100%;
+    align-items: flex-end;
 }
 
 #profile-btn-top {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 20vw;
+    max-width: 250px;
     padding: 0 3px;
     justify-content: space-between;
+    border-radius: 4px;
 
 }
 
@@ -179,10 +180,88 @@
 .profile-dropdown-wrap {
     visibility: visible;
     opacity: 1;
-    height: fit-content;
+    height: 80%;
     width: 100%;
+    max-width: 250px;
     background-color: rgb(84, 82, 81);
+    border: 1px solid rgb(219, 216, 216);
+    border-radius: 4px;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.profile-options-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    border-bottom: 1px solid rgb(186, 184, 184);
+}
+
+
+.nav-button-profile-header {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.553);
 
 
 }
+
+.nav-button-profile {
+    height: 50px;
+    width: 100%;
+   
+    display: flex;
+    align-items: center;
+}
+
+.nav-button-profile:hover {
+    background-color: rgb(145, 143, 142);
+}
+.nav-button-profile-header:hover {
+    background-color: rgb(145, 143, 142);
+}
+
+.no-hover:hover {
+    background-color: rgb(84, 82, 81);
+}
+
+.text {
+    margin-left: 38px;
+    font-weight: 600;
+}
+
+
+.nav-img {
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+    margin-left: 6px;
+}
+
+
+.logout-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    border-top: 1px solid rgb(186, 184, 184);
+    font-weight: 700;
+}
+
+
+
+
+.logout-wrap:hover {
+    background-color: rgb(145, 143, 142);
+
+}
+

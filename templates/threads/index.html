@@ -9,6 +9,7 @@
 <div class="main-wrap">
     <div class="content-wrap">
 
+        {% if user.is_authenticated %}
         <div class="profile-only" id='create-post-wrap'>
 
             <a href="{% url 'users:profile' request.user %}">
@@ -22,9 +23,7 @@
             <a href="{% url 'threads:create_thread' %}"><input type="text" name="" id="create_post"
                     placeholder='Create Thread'></a>
         </div>
-        <div>
-
-        </div>
+        {% endif %}
 
         <div class="sort-by-wrap">
             Best, Hot, New, Top
@@ -69,7 +68,9 @@
                             <div class="thumb-group-user-wrapper">
                                 <div class="thumb-content-avatar"><img src="{{thread.group.avatar.url}}" alt=""
                                         class="group_avatar"></div>
-                                <div class="thumb-content-group"><a href="">p/{{thread.group}}</a> *</div>
+                                <div class="thumb-content-group"><a
+                                        href="{% url 'users:group_page' thread.group.id %}">p/{{thread.group}}</a> *
+                                </div>
                                 {% comment %} link to user profile / post date information {% endcomment %}
                                 <div class="thumb-content-user">Posted by u/<a
                                         href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>

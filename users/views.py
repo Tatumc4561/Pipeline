@@ -105,13 +105,34 @@ def user_public_profile(request, userID):
 
 
 def group_page(request, groupID):
-    group = Channel.objects.get(name=groupID)
+    group = Channel.objects.get(id=groupID)
     threads = Thread.objects.all().filter(group=group)
     return render(
         request,
-        "groups/group.html",
+        "users/group.html",
         {
             "threads": threads,
             "group": group,
         },
     )
+
+
+@login_required
+def group_register(request):
+    if request.method == "GET":
+        return render(request, "users/create_group.html")
+
+    elif request.method == "POST":
+
+        Channel.objects.create(
+            name=request.POST.get("group_name"), avatar=request.FILES.get("avatar")
+        )
+
+        return HttpResponseRedirect(reverse("threads:index"))
+
+
+@login_required
+def join_group(request, groupID):
+    join = Channel.objects.get(id=groupID)
+    JoinGroup.objects.create(join_group=request.user, target_group=join)
+    return HttpResponseRedirect(reverse("threads:index"))

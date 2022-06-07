@@ -109,11 +109,57 @@
 
 
                 <div class='hidden-nav' id="profile-dropdown">
-                    <div class="nav-button-profile">Settings</div>
-                    <div class="nav-button-profile">Something</div>
-                    <div class="nav-button-profile">IDK</div>
-                    <div class="nav-button-profile">Somethin Else</div>
-                    <a href="{% url 'users:logout' %}">Logout</a>
+                    <div class="profile-options-wrap">
+                        <div class="nav-button-profile-header no-hover"><img src="{% static 'images/profile.png' %}"
+                                alt="" class='nav-img' srcset="">My
+                            Stuff</div>
+                        <div class="nav-button-profile">
+                            <p class="text">Online Status</p>
+                        </div>
+                        <a href="{% url 'users:profile' request.user %}" style='text-decoration:none; color:black;'>
+                            <div class="nav-button-profile">
+                                <p class="text">Profile</p>
+                            </div>
+                        </a>
+                        <div class="nav-button-profile">
+                            <p class="text">Account Settings</p>
+                        </div>
+
+                    </div>
+                    <a href="{% url 'users:group_register' %}" style='text-decoration:none; color:black; width:100%;'>
+                        <div class="nav-button-profile-header">
+                            <img src="{% static 'images/add_community.png' %}" alt="" class=' nav-img' srcset="">
+                            Create a Channel
+                        </div>
+                    </a>
+                    <div class="nav-button-profile-header">
+                        <img src="{% static 'images/addurl.png' %}" alt="" class='nav-img' srcset="">
+                        Share
+                    </div>
+                    <div class="nav-button-profile-header">
+                        <img src="{% static 'images/all.png' %}" alt="" class='nav-img' srcset="">
+                        Only the Best
+                    </div>
+                    <div class="nav-button-profile-header">
+                        <img src="{% static 'images/comment.png' %}" alt="" class='nav-img' srcset="">
+                        Contact
+                    </div>
+
+                    <div class="nav-button-profile-header">
+                        <img src="{% static 'images/bold.png' %}" alt="" class='nav-img' srcset="">
+                        Explore
+                    </div>
+                    <div class="nav-button-profile-header">
+                        <img src="{% static 'images/award.png' %}" alt="" class='nav-img' srcset="">
+                        Awards
+                    </div>
+
+
+
+                    <div class="logout-wrap">
+                        <img src="{% static 'images/logout.png' %}" alt="" class='nav-img' srcset="">
+                        <a href="{% url 'users:logout' %}" style='text-decoration:none; color:black;'>Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
