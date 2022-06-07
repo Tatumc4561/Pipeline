@@ -16,6 +16,7 @@ from django.contrib import messages
 # Create your views here.
 def index(request):
     threads = Thread.objects.all().order_by("-likes")  # [:20]
+    search = Channel.objects.all()
 
     all_users = User.objects.all()
     return render(
@@ -24,6 +25,7 @@ def index(request):
         {
             "threads": threads,
             "all_users": all_users,
+            'search': search,
         },
     )
 
@@ -66,6 +68,8 @@ def read_thread(request, thread_id):
     #             treez.append(branch)
 
     groups = Channel.objects.all()
+    search = Channel.objects.all()
+
 
     return render(
         request,
@@ -74,7 +78,7 @@ def read_thread(request, thread_id):
             "read_thread": read_thread,
             "all_users": all_users,
             "roots": roots,
-            # "treez": treez,
+            'search': search,
         },
     )
 
@@ -83,6 +87,8 @@ def read_thread(request, thread_id):
 def create_thread(request):
     all_users = User.objects.all()
     groups = Channel.objects.all()
+    search = Channel.objects.all()
+
 
     return render(
         request,
@@ -91,12 +97,15 @@ def create_thread(request):
             "form": NewThreadForm(),
             "all_users": all_users,
             "groups": groups,
+            'search': search,
+            
         },
     )
 
 
 @login_required
 def submit_thread(request):
+    
     if request.method == "POST":
         form = NewThreadForm(request.POST, request.FILES)
         if form.is_valid():

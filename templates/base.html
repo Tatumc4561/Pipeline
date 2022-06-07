@@ -55,9 +55,37 @@
         </div>
         {% endif %}
 
-        <div class="search-wrap">
-            <img src="{% static "images/SearchMag.png" %}" alt="" srcset="" id="maglens">
-            <input type=" search" name="" id="search" placeholder='Search'>
+        <div class="search-button-wrap">
+            <div class="search-dropdown-wrap">
+                <div class="search-wrap">
+                    <img src="{% static "images/SearchMag.png" %}" alt="" srcset="" id="maglens">
+                    <input type="search" name="" id="search" placeholder='Search'>
+                </div>
+                <div class="dropdown-wrap" id='group-dropdown'>
+
+                    <div class="group-wrap-profile">
+
+                        {% for each in search %}
+                        <a href="{% url 'users:group_page' each.id %}">
+                            <div class="group-selection-wrap">
+                                <img src="{{each.avatar.url}}" alt="" srcset="" class='group-dd-profile-avatar'>
+                                <div class="group-username">
+                                    <p>
+                                        p/{{each}}
+                                    </p>
+                                    <p class='member-count'>
+                                        {% comment %} {{each.member_count}} {% endcomment %}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
 
 
