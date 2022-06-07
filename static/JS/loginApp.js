@@ -10,6 +10,19 @@ console.log('hello')
 
 // top-nav
 
+const searchDropdownButton = document.querySelector('#search-button')
+const searchDropdownMenu = document.querySelector('#search-dropdownz')
+
+searchDropdownButton.addEventListener('click', function(){
+
+    searchDropdownMenu.classList.toggle('search-dropdown-wrap')
+    console.log('searching bro')
+})
+
+
+
+
+
 const profileDropdownButton = document.querySelector('#profile-btn-top')
 const profileDropdownMenu = document.querySelector('#profile-dropdown')
 
@@ -18,6 +31,10 @@ profileDropdownButton.addEventListener('click', function(){
     profileDropdownMenu.classList.toggle('profile-dropdown-wrap')
     console.log('profiledropdown')
 })
+
+
+
+
 
 
 // groups
