@@ -8,18 +8,36 @@
 <div class="main-content">
     <div class="create-user-wrap">
         <form action="" method="post">
-            {% csrf_token %}{{form.username}}Username
+            {% csrf_token %}
+            <div id="username-entry">
+                Username:{{form.username}}
+                <p class="text">
+                    Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+                </p>
+            </div>
+            <div id="email-entry">
+                Email:{{form.email}}
+            </div>
+            <div id="password-entry">
+                Password:{{form.password1}}
 
-            <br>
-            {{form.email}}Email
-            <br>
-            {{form.password1}}Password
-            <br>
-            {{form.password2}}Password
-            <br>
-            <input type="file" name="avatar" id="create_avatar">
-            <br>
-            {{form.submit}}
+                <p class="text">
+                    Your password can’t be too similar to your other personal information.
+                </p>
+                <p class="text">
+                    Your password must contain at least 8 characters.
+                </p>
+                <p class="text">
+                    Your password can’t be a commonly used password.
+                </p>
+                <p class="text">
+                    Your password can’t be entirely numeric.
+                </p>
+
+                Password Confirmation:{{form.password2}}
+
+            </div>
+
             <button type="submit">Create User</button>
         </form>
 

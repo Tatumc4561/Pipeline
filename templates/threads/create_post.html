@@ -40,8 +40,14 @@
                     <div class="group-wrap-profile">
                         <div id="group-profiletext">Your Profile</div>
                         <div class="group-wrap-profile-img-wrap">
+                            {% if request.user.customuser.avatar %}
                             <img src="{{request.user.customuser.avatar.url}}" alt="" srcset=""
                                 class="group-dd-profile-avatar">
+                            {% else %}
+                            <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset=""
+                                class="group-dd-profile-avatar">
+
+                            {% endif %}
                             <div class="group-username">u/{{request.user}}</div>
                         </div>
 

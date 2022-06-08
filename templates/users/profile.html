@@ -107,8 +107,22 @@
                 </label>
 
             </div>
+            {% if user.customuser.avatar %}
             <img src="{{user.customuser.avatar.url}}" alt="" srcset="" class='sidebar-avatar'>
+
+            {% else %}
+            <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="" class='sidebar-avatar'>
+            {% endif %}
+
             <h1 id="sidebar-username">u/{{request.user}}</h1>
+        </div>
+        <div class="mid-sidebar-wrap">
+            <form action="{% url 'users:user_update' %}" enctype='multipart/form-data' method='POST'>
+                {% csrf_token %}
+                <p class="text">Change Avatar: <input type="file" name="avatar" id="avatar"> </p>
+                <button type="submit">submit</button>
+            </form>
+
         </div>
     </div>
 </div>

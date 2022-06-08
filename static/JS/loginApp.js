@@ -52,6 +52,7 @@ const sidebarText = document.querySelector('#sidebar-grouptext')
 
 chooseGroup.addEventListener('click', function(){
     chooseGroupDropdown.classList.toggle('dropdown-wrap')
+    console.log('dropdown_group')
     
 })            
 

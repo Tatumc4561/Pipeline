@@ -105,19 +105,17 @@ def create_thread(request):
 def submit_thread(request):
 
     if request.method == "POST":
-        form = NewThreadForm(request.POST, request.FILES)
-        if form.is_valid():
-            # group = request.POST.get("group")
-            group = form.cleaned_data["group"]
-            title = request.POST.get("title")
-            text = request.POST.get("text")
-            image = request.FILES.get("image")
+        group = request.POST.get("group")
 
-            Thread.add_root(
-                user=request.user, group=group, title=title, text=text, image=image
-            )
+        Thread.add_root(
+            user=request.user,
+            group=Channel.objects.get(id=group),
+            title=request.POST.get("title"),
+            text=request.POST.get("text"),
+            image=request.FILES.get("image"),
+        )
 
-    return HttpResponseRedirect(reverse("threads:index"))
+        return HttpResponseRedirect(reverse("threads:index"))
 
 
 @login_required

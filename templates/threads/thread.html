@@ -255,51 +255,15 @@
         </div>
 
     </div>
+
     <div class="sidebar-wrap">
-        <h1>sidebar</h1>
-        {% for each in treez %}
-        {% if each.children == True %}
-        <ul>
-            <li>
-                {% else %}
-            </li>
-        </ul>
-        {% endif %}
+        <div class="top-sidebar-wrap">
+            <div class="cover-photo">
 
-        {{each.data.text}}
-        {% for ind in each.children %}
-
-
-        {% for word in ind.data %}
-
-        {{word}}
-        {% if each.children == False %}
-        </li>
-        </ul>
-        {% endif %}
-        {% endfor %}
-        {% endfor %}
-
-        {% comment %} {{each.children}} {% endcomment %}
-
-        {% comment %} {% if  %}
-        <ul>
-            <li>
-                {% else %}
-            </li>
-        </ul>
-        {% endif %}
-        {{each}}
-
-        {% for  in  %}
-        </li>
-        </ul>
-        {% endfor %}
-
-        {% endcomment %}
-        {% endfor %}
-
-
+            </div>
+            <img src="{{read_thread.0.group.avatar.url}}" alt="" srcset="" class='sidebar-avatar'>
+            <h1 id="sidebar-username">p/{{read_thread.0.group}}</h1>
+        </div>
     </div>
 </div>
 

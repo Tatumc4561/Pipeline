@@ -41,11 +41,12 @@ def user_register(request):
         return render(request, "users/create_user.html", {"form": form})
 
     elif request.method == "POST":
-        form = NewRegisterForm(request.POST)
+        form = NewRegisterForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.cleaned_data["username"]
             password = form.cleaned_data["password1"]
             email = form.cleaned_data["email"]
+            avatar = request.POST
             authenticate(request, user=user, password1=password)
             user = form.save()
             login(request, user)
@@ -84,6 +85,15 @@ def user_login(request):
 #     follow_user = User.objects.get(username=userID)
 #     MyFollowings.set(user=follow_user, follower=request.user, following=follow_user)
 #     return redirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def user_update(request):
+    if request.method == "POST":
+        user = CustomUser.objects.get(user=request.user)
+        user.avatar = request.FILES.get("avatar")
+        user.save()
+    return redirect(request.META["HTTP_REFERER"])
 
 
 @login_required

@@ -127,7 +127,7 @@
                         {% if request.user.customuser.avatar %}
                         <img src="{{request.user.customuser.avatar.url}}" alt="" srcset="" id='nav-profile-avatar'>
                         {% else %}
-                        <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="">
+                        <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="" id='nav-profile-avatar'>
                         {% endif %}
                         <div id='profile-text'>u/{{request.user}}</div>
                     </div>
@@ -203,7 +203,7 @@
 
     {% endblock 'content' %}
 
-
+    {% comment %} makes javascript play nice, and not display null {% endcomment %}
     <div class="javascriptselectorsnull" style='display:none;'>
         <div id="post-option-images"></div>
         <div id="create_thread_image"></div>
@@ -212,6 +212,14 @@
         <div class="reply-button"></div>
         <div class="comment-reply-dropdown"></div>
         <div class="report-flag"></div>
+        <div id="group-choice"></div>
+        <div class="group-radios"></div>
+        <div id="group-popup-img"></div>
+        <div id="dropdown-group-text"></div>
+        <div id="community_sidebar"></div>
+        <div id="sidebar-groupimg"></div>
+        <div id="sidebar-grouptext"></div>
+        <div class="profile-only"></div>
 
     </div>
 </body>
