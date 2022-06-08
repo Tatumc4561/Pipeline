@@ -1,9 +1,44 @@
+.sort-by-dropdown {
+    width: 100vw;
+    background-color: rgb(84, 82, 81);
+    border-bottom: 1px solid rgb(139, 138, 138);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+
+}
+
+#sbw-wrap-d {
+    display: flex;
+    width: 93.5vw;
+    height: 40px;
+  
+}
+
+.sbw-btn-d {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgb(139, 138, 138);
+    width: 10%;
+    height: 100%;
+  
+}
+
+.sbw-btn-d:hover {
+    background-color: rgb(136, 133, 131);
+}
+
+
+
 .top-sidebar-wrap {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
 }
+
 
 
 

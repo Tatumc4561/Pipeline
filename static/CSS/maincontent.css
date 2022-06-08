@@ -53,13 +53,26 @@
 }
 
 .sort-by-wrap {
+    display: flex;
     height: 70px;
     width: 100%;
     border: 1px solid rgb(139, 138, 138);
     background-color: rgb(84, 82, 81);
     margin-bottom: 15px;
     border-radius: 4px;
+    align-items: center;
 
+}
+
+.sbw-btn {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    height: 40px;
+    width: fit-content;
+    border-radius: 20%;
+    background-color: red;
+    padding: 1px 5px;
 }
 
 .thumb-post-wrap {

@@ -6,13 +6,41 @@
 {% block 'content' %}
 
 
+<div class="sort-by-dropdown">
+    <div id="sbw-wrap-d">
+        <div class='sbw-btn-d' id="sbw-overview">
+            Overview
+        </div>
+        <div class='sbw-btn-d' id="sbw-posts">
+            Posts
+        </div>
+        <div class='sbw-btn-d' id="sbw-comments">
+            Comments
+        </div>
+    </div>
+</div>
 
 <div class="main-wrap">
+
+
     <div class="content-wrap">
 
         <div class="sort-by-wrap">
-            New, Hot, Top
+            <div class='sbw-btn' id="sbw-new">
+                <img src="{% static 'images/new.png' %}" alt="" srcset="">
+                New
+            </div>
+            <div class='sbw-btn' id="sbw-hot">
+                <img src="{% static 'images/bold.png' %}" alt="" srcset="">
+                Hot
+            </div>
+            <div class='sbw-btn' id="sbw-top">
+                <img src="{% static 'images/all.png' %}" alt="">
+                Top
+            </div>
         </div>
+
+
 
         <div class="thumb-post-wrap">
             {% for thread in threads %}
