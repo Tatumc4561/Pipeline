@@ -34,7 +34,11 @@
                     {% comment %} thread image/link to more detail about post {% endcomment %}
                     <div class="thumb-content-image">
                         <a href="{% url 'threads:read_thread' thread.id %}">
-                            <img src="{{MEDIA_URL}}{{thread.image.url}}" alt="" srcset="">
+                            {% if thread.image %}
+                            <img src="{{thread.image.url}}" alt="" srcset="">
+                            {% else %}
+                            <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="">
+                            {% endif %}
                         </a>
                     </div>
 
@@ -89,17 +93,28 @@
     </div>
 
 
-
-
-
     <div class="sidebar-wrap">
-        <h1>sidebar</h1>
+        <div class="top-sidebar-wrap">
+            <div class="cover-photo">
 
-        {{userID}}
 
-        <img src="{{public_user.}}" alt="" srcset="">
-        <a href="{% url "users:follow_user" userID %}">Follow</a>
+            </div>
+            {% if public_user.0.customuser.avatar %}
+            <img src="{{public_user.0.customuser.avatar.url}}" alt="" srcset="" class='sidebar-avatar'>
+
+            {% else %}
+            <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="" class='sidebar-avatar'>
+            {% endif %}
+
+            <a href="{% url "users:follow_user" userID %}">Follow</a>
+            <h1 id="sidebar-username">u/{{public_user.0}}</h1>
+        </div>
+        <div class="mid-sidebar-wrap">
+
+
+        </div>
     </div>
+
 
 
 

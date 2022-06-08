@@ -72,8 +72,12 @@
                                         href="{% url 'users:group_page' thread.group.id %}">p/{{thread.group}}</a> *
                                 </div>
                                 {% comment %} link to user profile / post date information {% endcomment %}
-                                <div class="thumb-content-user">Posted by u/<a
-                                        href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
+                                <div class="thumb-content-user">Posted by u/
+                                    {% if thread.user == request.user %}
+                                    <a href="{% url 'users:profile' request.user %}">{{thread.user}}</a>
+                                    {% else %}
+                                    <a href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
+                                    {% endif %}
                                     {{thread.posted_date}}
                                 </div>
                             </div>

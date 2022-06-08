@@ -106,8 +106,8 @@ def follow_user(request, userID):
 
 def user_public_profile(request, userID):
     threads = Thread.objects.all()
-    public_user = User.objects.all()
     userID = userID
+    public_user = User.objects.all().filter(username=userID)
     search = Channel.objects.all().order_by("-name")
 
     return render(

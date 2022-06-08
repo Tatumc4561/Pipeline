@@ -38,9 +38,15 @@
                             <div class="thumb-content-group"><a href="">p/{{read_thread.0.group}}
                                 </a> *</div>
                             {% comment %} link to user profile / post date information {% endcomment %}
-                            <div class="thumb-content-user">Posted by u/<a
+                            <div class="thumb-content-user">Posted by u/
+                                {% if read_thread.0.user == request.user %}
+                                <a href="{% url 'users:profile' request.user %}">{{read_thread.0.user}}</a>
+                                {% else %}
+                                <a
                                     href="{% url "users:public_profile" read_thread.0.user.username %}">{{read_thread.0.user}}</a>
+                                {% endif %}
                                 {{read_thread.0.posted_date}}
+
                             </div>
                         </div>
 
@@ -132,42 +138,58 @@
                             <ul class='comment-section-list'>
 
                                 <div class="comment-section-profile">
-                                    <a href="{% url "users:public_profile" item.user.username %}">
-                                        {% if not item.user.customuser.avatar.url %}
-                                        <img src="{% static 'images/mario_mushroom.png' %}" alt=""
-                                            class="comment-avatar">
+
+
+                                    {% if item.user == request.user %}
+                                    <a href="{% url 'users:profile' request.user %}">
+
                                         {% else %}
-                                        <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
-                                            class="comment-avatar">
-                                        {% endif %}
-                                        <div class="thread-content-user">
-                                            u/{{item.user}}
-                                            {% comment %} {{item.posted_date}} not displaying correct time
-                                            {% endcomment %}
-                                            {{item.created}}
-                                        </div>
-                                    </a>
+                                        <a href="{% url "users:public_profile" item.user.username %}">
+                                            {% endif %}
+
+                                            {% if not item.user.customuser.avatar.url %}
+                                            <img src="{% static 'images/mario_mushroom.png' %}" alt=""
+                                                class="comment-avatar">
+                                            {% else %}
+                                            <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                                class="comment-avatar">
+                                            {% endif %}
+                                            <div class="thread-content-user">
+                                                u/{{item.user}}
+                                                {% comment %} {{item.posted_date}} not displaying correct time
+                                                {% endcomment %}
+                                                {{item.created}}
+                                            </div>
+                                        </a>
 
                                 </div>
                                 <li>
                                     {% else %}
                                 </li>
                                 <div class="comment-section-profile">
-                                    <a href="{% url "users:public_profile" item.user.username %}">
-                                        {% if not item.user.customuser.avatar.url %}
-                                        <img src="{% static 'images/mario_mushroom.png' %}" alt=""
-                                            class="comment-avatar">
+
+
+                                    {% if item.user == request.user %}
+                                    <a href="{% url 'users:profile' request.user %}">
+
                                         {% else %}
-                                        <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
-                                            class="comment-avatar">
-                                        {% endif %}
-                                        <div class="thread-content-user">
-                                            u/{{item.user}}
-                                            {% comment %} {{item.posted_date}} not displaying correct time
-                                            {% endcomment %}
-                                            {{item.created}}
-                                        </div>
-                                    </a>
+                                        <a href="{% url "users:public_profile" item.user.username %}">
+                                            {% endif %}
+
+                                            {% if not item.user.customuser.avatar.url %}
+                                            <img src="{% static 'images/mario_mushroom.png' %}" alt=""
+                                                class="comment-avatar">
+                                            {% else %}
+                                            <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                                class="comment-avatar">
+                                            {% endif %}
+                                            <div class="thread-content-user">
+                                                u/{{item.user}}
+                                                {% comment %} {{item.posted_date}} not displaying correct time
+                                                {% endcomment %}
+                                                {{item.created}}
+                                            </div>
+                                        </a>
 
                                 </div>
                                 <li>

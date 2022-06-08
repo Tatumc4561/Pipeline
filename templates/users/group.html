@@ -107,9 +107,80 @@
 
         </div>
     </div>
-    <div class="sidebar-wrap">
-        <a href="{% url 'users:join_group' group.id %}">Join</a>
+    <div class="create-sidebar-wrap">
+        <div id="community_sidebar" class='community-rules-wrap'>
+            <div class="sidebar-rules">
 
+                <div class="sidebar-header">
+                    <img src="" alt="" srcset="" id='sidebar-groupimg'> {% comment %} group image{% endcomment %}
+                    <p id="sidebar-grouptext">
+                        {% comment %} Community Title {% endcomment %}
+                    </p>
+                </div>
+                <div class="community-desc">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis provident tenetur natus magni,
+                    quidem
+                    enim quos asperiores porro a! Sunt soluta suscipit beatae porro neque!
+                </div>
+                <div class="community-members">
+                    <div id="members">
+                        {% comment %}pull in total{% endcomment %}
+                        Members
+                    </div>
+                    <div id="members-online">
+                        {% comment %}pull in total online{% endcomment %}
+                        Online
+                    </div>
+                </div>
+                <div class="creation_date">
+                    <img src="" alt="" srcset="">
+                    {% comment %}pull in group creation date{% endcomment %}
+                </div>
+                <div class="dropdown-community-options-wrap">
+                    <div class="dropdown-community-title">
+                        Community Options
+                    </div>
+                    <img src="{% static 'images/drop-expand.png' %}" alt="" srcset="">
+                </div>
+                <div class="community-option-selection">
+
+                </div>
+            </div>
+            {% comment %}pull in community rules{% endcomment %}
+            <div class="community-rules-wrap" id='community_rules'>
+                <div class="sidebar-rules">
+                    <div class="sidebar-list">
+
+                        <div class='sidebar-li'>Remmeber the human</div>
+                        <div class='sidebar-li'>Behave divke you would in real divfe</div>
+                        <div class='sidebar-li'>Look for the original source of content</div>
+                        <div class='sidebar-li'>Search for duplicates before posting</div>
+                        <div class='sidebar-li'>Read the community's rules</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="sidebar-policy">
+            <h5>Please be mindful of pipeline's <a href="">content policy</a> and practice good ettiquette</h5>
+        </div>
+        <div class="sidebar-options">
+            <div class="options-top-wrap">
+                <div class="options-top-left-wrap">
+                    Help <br>Pipeline Coins <br>Pipeline Premium
+                </div>
+                <div class="options-top-right-wrap">
+                    About <br>Careers <br>Presss<br>Advertise<br>Blog<br>Terms<br>Content Policy<br>Privacy
+                    Policy<br>Mod Policy<br>
+                </div>
+            </div>
+            <div class="options-bottom-wrap">
+                Pipeline Inc Copyright 2022. All rights reserved
+            </div>
+        </div>
     </div>
 </div>
 
