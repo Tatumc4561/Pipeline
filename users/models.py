@@ -74,19 +74,20 @@ class Channel(models.Model):
 
     def member_names(self):
         a = Channel.objects.get(name=self)
-        b = a.id
-        c = Channel.objects.all()[b - 1]
+
         members = []
-        for x in c.group_users.all():
+        for x in a.group_users.all():
             members.append(x)
         return members
 
     def member_count(self):
         z = Channel.objects.get(name=self)
-        gid = z.id
-        x = Channel.objects.all()[gid - 1]
-        y = x.group_users.count()
-        return f"{y} members"
+
+        y = z.group_users.count()
+        if y > 1:
+            return f"{y} members"
+        else:
+            return f"{y} member"
 
     def __str__(self):
         return f"{self.name}"

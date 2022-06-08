@@ -136,9 +136,12 @@ def group_register(request):
         return render(request, "users/create_group.html", {"search": search})
 
     elif request.method == "POST":
-
+        name = request.POST.get("group_name")
         Channel.objects.create(
             name=request.POST.get("group_name"), avatar=request.FILES.get("avatar")
+        )
+        JoinGroup.objects.create(
+            join_group=request.user, target_group=Channel.objects.get(name=name)
         )
 
         return HttpResponseRedirect(reverse("threads:index"))

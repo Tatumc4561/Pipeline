@@ -51,6 +51,7 @@
 
                         {% for group in groups %}
                         {% if request.user in group.member_names %}
+
                         <div class="group-selection-wrap">
                             <input type="radio" name="group" id="{{group}}" class='group-radios' value='{{group.id}}'
                                 style='display:none;'>
@@ -67,6 +68,7 @@
 
                             </label>
                         </div>
+
 
 
 

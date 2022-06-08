@@ -85,6 +85,7 @@ def read_thread(request, thread_id):
 @login_required
 def create_thread(request):
     all_users = User.objects.all()
+    user = User.objects.all().filter(username=request.user)
     groups = Channel.objects.all()
     search = Channel.objects.all().order_by("-name")
 
