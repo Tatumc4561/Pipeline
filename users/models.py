@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(
-        upload_to="avatars", blank=True, default="images/mario_mushroom.png"
+        upload_to="avatars", blank=True, default="avatars/mario_mushroom.png"
     )
     my_followers = models.ManyToManyField(
         "self",

@@ -50,6 +50,10 @@ def user_register(request):
             authenticate(request, user=user, password1=password)
             user = form.save()
             login(request, user)
+            user = CustomUser.objects.create(
+                user=request.user
+            )  # add CustomUser to User Panel
+
             return HttpResponseRedirect(reverse("threads:index"))
             # else:
             #     form.add_error("username", "Invalid Credentials")
@@ -90,6 +94,7 @@ def user_login(request):
 @login_required
 def user_update(request):
     if request.method == "POST":
+        x = User.objects.get(username=request.user)
         user = CustomUser.objects.get(user=request.user)
         user.avatar = request.FILES.get("avatar")
         user.save()

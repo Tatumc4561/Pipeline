@@ -98,28 +98,32 @@
 
                                 <div class="create-text-wrap">
                                     <div class="create-text-options">
-                                        <img src="{% static 'images/bold.png' %}" alt="" srcset=""
-                                            class="create-text-options-img">
-                                        <img src="{% static 'images/italic.png' %}" alt="" srcset=""
-                                            class="create-text-options-img">
-                                        <img src="{% static 'images/addurlsmall.png' %}" alt="" srcset=""
-                                            class="create-text-options-img">
-                                        <img src="{% static 'images/strikethrough.png' %}" alt="" srcset=""
-                                            class="create-text-options-img">
-                                        <img src="{% static 'images/spoiler.png' %}" alt="" srcset=""
-                                            class="create-text-options-img">
-                                        <img src="{% static 'images/bulletlist.png' %}" alt="" srcset=""
-                                            class="create-text-options-img">
-                                        <img src="{% static 'images/numlist.png' %}" alt="" srcset=""
-                                            class="create-text-options-img">
-                                        <img src="{% static 'images/quote.png' %}" alt="" srcset=""
-                                            class="create-text-options-img">
+                                        <div class="ct-wrap-img">
+                                            <img src="{% static 'images/bold.png' %}" alt="" srcset=""
+                                                class="create-text-options-img">
+                                            <img src="{% static 'images/italic.png' %}" alt="" srcset=""
+                                                class="create-text-options-img">
+                                            <img src="{% static 'images/addurlsmall.png' %}" alt="" srcset=""
+                                                class="create-text-options-img">
+                                            <img src="{% static 'images/strikethrough.png' %}" alt="" srcset=""
+                                                class="create-text-options-img">
+                                            <img src="{% static 'images/spoiler.png' %}" alt="" srcset=""
+                                                class="create-text-options-img">
+                                            <img src="{% static 'images/bulletlist.png' %}" alt="" srcset=""
+                                                class="create-text-options-img">
+                                            <img src="{% static 'images/numlist.png' %}" alt="" srcset=""
+                                                class="create-text-options-img">
+                                            <img src="{% static 'images/quote.png' %}" alt="" srcset=""
+                                                class="create-text-options-img">
+                                        </div>
+                                        <div class="comment_input-wrap">
+                                            <textarea name="text" id="comment_input" cols="30" rows="10"
+                                                placeholder='What are your thoughts?'></textarea>
+                                        </div>
+                                        <div class="button-wrap">
+                                            <button class='submit-btn' id="submit-post">Comment</button>
+                                        </div>
                                     </div>
-                                    <div class="comment_input-wrap">
-                                        <textarea name="text" id="comment_input" cols="30" rows="10"
-                                            placeholder='What are your thoughts?'></textarea>
-                                    </div>
-                                    <button id="" class='comment-post'>Post</button>
                                 </div>
 
                             </form>
@@ -197,8 +201,6 @@
                                     <div class="comment-text">
                                         {{item.text}}
 
-
-
                                         {% if user.is_authenticated %}
 
                                         <div class="thread-content-subpanel-wrapper">
@@ -243,21 +245,45 @@
                                             </div>
                                         </div>
                                         <div class="comment-reply-dropdown">
+
+
                                             <form action="{% url 'threads:comment_thread_child' item.path %}"
-                                                method='POST'>{% csrf_token %}
+                                                method="post">
+                                                {% csrf_token %}
+
                                                 <div class="comment_input-wrap">
-
-                                                    <textarea name="text" id="comment_input" cols="30" rows="10"
-                                                        placeholder="What are your thoughts?"></textarea>
-
-                                                    <div class="input-text-button-wrap">
-                                                        Bold, italics, url, strikethrough, etc
-
-
-                                                        <input type="submit" value="Reply">
+                                                    <div class="comment_input-wrap">
+                                                        <textarea name="text" id="comment_input" cols="30" rows="10"
+                                                            placeholder='What are your thoughts?'></textarea>
+                                                    </div>
+                                                    <div class="create-text-options">
+                                                        <div class="ct-wrap-img">
+                                                            <img src="{% static 'images/bold.png' %}" alt="" srcset=""
+                                                                class="create-text-options-img">
+                                                            <img src="{% static 'images/italic.png' %}" alt="" srcset=""
+                                                                class="create-text-options-img">
+                                                            <img src="{% static 'images/addurlsmall.png' %}" alt=""
+                                                                srcset="" class="create-text-options-img">
+                                                            <img src="{% static 'images/strikethrough.png' %}" alt=""
+                                                                srcset="" class="create-text-options-img">
+                                                            <img src="{% static 'images/spoiler.png' %}" alt=""
+                                                                srcset="" class="create-text-options-img">
+                                                            <img src="{% static 'images/bulletlist.png' %}" alt=""
+                                                                srcset="" class="create-text-options-img">
+                                                            <img src="{% static 'images/numlist.png' %}" alt=""
+                                                                srcset="" class="create-text-options-img">
+                                                            <img src="{% static 'images/quote.png' %}" alt="" srcset=""
+                                                                class="create-text-options-img">
+                                                            <div class="button-wrap" style='border:none;'>
+                                                                <button class='submit-btn'
+                                                                    id="submit-post">Reply</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </form>
+
                                         </div>
                                         {% endif %}
                                     </div>

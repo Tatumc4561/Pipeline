@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 100%;
+    width: 96%;
    
 
     
@@ -36,7 +36,7 @@
 .thread_likes-dislikes {
     display: flex;
     flex-direction: column;
- 
+    align-items: center;
     width: 40px;
     height: 100%;
     margin-left: 5px;
@@ -55,7 +55,9 @@
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    width: 96%;
+    max-width: 95%;
+    width: auto;
+    height: auto;
 
 }
 
@@ -64,13 +66,16 @@
     border-radius: 4px;
     max-width: 100%;
     max-height: 600px;
-  
+    width: auto;
+    height: auto;
+    
 }
 
 .thread-content-text {
     margin-top: 10px;
     font-weight: 600;
     height: fit-content;
+    width: 100%;
 }
 
 .thread-content-subpanel-wrapper {
@@ -81,7 +86,7 @@
     height: 15px;
     font-size: 12px;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 
@@ -109,7 +114,7 @@
 
 .thread-input-wrap {
     width: 100%;
-    height: 200px;
+    height: auto;
 }
 
 .comment_input-wrap {
@@ -117,7 +122,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 175px;
-    width: 95%;
+    width: 100%;
     height: fit-content;
     background-color: rgb(84, 82, 81);
 }
@@ -125,15 +130,19 @@
 
 #comment_input {
     margin: 0;
-    height: 140px;
-    width: 99.3%;
+    height: 100%;
+    min-height: 140px;
     border: none;
     background-color: rgb(84, 82, 81);
     resize: none;
-    border: 1px solid rgb(186, 184, 184);
-
+    width: 98%;
+    margin: 0;
+    padding: 1%;
+    z-index: 2;
 
 }
+
+
 
 .input-text-button-wrap {
     display: flex;
@@ -214,12 +223,11 @@ li {
 .-visible {
     visibility: visible;
     opacity: 1;
-    width: 50%;
-    height: 180px;
+    width: 100%;
+    height: fit-content;
     border-left: 2px solid black;
     padding-left: 10px;
-    padding-top: 10px;
-    
+    padding-top: 10px;    
 
 }
 
