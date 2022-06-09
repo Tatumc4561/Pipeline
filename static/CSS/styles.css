@@ -82,3 +82,46 @@ html {
     visibility: visible;
     opacity: 1;
 }
+
+@media screen and (max-width: 750px) {
+    .nav-wrapper {
+        justify-content: space-between;
+    }
+
+    #personal-dropdown-wrap {
+        display: none;
+    }
+
+
+    .search-div-wrap {
+        width: 40%;
+        margin-right: 20px;
+    }
+
+    .search-dropdown-wrap {
+        width: 40%;
+    }
+
+    #nav-profile-wrapper  {
+        display: none;
+    }
+    
+    .quick-link-wrap {
+        display: none;
+    }
+    #profile-options {
+        display: none;
+    }
+
+    .content-wrap {
+        width: 95vw;
+        margin-right: 0;
+    }
+    .thumb-post-wrap {
+        overflow-x: hidden;
+    }
+    .sidebar-wrap {
+      display: none;
+    }
+    
+  }
