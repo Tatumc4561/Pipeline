@@ -297,10 +297,18 @@ p {
 
 .submit-btn {
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 15px;
     padding: 0 15px;
     margin: 3px;
     font-weight: 700;
+}
+
+.btn-img {
+    height: 24px;
+    width: 24px;
 }
 
 .comment-post{
@@ -309,8 +317,15 @@ p {
 
 .create-footer {
     display: flex;
+    width: 100%;
     background-color: rgb(136, 133, 131);
+    flex-direction: column;
 }
+
+.notify-wrap {
+    display: flex;
+}
+
 
 
 .create-sidebar-wrap {

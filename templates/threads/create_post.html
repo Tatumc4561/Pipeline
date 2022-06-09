@@ -143,19 +143,24 @@
                     </div>
                 </div>
                 <div class="create-button-flair">
-                    <button id="oc-flair">+ OC</button>
-                    <button id="spoiler-flair">+ Spoiler</button>
-                    <button id="NSFW">+ NSFW</button>
-                    <button id="flair-dropdown">Flair -v-</button>
+                    <button class='submit-btn' id="oc-flair"><img class='btn-img'
+                            src="{% static 'images/create_post.png' %}" alt="" srcset=""> OC</button>
+                    <button class='submit-btn' id="spoiler-flair"><img class='btn-img'
+                            src="{% static 'images/create_post.png' %}" alt="" srcset=""> Spoiler</button>
+                    <button class='submit-btn' id="NSFW"><img class='btn-img'
+                            src="{% static 'images/create_post.png' %}" alt="" srcset=""> NSFW</button>
+                    <button class='submit-btn' id="flair-dropdown"><img class='btn-img'
+                            src="{% static 'images/flair.png' %}" alt="" srcset="">Flair</button>
                 </div>
                 <div class="button-wrap">
-                    <button id="save-draft">Save Draft</button>
-                    <button id="submit-post">Post</button>
+                    <button class='submit-btn' id="save-draft">Save Draft</button>
+                    <button class='submit-btn' id="submit-post">Post</button>
                 </div>
                 <div class="create-footer">
-                    <input type="checkbox" name="notifiy" id="">
-                    <h5>Send me post reply notifications</h5><br>
-                    <h5>Connect accounts to share your post</h5>
+                    <div class="notify-wrap">
+                        <input type="checkbox" name="notify" id="">
+                        <h5>Send me post reply notifications</h5>
+                    </div>
                 </div>
             </div>
         </form>
