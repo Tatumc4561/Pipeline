@@ -12,15 +12,15 @@
     height: 50px;
     align-items: flex-end;
     background-color: rgb(84, 82, 81);
-
     border-bottom: solid 5px rgb(65, 30, 30);
     padding: 2px 15px;
 
 }
 
 .home-link-wrap {
-    width: 15vw;
+    width: 15%;
     height: 100%;
+    margin-left: 20px;
   
 }
 
@@ -34,10 +34,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 15vw;
+    width: 15%;
     height: 32px;
     border-radius: 4px;
-    margin: 0 10px;
+    margin: 0 15px;
     margin-top: 1px;
 }
 
@@ -67,6 +67,7 @@
 .search-div-wrap {
     width: 20%;
     height: 80%;
+    margin-bottom: -5px;
 }
 
 .search-button-wrap {
@@ -168,9 +169,9 @@
 .quick-link-wrap {
     display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: center;
     height: 32px;
-    width: fit-content;
+    width: 10%;
     border-right: 2px solid black;
 }
 
@@ -183,16 +184,17 @@
 
 #profile-options {
     display: flex;
+    align-items: flex-end;
+    justify-content: center;
     height: 32px;
-    width: fit-content;
+    width: 5%;
     border-right: 2px solid black;
-    margin-bottom: -2px;
 }
 
 #nav-profile-wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 35%;
     height: 100%;
     z-index: 10;
     margin-right: 30px;
