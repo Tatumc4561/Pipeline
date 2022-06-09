@@ -84,6 +84,7 @@ html {
 }
 
 @media screen and (max-width: 750px) {
+    /* --------------- top nav  ------------------------- */
     .nav-wrapper {
         justify-content: space-between;
     }
@@ -112,7 +113,7 @@ html {
     #profile-options {
         display: none;
     }
-
+    /* --------------- main-content  ------------------------- */
     .content-wrap {
         width: 95vw;
         margin-right: 0;
@@ -123,5 +124,45 @@ html {
     .sidebar-wrap {
       display: none;
     }
+    /* --------------- create post page ------------------------- */
+    .create-sidebar-wrap {
+        display: none;
+    }
+    .create-main-wrap {
+        width: 95vw;
+        margin-right: 0;
+    }
+    .create-wrap {
+        width: 95vw;
+    }
+    .create-header {
+        width: 92vw;
+    }
+
+
+    .create-group-choice-wrap {
+        width: 95vw;
+    }
+
+    .create-box-wrap {
+        width: 95vw;
+        margin-bottom: 20px;
+    }
     
+    /* --------------- threads page ------------------------- */
+    .thread-post-wrap {
+        width: 95vw;
+    }
+    .thread-content {
+        width: 85vw;
+    }
+    .-visible {
+        position: absolute;
+        left: 0;
+        z-index: 10;
+        width: 100vw;
+
+    }
+
+ 
   }
