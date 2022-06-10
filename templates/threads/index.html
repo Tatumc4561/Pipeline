@@ -113,6 +113,7 @@
                                     alt="" srcset=""></a>
                             <a href="{% url 'threads:read_thread' thread.id %}" class='subicon-href'><img
                                     class='subicons' src="{% static 'images/comment.png' %}" alt="" srcset="">
+                                {{thread.get_descendant_count}}
                                 Comments</a>
                             <a href="" class='subicon-href subicon-hide'><img class='subicons'
                                     src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
@@ -138,6 +139,10 @@
                                     <a href="#" class='subicon-href'><img class='thread_subicons'
                                             src="{% static 'images/save.png' %}" alt="" srcset="">
                                         Save</a>
+                                    <a href="{% url 'users:follow_user' thread.user %}" class='subicon-href'>
+                                        <img class='thread_subicons' src="{% static 'images/follow.png' %}" alt=""
+                                            srcset="">
+                                        Follow</a>
                                 </div>
                             </div>
                         </div>

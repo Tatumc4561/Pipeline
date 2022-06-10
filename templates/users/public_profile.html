@@ -19,6 +19,11 @@
         {% endif %}
 
         <h1 id="sidebar-username">u/{{userID}}</h1>
+        <h4>
+            <a href="{% url 'users:follow_user' userID %}" class='subicon-href'>
+                <img class='thread_subicons' src="{% static 'images/follow.png' %}" alt="" srcset="">
+                Follow</a>
+        </h4>
     </div>
 
 </div>
@@ -121,15 +126,40 @@
                                     alt="" srcset=""></a>
                             <a href="{% url 'threads:read_thread' thread.id %}" class='subicon-href'><img
                                     class='subicons' src="{% static 'images/comment.png' %}" alt="" srcset="">
+                                {{thread.get_descendant_count}}
                                 Comments</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/award.png' %}"
-                                    alt="" srcset=""> Award</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/share.png' %}"
-                                    alt="" srcset=""> Share</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/hide.png' %}"
-                                    alt="" srcset=""> Hide</a>
-                            <a href="#" class='subicon-href'><img class='subicons' src="{% static 'images/flag.png' %}"
-                                    alt="" srcset=""> Report</a>
+                            <a href="" class='subicon-href subicon-hide'><img class='subicons'
+                                    src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
+                            <a href="" class='subicon-href subicon-hide'><img class='subicons'
+                                    src="{% static 'images/share.png' %}" alt="" srcset=""> Share</a>
+                            <a href="" class='subicon-href subicon-hide'><img class='subicons'
+                                    src="{% static 'images/hide.png' %}" alt="" srcset=""> Hide</a>
+                            <a href="#" class='subicon-href subicon-hide'><img class='subicons'
+                                    src="{% static 'images/flag.png' %}" alt="" srcset=""> Report</a>
+                            {% if thread.user != request.user %}
+                            <a href="{% url 'users:follow_user' thread.user %}" class='subicon-href'>
+                                <img class='thread_subicons' src="{% static 'images/follow.png' %}" alt="" srcset="">
+                                Follow</a>
+                            {% endif %}
+                            <div class='subicon-more'>
+
+                                <img class='thread_subicons' src="{% static 'images/more_dots.png' %}" alt="" srcset="">
+
+                                <div class="subicons-expandup" style='display:none;'>
+                                    <a href="" class='subicon-href'><img class='thread_subicons'
+                                            src="{% static 'images/award.png' %}" alt="" srcset="">
+                                        Award</a>
+                                    <a href="" class='subicon-href'><img class='thread_subicons'
+                                            src="{% static 'images/share.png' %}" alt="" srcset="">
+                                        Share</a>
+                                    <a href="#" class='subicon-href'><img class='thread_subicons'
+                                            src="{% static 'images/flag.png' %}" alt="" srcset="">
+                                        Report</a>
+                                    <a href="#" class='subicon-href'><img class='thread_subicons'
+                                            src="{% static 'images/save.png' %}" alt="" srcset="">
+                                        Save</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

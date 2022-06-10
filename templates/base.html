@@ -208,13 +208,7 @@
 
     {% comment %} makes javascript play nice, and not display null {% endcomment %}
     <div class="javascriptselectorsnull" style='display:none;'>
-        <div id="post-option-images"></div>
-        <div id="create_thread_image"></div>
-        <div id="image_input_button"></div>
-        <div id="image_input"></div>
-        <div class="reply-button"></div>
-        <div class="comment-reply-dropdown"></div>
-        <div class="report-flag"></div>
+        {% comment %} groups {% endcomment %}
         <div id="group-choice"></div>
         <div class="group-radios"></div>
         <div id="group-popup-img"></div>
@@ -222,7 +216,31 @@
         <div id="community_sidebar"></div>
         <div id="sidebar-groupimg"></div>
         <div id="sidebar-grouptext"></div>
+        <div class="hidden-content"></div>
+
+        {% comment %} subicons {% endcomment %}
+        <div class="report-flag"></div>
+
+        {% comment %} thread options {% endcomment %}
+        <div class="reply-button"></div>
+        <div class="comment-reply-dropdown"></div>
+
+        {% comment %} images {% endcomment %}
+        <div id="post-option-images"></div>
+        <div id="create_thread_image"></div>
+        <div id="image_input_button"></div>
+        <div id="image_input"></div>
+
+
+        {% comment %} sidebar / mobile top sidebar {% endcomment %}
+        <div id="avatar_input_button-m"></div>
+        <div id="avatar_input_button"></div>
+        <div id="avatar_input-m"></div>
+        <div id="avatar_input"></div>
+
+        {% comment %} other {% endcomment %}
         <div class="profile-only"></div>
+
 
     </div>
 </body>

@@ -65,7 +65,9 @@
                             </div>
                             <div class="thread-content-subpanel-wrapper">
                                 <a href="" class='subicon-href'><img class='thread_subicons'
-                                        src="{% static 'images/comment.png' %}" alt="" srcset=""> Comments</a>
+                                        src="{% static 'images/comment.png' %}" alt="" srcset="">
+                                    {{read_thread.0.get_descendant_count}}
+                                    Comments</a>
                                 <a href="" class='subicon-href subicon-hide'><img class='thread_subicons'
                                         src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
                                 <a href="" class='subicon-href subicon-hide'><img class='thread_subicons'
