@@ -26,7 +26,24 @@
         {% endif %}
 
         <div class="sort-by-wrap">
-            Best, Hot, New, Top
+            <div class='' id="sbw-new">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/new_sort.png' %}" alt="" srcset="">
+                    New
+                </button>
+            </div>
+            <div class='' id="sbw-hot">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/hot.png' %}" alt="" srcset="">
+                    Hot
+                </button>
+            </div>
+            <div class='' id="sbw-top">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/top.png' %}" alt="">
+                    Top
+                </button>
+            </div>
         </div>
 
         <div class="thumb-post-wrap">
@@ -63,7 +80,8 @@
                         {% comment %} flex 2 columns {% endcomment %}
 
                         <div class="thumb-content-avatar-group-user">
-                            <div class="thumb-content-title">{{thread.title}}</div>
+                            <div class="thumb-content-title"> <a href="{% url 'threads:read_thread' thread.id %}"
+                                    style='text-decoration:none; color: black;'>{{thread.title}}</a></div>
 
                             <div class="thumb-group-user-wrapper">
                                 <div class="thumb-content-avatar"><img src="{{thread.group.avatar.url}}" alt=""

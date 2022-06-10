@@ -254,3 +254,7 @@ li {
 .subicon-href-reply img {
     margin-right: 1px;
 }
+
+.subicon-more {
+    display: none;
+}

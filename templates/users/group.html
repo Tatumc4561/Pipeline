@@ -24,7 +24,24 @@
         {% endif %}
 
         <div class="sort-by-wrap">
-            Best, Hot, New, Top
+            <div class='' id="sbw-new">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/new_sort.png' %}" alt="" srcset="">
+                    New
+                </button>
+            </div>
+            <div class='' id="sbw-hot">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/hot.png' %}" alt="" srcset="">
+                    Hot
+                </button>
+            </div>
+            <div class='' id="sbw-top">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/top.png' %}" alt="">
+                    Top
+                </button>
+            </div>
         </div>
 
         <div class="thumb-post-wrap">
@@ -61,7 +78,8 @@
                         {% comment %} flex 2 columns {% endcomment %}
 
                         <div class="thumb-content-avatar-group-user">
-                            <div class="thumb-content-title">{{thread.title}}</div>
+                            <div class="thumb-content-title"> <a href="{% url 'threads:read_thread' thread.id %}"
+                                    style='text-decoration:none; color: black;'>{{thread.title}}</a></div>
 
                             <div class="thumb-group-user-wrapper">
                                 <div class="thumb-content-avatar"><img src="{{thread.group.avatar.url}}" alt=""
@@ -70,20 +88,17 @@
                                         href="{% url 'users:group_page' thread.group.id %}">p/{{thread.group}}</a> *
                                 </div>
                                 {% comment %} link to user profile / post date information {% endcomment %}
-                                <div class="thumb-content-user">Posted by u/<a
-                                        href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
+                                <div class="thumb-content-user">Posted by u/
+                                    {% if thread.user == request.user %}
+                                    <a href="{% url 'users:profile' request.user %}">{{thread.user}}</a>
+                                    {% else %}
+                                    <a href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
+                                    {% endif %}
                                     {{thread.posted_date}}
                                 </div>
                             </div>
-
-
-
-
-
-                            {% comment %} <div class="thumb-content-text">{{thread.text|slice:":50"}}</div>
-                            {% endcomment %}
-
                         </div>
+
                         <div class="thumb-content-subpanel-wrapper">
                             <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/expand.png' %}"
                                     alt="" srcset=""></a>

@@ -66,255 +66,306 @@
                             <div class="thread-content-subpanel-wrapper">
                                 <a href="" class='subicon-href'><img class='thread_subicons'
                                         src="{% static 'images/comment.png' %}" alt="" srcset=""> Comments</a>
-                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                <a href="" class='subicon-href subicon-hide'><img class='thread_subicons'
                                         src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
-                                <a href="" class='subicon-href'><img class='thread_subicons'
+                                <a href="" class='subicon-href subicon-hide'><img class='thread_subicons'
                                         src="{% static 'images/share.png' %}" alt="" srcset=""> Share</a>
-                                <a href="#" class='subicon-href'><img class='thread_subicons'
+                                <a href="#" class='subicon-href subicon-hide'><img class='thread_subicons'
                                         src="{% static 'images/flag.png' %}" alt="" srcset=""> Report</a>
-                                <a href="#" class='subicon-href'><img class='thread_subicons'
+                                <a href="#" class='subicon-href subicon-hide'><img class='thread_subicons'
                                         src="{% static 'images/save.png' %}" alt="" srcset=""> Save</a>
                                 <a href="{% url 'users:follow_user' read_thread.0.user %}" class='subicon-href'>
                                     <img class='thread_subicons' src="{% static 'images/follow.png' %}" alt=""
                                         srcset="">
                                     Follow</a>
+                                <div class='subicon-more'>
+                                    <img class='thread_subicons' src="{% static 'images/more_dots.png' %}" alt=""
+                                        srcset="">
 
-                                {% comment %} <a href="" class='subicon-href'><img class='subicons'
-                                        src="{% static 'images/hide.png' %}" alt="" srcset=""> Hide</a> {% endcomment %}
-                                {% comment %} <a href="" class='subicon-href'><img class='subicons'
-                                        src="{% static 'images/expand.png' %}" alt="" srcset=""></a>
-                                {% endcomment %}
+                                    <div class="subicons-expandup" style='display:none;'>
+                                        <a href="" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/award.png' %}" alt="" srcset="">
+                                            Award</a>
+                                        <a href="" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/share.png' %}" alt="" srcset="">
+                                            Share</a>
+                                        <a href="#" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/flag.png' %}" alt="" srcset="">
+                                            Report</a>
+                                        <a href="#" class='subicon-href'><img class='thread_subicons'
+                                                src="{% static 'images/save.png' %}" alt="" srcset="">
+                                            Save</a>
+                                    </div>
+
+                                    {% comment %} <a href="" class='subicon-href'><img class='subicons'
+                                            src="{% static 'images/hide.png' %}" alt="" srcset=""> Hide</a>
+                                    {% endcomment %}
+                                    {% comment %} <a href="" class='subicon-href'><img class='subicons'
+                                            src="{% static 'images/expand.png' %}" alt="" srcset=""></a>
+                                    {% endcomment %}
+                                </div>
+
                             </div>
+                            {% if user.is_authenticated %}
+                            <div class="thread-input-wrap">
+                                Comment as
+                                <a href="{% url "users:profile" request.user %}">
+                                    {{request.user}}
+                                </a>
+                                <form action="{% url 'threads:comment_thread_child' read_thread.0.path %}"
+                                    method="post">
+                                    {% csrf_token %}
 
-                        </div>
-                        {% if user.is_authenticated %}
-                        <div class="thread-input-wrap">
-                            Comment as
-                            <a href="{% url "users:profile" request.user %}">
-                                {{request.user}}
-                            </a>
-                            <form action="{% url 'threads:comment_thread_child' read_thread.0.path %}" method="post">
-                                {% csrf_token %}
-
-                                <div class="create-text-wrap">
-                                    <div class="create-text-options">
-                                        <div class="ct-wrap-img">
-                                            <img src="{% static 'images/bold.png' %}" alt="" srcset=""
-                                                class="create-text-options-img">
-                                            <img src="{% static 'images/italic.png' %}" alt="" srcset=""
-                                                class="create-text-options-img">
-                                            <img src="{% static 'images/addurlsmall.png' %}" alt="" srcset=""
-                                                class="create-text-options-img">
-                                            <img src="{% static 'images/strikethrough.png' %}" alt="" srcset=""
-                                                class="create-text-options-img">
-                                            <img src="{% static 'images/spoiler.png' %}" alt="" srcset=""
-                                                class="create-text-options-img">
-                                            <img src="{% static 'images/bulletlist.png' %}" alt="" srcset=""
-                                                class="create-text-options-img">
-                                            <img src="{% static 'images/numlist.png' %}" alt="" srcset=""
-                                                class="create-text-options-img">
-                                            <img src="{% static 'images/quote.png' %}" alt="" srcset=""
-                                                class="create-text-options-img">
-                                        </div>
-                                        <div class="comment_input-wrap">
-                                            <textarea name="text" id="comment_input" cols="30" rows="10"
-                                                placeholder='What are your thoughts?'></textarea>
-                                        </div>
-                                        <div class="button-wrap">
-                                            <button class='submit-btn' id="submit-post">Comment</button>
+                                    <div class="create-text-wrap">
+                                        <div class="create-text-options">
+                                            <div class="ct-wrap-img">
+                                                <img src="{% static 'images/bold.png' %}" alt="" srcset=""
+                                                    class="create-text-options-img">
+                                                <img src="{% static 'images/italic.png' %}" alt="" srcset=""
+                                                    class="create-text-options-img">
+                                                <img src="{% static 'images/addurlsmall.png' %}" alt="" srcset=""
+                                                    class="create-text-options-img">
+                                                <img src="{% static 'images/strikethrough.png' %}" alt="" srcset=""
+                                                    class="create-text-options-img">
+                                                <img src="{% static 'images/spoiler.png' %}" alt="" srcset=""
+                                                    class="create-text-options-img">
+                                                <img src="{% static 'images/bulletlist.png' %}" alt="" srcset=""
+                                                    class="create-text-options-img">
+                                                <img src="{% static 'images/numlist.png' %}" alt="" srcset=""
+                                                    class="create-text-options-img">
+                                                <img src="{% static 'images/quote.png' %}" alt="" srcset=""
+                                                    class="create-text-options-img">
+                                            </div>
+                                            <div class="comment_input-wrap">
+                                                <textarea name="text" id="comment_input" cols="30" rows="10"
+                                                    placeholder='What are your thoughts?'></textarea>
+                                            </div>
+                                            <div class="button-wrap">
+                                                <button class='submit-btn' id="submit-post">Comment</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </form>
-                        </div>
-                        {% endif %}
-
-
-                        <div class="comment-section-wrap">
-
-                            {% comment %} {% for each in roots %} {% endcomment %}
-                            {% for item, info in roots|slice:"1:" %} {% comment %} slice to access index's after parent
-                            node{% endcomment %}
-                            {% if info.open %}
+                                </form>
+                            </div>
+                            {% endif %}
 
 
-                            <ul class='comment-section-list'>
+                            <div class="comment-section-wrap">
 
-                                <div class="comment-section-profile">
+                                {% comment %} {% for each in roots %} {% endcomment %}
+                                {% for item, info in roots|slice:"1:" %} {% comment %} slice to access index's after
+                                parent
+                                node{% endcomment %}
+                                {% if info.open %}
 
 
-                                    {% if item.user == request.user %}
-                                    <a href="{% url 'users:profile' request.user %}">
+                                <ul class='comment-section-list'>
 
-                                        {% else %}
-                                        <a href="{% url "users:public_profile" item.user.username %}">
-                                            {% endif %}
+                                    <div class="comment-section-profile">
 
-                                            {% if not item.user.customuser.avatar.url %}
-                                            <img src="{% static 'images/mario_mushroom.png' %}" alt=""
-                                                class="comment-avatar">
+
+                                        {% if item.user == request.user %}
+                                        <a href="{% url 'users:profile' request.user %}">
+
                                             {% else %}
-                                            <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
-                                                class="comment-avatar">
-                                            {% endif %}
-                                            <div class="thread-content-user">
-                                                u/{{item.user}}
-                                                {% comment %} {{item.posted_date}} not displaying correct time
-                                                {% endcomment %}
-                                                {{item.created}}
-                                            </div>
-                                        </a>
+                                            <a href="{% url "users:public_profile" item.user.username %}">
+                                                {% endif %}
 
-                                </div>
-                                <li>
-                                    {% else %}
-                                </li>
-                                <div class="comment-section-profile">
-
-
-                                    {% if item.user == request.user %}
-                                    <a href="{% url 'users:profile' request.user %}">
-
-                                        {% else %}
-                                        <a href="{% url "users:public_profile" item.user.username %}">
-                                            {% endif %}
-
-                                            {% if not item.user.customuser.avatar.url %}
-                                            <img src="{% static 'images/mario_mushroom.png' %}" alt=""
-                                                class="comment-avatar">
-                                            {% else %}
-                                            <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
-                                                class="comment-avatar">
-                                            {% endif %}
-                                            <div class="thread-content-user">
-                                                u/{{item.user}}
-                                                {% comment %} {{item.posted_date}} not displaying correct time
-                                                {% endcomment %}
-                                                {{item.created}}
-                                            </div>
-                                        </a>
-
-                                </div>
-                                <li>
-                                    {% endif %}
-                                    <div class="comment-text">
-                                        {{item.text}}
-
-                                        {% if user.is_authenticated %}
-
-                                        <div class="thread-content-subpanel-wrapper">
-
-                                            {% comment %} upvote/downvote {% endcomment %}
-                                            <div class="thread-content-likes">
-                                                <a href="{% url 'threads:like_comment' item.id %}">
-                                                    <img src="{% static 'images/upvote.png' %}" alt="" srcset="">
-                                                </a>
-                                                <h5>
-                                                    {{item.likes}}
-                                                </h5>
-                                                <a href="{% url 'threads:dislike_comment' item.id %}">
-                                                    <img src="{% static 'images/downvote.png' %}" alt="" srcset="">
-                                                </a>
-
-                                                {% comment %} --------------------------------- {% endcomment %}
-                                                <div class="subicon-href-reply">
-                                                    <img class='thread_subicons' src="{% static 'images/comment.png' %}"
-                                                        alt="" srcset="">
-                                                    <div class='reply-button' id='reply-button'>
-                                                        Reply
-                                                    </div>
+                                                {% if not item.user.customuser.avatar.url %}
+                                                <img src="{% static 'images/mario_mushroom.png' %}" alt=""
+                                                    class="comment-avatar">
+                                                {% else %}
+                                                <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                                    class="comment-avatar">
+                                                {% endif %}
+                                                <div class="thread-content-user">
+                                                    u/{{item.user}}
+                                                    {% comment %} {{item.posted_date}} not displaying correct time
+                                                    {% endcomment %}
+                                                    {{item.created}}
                                                 </div>
-                                                {% comment %} on click load form {% endcomment %}
+                                            </a>
 
-                                                <a href="" class='subicon-href'><img class='thread_subicons'
-                                                        src="{% static 'images/award.png' %}" alt="" srcset="">
-                                                    Award</a>
-                                                <a href="" class='subicon-href'><img class='thread_subicons'
-                                                        src="{% static 'images/share.png' %}" alt="" srcset="">
-                                                    Share</a>
-                                                <a href="#" class='subicon-href'><img class='thread_subicons'
-                                                        src="{% static 'images/flag.png' %}" alt="" srcset="">
-                                                    Report</a>
-                                                <a href="#" class='subicon-href'><img class='thread_subicons'
-                                                        src="{% static 'images/save.png' %}" alt="" srcset=""> Save</a>
-                                                <a href="{% url 'users:follow_user' item.user %}"
-                                                    class='subicon-href'><img class='thread_subicons'
-                                                        src="{% static 'images/follow.png' %}" alt="" srcset="">
-                                                    Follow</a>
-                                            </div>
-                                        </div>
-                                        <div class="comment-reply-dropdown">
+                                    </div>
+                                    <li>
+                                        {% else %}
+                                    </li>
+                                    <div class="comment-section-profile">
 
 
-                                            <form action="{% url 'threads:comment_thread_child' item.path %}"
-                                                method="post">
-                                                {% csrf_token %}
+                                        {% if item.user == request.user %}
+                                        <a href="{% url 'users:profile' request.user %}">
 
-                                                <div class="comment_input-wrap">
-                                                    <div class="comment_input-wrap">
-                                                        <textarea name="text" id="comment_input" cols="30" rows="5"
-                                                            placeholder='What are your thoughts?'></textarea>
+                                            {% else %}
+                                            <a href="{% url "users:public_profile" item.user.username %}">
+                                                {% endif %}
+
+                                                {% if not item.user.customuser.avatar.url %}
+                                                <img src="{% static 'images/mario_mushroom.png' %}" alt=""
+                                                    class="comment-avatar">
+                                                {% else %}
+                                                <img src="{{MEDIA_URL}}{{item.user.customuser.avatar.url}}" alt=""
+                                                    class="comment-avatar">
+                                                {% endif %}
+                                                <div class="thread-content-user">
+                                                    u/{{item.user}}
+                                                    {% comment %} {{item.posted_date}} not displaying correct time
+                                                    {% endcomment %}
+                                                    {{item.created}}
+                                                </div>
+                                            </a>
+
+                                    </div>
+                                    <li>
+                                        {% endif %}
+                                        <div class="comment-text">
+                                            {{item.text}}
+
+                                            {% if user.is_authenticated %}
+
+                                            <div class="thread-content-subpanel-wrapper">
+
+                                                {% comment %} upvote/downvote {% endcomment %}
+                                                <div class="thread-content-likes">
+                                                    <a href="{% url 'threads:like_comment' item.id %}">
+                                                        <img src="{% static 'images/upvote.png' %}" alt="" srcset="">
+                                                    </a>
+                                                    <h5>
+                                                        {{item.likes}}
+                                                    </h5>
+                                                    <a href="{% url 'threads:dislike_comment' item.id %}">
+                                                        <img src="{% static 'images/downvote.png' %}" alt="" srcset="">
+                                                    </a>
+
+                                                    {% comment %} --------------------------------- {% endcomment %}
+                                                    <div class="subicon-href-reply">
+                                                        <img class='thread_subicons'
+                                                            src="{% static 'images/comment.png' %}" alt="" srcset="">
+                                                        <div class='reply-button' id='reply-button'>
+                                                            Reply
+                                                        </div>
                                                     </div>
-                                                    <div class="create-text-options">
-                                                        <div class="ct-wrap-img">
-                                                            <img src="{% static 'images/bold.png' %}" alt="" srcset=""
-                                                                class="create-text-options-img">
-                                                            <img src="{% static 'images/italic.png' %}" alt="" srcset=""
-                                                                class="create-text-options-img">
-                                                            <img src="{% static 'images/addurlsmall.png' %}" alt=""
-                                                                srcset="" class="create-text-options-img">
-                                                            <img src="{% static 'images/strikethrough.png' %}" alt=""
-                                                                srcset="" class="create-text-options-img">
-                                                            <img src="{% static 'images/spoiler.png' %}" alt=""
-                                                                srcset="" class="create-text-options-img">
-                                                            <img src="{% static 'images/bulletlist.png' %}" alt=""
-                                                                srcset="" class="create-text-options-img">
-                                                            <img src="{% static 'images/numlist.png' %}" alt=""
-                                                                srcset="" class="create-text-options-img">
-                                                            <img src="{% static 'images/quote.png' %}" alt="" srcset=""
-                                                                class="create-text-options-img">
-                                                            <div class="button-wrap" style='border:none;'>
-                                                                <button class='submit-btn'
-                                                                    id="submit-post">Reply</button>
+                                                    {% comment %} on click load form {% endcomment %}
+
+                                                    <a href="" class='subicon-href subicon-hide'><img
+                                                            class='thread_subicons'
+                                                            src="{% static 'images/award.png' %}" alt="" srcset="">
+                                                        Award</a>
+                                                    <a href="" class='subicon-href subicon-hide'><img
+                                                            class='thread_subicons'
+                                                            src="{% static 'images/share.png' %}" alt="" srcset="">
+                                                        Share</a>
+                                                    <a href="#" class='subicon-href subicon-hide'><img
+                                                            class='thread_subicons' src="{% static 'images/flag.png' %}"
+                                                            alt="" srcset="">
+                                                        Report</a>
+                                                    <a href="#" class='subicon-href subicon-hide'><img
+                                                            class='thread_subicons' src="{% static 'images/save.png' %}"
+                                                            alt="" srcset=""> Save</a>
+                                                    <a href="{% url 'users:follow_user' item.user %}"
+                                                        class='subicon-href'><img class='thread_subicons'
+                                                            src="{% static 'images/follow.png' %}" alt="" srcset="">
+                                                        Follow</a>
+                                                    <div class='subicon-more'>
+                                                        <img class='thread_subicons'
+                                                            src="{% static 'images/more_dots.png' %}" alt="" srcset="">
+
+                                                        <div class="subicons-expandup" style='display:none;'>
+                                                            <a href="" class='subicon-href'><img class='thread_subicons'
+                                                                    src="{% static 'images/award.png' %}" alt=""
+                                                                    srcset="">
+                                                                Award</a>
+                                                            <a href="" class='subicon-href'><img class='thread_subicons'
+                                                                    src="{% static 'images/share.png' %}" alt=""
+                                                                    srcset="">
+                                                                Share</a>
+                                                            <a href="#" class='subicon-href'><img
+                                                                    class='thread_subicons'
+                                                                    src="{% static 'images/flag.png' %}" alt=""
+                                                                    srcset="">
+                                                                Report</a>
+                                                            <a href="#" class='subicon-href'><img
+                                                                    class='thread_subicons'
+                                                                    src="{% static 'images/save.png' %}" alt=""
+                                                                    srcset="">
+                                                                Save</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="comment-reply-dropdown">
+
+
+                                                <form action="{% url 'threads:comment_thread_child' item.path %}"
+                                                    method="post">
+                                                    {% csrf_token %}
+
+                                                    <div class="comment_input-wrap">
+                                                        <div class="comment_input-wrap">
+                                                            <textarea name="text" id="comment_input" cols="30" rows="5"
+                                                                placeholder='What are your thoughts?'></textarea>
+                                                        </div>
+                                                        <div class="create-text-options">
+                                                            <div class="ct-wrap-img">
+                                                                <img src="{% static 'images/bold.png' %}" alt=""
+                                                                    srcset="" class="create-text-options-img">
+                                                                <img src="{% static 'images/italic.png' %}" alt=""
+                                                                    srcset="" class="create-text-options-img">
+                                                                <img src="{% static 'images/addurlsmall.png' %}" alt=""
+                                                                    srcset="" class="create-text-options-img">
+                                                                <img src="{% static 'images/strikethrough.png' %}"
+                                                                    alt="" srcset="" class="create-text-options-img">
+                                                                <img src="{% static 'images/spoiler.png' %}" alt=""
+                                                                    srcset="" class="create-text-options-img">
+                                                                <img src="{% static 'images/bulletlist.png' %}" alt=""
+                                                                    srcset="" class="create-text-options-img">
+                                                                <img src="{% static 'images/numlist.png' %}" alt=""
+                                                                    srcset="" class="create-text-options-img">
+                                                                <img src="{% static 'images/quote.png' %}" alt=""
+                                                                    srcset="" class="create-text-options-img">
+                                                                <div class="button-wrap" style='border:none;'>
+                                                                    <button class='submit-btn'
+                                                                        id="submit-post">Reply</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                            </form>
+                                                </form>
 
+                                            </div>
+                                            {% endif %}
                                         </div>
-                                        {% endif %}
-                                    </div>
-                                    {% for close in info.close %}
-                                </li>
-                            </ul>
-                            {% endfor %}
-                            {% endfor %}
+                                        {% for close in info.close %}
+                                    </li>
+                                </ul>
+                                {% endfor %}
+                                {% endfor %}
+
+                            </div>
 
                         </div>
 
                     </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="sidebar-wrap">
+            <div class="top-sidebar-wrap">
+                <div class="cover-photo">
 
                 </div>
+                <img src="{{read_thread.0.group.avatar.url}}" alt="" srcset="" class='sidebar-avatar'>
+                <h1 id="sidebar-username">p/{{read_thread.0.group}}</h1>
             </div>
-
-        </div>
-
-    </div>
-
-    <div class="sidebar-wrap">
-        <div class="top-sidebar-wrap">
-            <div class="cover-photo">
-
-            </div>
-            <img src="{{read_thread.0.group.avatar.url}}" alt="" srcset="" class='sidebar-avatar'>
-            <h1 id="sidebar-username">p/{{read_thread.0.group}}</h1>
         </div>
     </div>
-</div>
 
 
 
-{% endblock 'content' %}
+    {% endblock 'content' %}

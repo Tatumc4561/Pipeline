@@ -158,11 +158,71 @@ html {
     }
     .-visible {
         position: absolute;
-        left: 0;
         z-index: 10;
-        width: 100vw;
+        width: 95%;
+        border: 1px solid rgb(139, 138, 138);
+        background-color: rgb(84, 82, 81);
+        padding: 0;
+        left: 2.5%;
 
     }
+    .subicon-hide {
+        display: none;
+    }
 
- 
+    .subicon-more {
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+        color: black;
+        margin-right: 1px;
+        margin-left: 5px;
+    }
+    .subicon-more:hover {
+        cursor: pointer;
+    }
+
+    /* --------------- sidebar move to top  ------------------------- */
+
+    .sidebar-wrap-m {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width: 95%;
+        border: 1px solid rgb(139, 138, 138);
+        background-color: rgb(84, 82, 81);
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+
+    .sort-by-dropdown {
+        width: 95%;
+        background-color: rgb(84, 82, 81);
+        border: 1px solid rgb(139, 138, 138);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        border-radius: 4px;
+    }
+
+    #sbw-wrap-d {
+        display: flex;
+        justify-content: center;
+        width: 93.5vw;
+        height: 40px;
+    }
+
+    .sbw-btn-d {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid rgb(139, 138, 138);
+        border-left: 1px solid rgb(139, 138, 138);
+
+        width: 30%;
+        height: 100%;
+      
+    }
+
   }

@@ -150,7 +150,22 @@ imageButton.addEventListener('click', function(){
 
 
 
+// --------- sidebar / mobile top sidebar ---------------
 
+const avatarButtonM = document.querySelector('#avatar_input_button-m')
+const avatarButton = document.querySelector('#avatar_input_button')
+const avatarInputM = document.querySelector('#avatar_input-m')
+const avatarInput = document.querySelector('#avatar_input')
+
+avatarButton.addEventListener('click', function(){
+    console.log('avatar_update')
+    avatarInput.click()
+})
+
+avatarButtonM.addEventListener('click', function(){
+    console.log('avatar_mobile_update')
+    avatarInputM.click()
+})
 
 
 

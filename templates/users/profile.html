@@ -5,6 +5,39 @@
 {% block 'title' %}<title>{{userID}} Profile</title>{% endblock 'title' %}
 {% block 'content' %}
 
+<div class="sidebar-wrap-m">
+
+    <div class="top-sidebar-wrap">
+        <div class="cover-photo">
+            <input type="file" name="" id="cover-photoimg" style='display:none'>
+            <label for="cover-photoimg" id='cover-photolabel'>
+                <div id="sidebarimg-wrap">
+                    <img src="{% static 'images/camera.png' %}" alt="" srcset="" id='sidebar-camera-icon'>
+                </div>
+            </label>
+
+        </div>
+        {% if user.customuser.avatar %}
+        <img src="{{user.customuser.avatar.url}}" alt="" srcset="" class='sidebar-avatar'>
+
+        {% else %}
+        <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="" class='sidebar-avatar'>
+        {% endif %}
+
+        <h1 id="sidebar-username">u/{{request.user}}</h1>
+    </div>
+    <div class="mid-sidebar-wrap">
+        <form action="{% url 'users:user_update' %}" enctype='multipart/form-data' method='POST' class='avatar-form'>
+            {% csrf_token %}
+            <div class="button-wrap">
+                <input type="button" class='submit-btn' id="avatar_input_button-m" value="Change Avatar?" />
+                <input type="file" style="display:none;" id="avatar_input-m" name="avatar" />
+                <button type="submit" class='submit-btn'>Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
 
 <div class="sort-by-dropdown">
     <div id="sbw-wrap-d">
@@ -26,17 +59,23 @@
     <div class="content-wrap">
 
         <div class="sort-by-wrap">
-            <div class='sbw-btn' id="sbw-new">
-                <img src="{% static 'images/new.png' %}" alt="" srcset="">
-                New
+            <div class='' id="sbw-new">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/new_sort.png' %}" alt="" srcset="">
+                    New
+                </button>
             </div>
-            <div class='sbw-btn' id="sbw-hot">
-                <img src="{% static 'images/bold.png' %}" alt="" srcset="">
-                Hot
+            <div class='' id="sbw-hot">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/hot.png' %}" alt="" srcset="">
+                    Hot
+                </button>
             </div>
-            <div class='sbw-btn' id="sbw-top">
-                <img src="{% static 'images/all.png' %}" alt="">
-                Top
+            <div class='' id="sbw-top">
+                <button type="submit" class='submit-btn-main'>
+                    <img src="{% static 'images/top.png' %}" alt="">
+                    Top
+                </button>
             </div>
         </div>
 
@@ -78,12 +117,19 @@
                             <div class="thumb-content-title">{{thread.title}}</div>
 
                             <div class="thumb-group-user-wrapper">
-                                <div class="thumb-content-avatar"><img src="{% static 'images/mario.png' %}" alt=""
+                                <div class="thumb-content-avatar"><img src="{{thread.group.avatar.url}}" alt=""
                                         class="group_avatar"></div>
-                                <div class="thumb-content-group"><a href="">p/{{thread.group}}</a> *</div>
+                                <div class="thumb-content-group"><a
+                                        href="{% url 'users:group_page' thread.group.id %}">p/{{thread.group}}</a> *
+                                </div>
+
                                 {% comment %} link to user profile / post date information {% endcomment %}
-                                <div class="thumb-content-user">Posted by u/<a
-                                        href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
+                                <div class="thumb-content-user">Posted by u/
+                                    {% if thread.user == request.user %}
+                                    <a href="{% url 'users:profile' request.user %}">{{thread.user}}</a>
+                                    {% else %}
+                                    <a href="{% url "users:public_profile" thread.user.username %}">{{thread.user}}</a>
+                                    {% endif %}
                                     {{thread.posted_date}}
                                 </div>
                             </div>
@@ -145,10 +191,14 @@
             <h1 id="sidebar-username">u/{{request.user}}</h1>
         </div>
         <div class="mid-sidebar-wrap">
-            <form action="{% url 'users:user_update' %}" enctype='multipart/form-data' method='POST'>
+            <form action="{% url 'users:user_update' %}" enctype='multipart/form-data' method='POST'
+                class='avatar-form'>
                 {% csrf_token %}
-                <p class="text">Change Avatar: <input type="file" name="avatar" id="avatar"> </p>
-                <button type="submit">submit</button>
+                <div class="button-wrap">
+                    <input type="button" class='submit-btn' id="avatar_input_button" value="Change Avatar?" />
+                    <input type="file" style="display:none;" id="avatar_input" name="avatar" />
+                    <button type="submit" class='submit-btn'>Submit</button>
+                </div>
             </form>
 
         </div>
