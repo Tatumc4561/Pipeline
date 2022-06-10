@@ -103,12 +103,7 @@
             <a href="{% url 'threads:index' %}" class=''><img class="quick-link-icons"
                     src="{% static 'images/new.png' %}" id="" alt="New" srcset=""></a>
         </div>
-        {% if not user.is_authenticated %}
-        <div class="login-create-wrap">
-            <a href="{% url "users:login" %}" id='login'>Login</a>
-            <a href="{% url "users:register" %}" id='create_user'>Create User</a>
-        </div>
-        {% endif %}
+
 
         {% if user.is_authenticated %}
         <div class="profile-only" id='profile-options'>
@@ -198,6 +193,14 @@
         </div>
 
     </div>
+    {% if not user.is_authenticated %}
+    <div class="login-create-wrap">
+        <a href="{% url "users:login" %}" style='text-decoration:none;' id='login'><button type="submit"
+                class='submit-btn'>Login</button></a>
+        <a href="{% url "users:register" %}" style='text-decoration:none;' id='create_user'><button type="submit"
+                class='submit-btn'>Create User</button></a>
+    </div>
+    {% endif %}
 
     {% block 'content' %}
 

@@ -145,7 +145,8 @@
             <div class="sidebar-rules">
 
                 <div class="sidebar-header">
-                    <img src="" alt="" srcset="" id='sidebar-groupimg'> {% comment %} group image{% endcomment %}
+                    <img src="{{group.avatar.url}}" alt="" srcset="" id='sidebar-groupimg'> {% comment %} group
+                    image{% endcomment %}
                     <p id="sidebar-grouptext">
                         {% comment %} Community Title {% endcomment %}
                     </p>
@@ -166,15 +167,15 @@
                     </div>
                 </div>
                 <div class="creation_date">
-                    <img src="" alt="" srcset="">
-                    {% comment %}pull in group creation date{% endcomment %}
+                    <img src="{% static 'images/group_creation.png' %}" alt="" srcset="">
+                    Created
                 </div>
-                <div class="dropdown-community-options-wrap">
+                {% comment %} <div class="dropdown-community-options-wrap">
                     <div class="dropdown-community-title">
                         Community Options
                     </div>
                     <img src="{% static 'images/drop-expand.png' %}" alt="" srcset="">
-                </div>
+                </div> {% endcomment %}
                 <div class="community-option-selection">
 
                 </div>
@@ -183,12 +184,14 @@
             <div class="community-rules-wrap" id='community_rules'>
                 <div class="sidebar-rules">
                     <div class="sidebar-list">
-
-                        <div class='sidebar-li'>Remmeber the human</div>
-                        <div class='sidebar-li'>Behave divke you would in real divfe</div>
-                        <div class='sidebar-li'>Look for the original source of content</div>
-                        <div class='sidebar-li'>Search for duplicates before posting</div>
-                        <div class='sidebar-li'>Read the community's rules</div>
+                        <h3>
+                            Community Rules
+                        </h3>
+                        <div class='sidebar-li'>Lorem ipsum dolor sit amet.</div>
+                        <div class='sidebar-li'>Lorem ipsum dolor sit amet.</div>
+                        <div class='sidebar-li'>Lorem ipsum dolor sit amet.</div>
+                        <div class='sidebar-li'>Lorem ipsum dolor sit amet.</div>
+                        <div class='sidebar-li'>Lorem ipsum dolor sit amet.</div>
 
                     </div>
                 </div>
