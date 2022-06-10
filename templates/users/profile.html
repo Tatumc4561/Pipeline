@@ -27,15 +27,22 @@
         <h1 id="sidebar-username">u/{{request.user}}</h1>
     </div>
     <div class="mid-sidebar-wrap">
+
         <form action="{% url 'users:user_update' %}" enctype='multipart/form-data' method='POST' class='avatar-form'>
             {% csrf_token %}
             <div class="button-wrap">
+
                 <input type="button" class='submit-btn' id="avatar_input_button-m" value="Change Avatar?" />
                 <input type="file" style="display:none;" id="avatar_input-m" name="avatar" />
                 <button type="submit" class='submit-btn'>Submit</button>
             </div>
         </form>
-
+        <div class="button-wrap">
+            <button type="submit" class='submit-btn'>
+                <img src="{% static 'images/logout.png' %}" alt="" class='nav-img' srcset="">
+                <a href="{% url 'users:logout' %}" style='text-decoration:none; color:black;'>Logout</a>
+            </button>
+        </div>
     </div>
 </div>
 

@@ -76,10 +76,12 @@
                                         src="{% static 'images/flag.png' %}" alt="" srcset=""> Report</a>
                                 <a href="#" class='subicon-href subicon-hide'><img class='thread_subicons'
                                         src="{% static 'images/save.png' %}" alt="" srcset=""> Save</a>
+                                {% if read_thread.0.user != request.user %}
                                 <a href="{% url 'users:follow_user' read_thread.0.user %}" class='subicon-href'>
                                     <img class='thread_subicons' src="{% static 'images/follow.png' %}" alt=""
                                         srcset="">
                                     Follow</a>
+                                {% endif %}
                                 <div class='subicon-more'>
                                     <img class='thread_subicons' src="{% static 'images/more_dots.png' %}" alt=""
                                         srcset="">
@@ -265,10 +267,12 @@
                                                     <a href="#" class='subicon-href subicon-hide'><img
                                                             class='thread_subicons' src="{% static 'images/save.png' %}"
                                                             alt="" srcset=""> Save</a>
+                                                    {% if item.user != request.user %}
                                                     <a href="{% url 'users:follow_user' item.user %}"
                                                         class='subicon-href'><img class='thread_subicons'
                                                             src="{% static 'images/follow.png' %}" alt="" srcset="">
                                                         Follow</a>
+                                                    {% endif %}
                                                     <div class='subicon-more'>
                                                         <img class='thread_subicons'
                                                             src="{% static 'images/more_dots.png' %}" alt="" srcset="">
