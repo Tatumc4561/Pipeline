@@ -114,14 +114,32 @@
                             <a href="{% url 'threads:read_thread' thread.id %}" class='subicon-href'><img
                                     class='subicons' src="{% static 'images/comment.png' %}" alt="" srcset="">
                                 Comments</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/award.png' %}"
-                                    alt="" srcset=""> Award</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/share.png' %}"
-                                    alt="" srcset=""> Share</a>
-                            <a href="" class='subicon-href'><img class='subicons' src="{% static 'images/hide.png' %}"
-                                    alt="" srcset=""> Hide</a>
-                            <a href="#" class='subicon-href'><img class='subicons' src="{% static 'images/flag.png' %}"
-                                    alt="" srcset=""> Report</a>
+                            <a href="" class='subicon-href subicon-hide'><img class='subicons'
+                                    src="{% static 'images/award.png' %}" alt="" srcset=""> Award</a>
+                            <a href="" class='subicon-href subicon-hide'><img class='subicons'
+                                    src="{% static 'images/share.png' %}" alt="" srcset=""> Share</a>
+                            <a href="" class='subicon-href subicon-hide'><img class='subicons'
+                                    src="{% static 'images/hide.png' %}" alt="" srcset=""> Hide</a>
+                            <a href="#" class='subicon-href subicon-hide'><img class='subicons'
+                                    src="{% static 'images/flag.png' %}" alt="" srcset=""> Report</a>
+                            <div class='subicon-more'>
+                                <img class='thread_subicons' src="{% static 'images/more_dots.png' %}" alt="" srcset="">
+
+                                <div class="subicons-expandup" style='display:none;'>
+                                    <a href="" class='subicon-href'><img class='thread_subicons'
+                                            src="{% static 'images/award.png' %}" alt="" srcset="">
+                                        Award</a>
+                                    <a href="" class='subicon-href'><img class='thread_subicons'
+                                            src="{% static 'images/share.png' %}" alt="" srcset="">
+                                        Share</a>
+                                    <a href="#" class='subicon-href'><img class='thread_subicons'
+                                            src="{% static 'images/flag.png' %}" alt="" srcset="">
+                                        Report</a>
+                                    <a href="#" class='subicon-href'><img class='thread_subicons'
+                                            src="{% static 'images/save.png' %}" alt="" srcset="">
+                                        Save</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
