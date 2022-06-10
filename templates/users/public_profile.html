@@ -5,6 +5,26 @@
 {% block 'title' %}<title>{{userID}} Profile</title>{% endblock 'title' %}
 {% block 'content' %}
 
+
+<div class="sidebar-wrap-m">
+
+    <div class="top-sidebar-wrap">
+        <div class="cover-photo">
+
+
+        </div>
+        {% if userID.customuser.avatar %}
+        <img src="{{userID.customuser.avatar.url}}" alt="" srcset="" class='sidebar-avatar'>
+
+        {% else %}
+        <img src="{% static 'images/mario_mushroom.png' %}" alt="" srcset="" class='sidebar-avatar'>
+        {% endif %}
+
+        <h1 id="sidebar-username">u/{{userID}}</h1>
+    </div>
+
+</div>
+
 <div class="sort-by-dropdown">
     <div id="sbw-wrap-d">
         <div class='sbw-btn-d' id="sbw-overview">

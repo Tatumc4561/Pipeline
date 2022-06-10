@@ -82,9 +82,10 @@
     align-items: center;
     border-radius: 15px;
     padding: 0 15px;
-    margin: 3px;
+    margin: 3px 10px;
     font-weight: 700;
     height: 50px;
+
 }
 
 .thumb-post-wrap {
