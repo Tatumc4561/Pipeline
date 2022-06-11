@@ -385,6 +385,7 @@ p {
 
 .sidebar-header {
     display: flex;
+    flex-direction: column;
     border-bottom: 1px solid rgb(186, 184, 184);
     align-items: center;
     justify-content: center;

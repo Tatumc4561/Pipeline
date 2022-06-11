@@ -33,4 +33,9 @@ urlpatterns = [
         views.join_group,
         name="join_group",
     ),
+    path(
+        "join/<str:groupID>",
+        views.leave_group,
+        name="leave_group",
+    ),
 ]

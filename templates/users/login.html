@@ -16,6 +16,19 @@
         </form>
     </div>
 </div>
+<div class="sidebar-wrap">
+    <div class="top-sidebar-wrap">
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h3>Username: <p>{{form.username}}</p>
+            </h3>
+            <h3>Password: <p>{{form.password}}</p>
+            </h3>
+            <input type="submit" value="Login" class='submit-btn' />
+        </form>
+    </div>
+</div>
 
 
 {% endblock 'content' %}

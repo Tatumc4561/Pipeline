@@ -17,6 +17,13 @@
         {% endif %}
 
         <h1 id="sidebar-username">p/{{group}}</h1>
+        {% if request.user not in group.member_names %}
+        <a href="{% url 'users:join_group' group.id %}"><button type="submit" class='submit-btn'>Join
+                Group</button></a>
+        {% else %}
+        <a href="{% url 'users:leave_group' group.id %}"><button type="submit" class='submit-btn'>Leave
+                Group</button></a>
+        {% endif %}
     </div>
 
 </div>
@@ -173,7 +180,16 @@
                     <img src="{{group.avatar.url}}" alt="" srcset="" id='sidebar-groupimg'> {% comment %} group
                     image{% endcomment %}
                     <p id="sidebar-grouptext">
-                        {% comment %} Community Title {% endcomment %}
+
+                        <h1 id="sidebar-username">p/{{group}}</h1>
+                        {% if request.user not in group.member_names %}
+                        <a href="{% url 'users:join_group' group.id %}"><button type="submit" class='submit-btn'>Join
+                                Group</button></a>
+                        {% else %}
+                        <a href="{% url 'users:leave_group' group.id %}"><button type="submit" class='submit-btn'>Leave
+                                Group</button></a>
+                        {% endif %}
+
                     </p>
                 </div>
                 <div class="community-desc">

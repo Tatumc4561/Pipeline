@@ -167,3 +167,11 @@ def join_group(request, groupID):
     join = Channel.objects.get(id=groupID)
     JoinGroup.objects.create(join_group=request.user, target_group=join)
     return HttpResponseRedirect(reverse("threads:index"))
+
+
+@login_required
+def leave_group(request, groupID):
+    join = Channel.objects.get(id=groupID)
+    instance = JoinGroup.objects.get(join_group=request.user, target_group=join)
+    instance.delete()
+    return HttpResponseRedirect(reverse("threads:index"))
