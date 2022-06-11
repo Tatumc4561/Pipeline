@@ -4,4 +4,4 @@ DEBUG = False
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-ALLOWED_HOSTS = ["pipeline.herokuapp.com"]
+ALLOWED_HOSTS = ["the-pipeline.herokuapp.com"]
