@@ -41,6 +41,7 @@ werkzeug = "*"
 whitenoise = "*"
 django-el-pagination = "*"
 django-treebeard = "*"
+django-on-heroku = "*"
 
 [dev-packages]
 
