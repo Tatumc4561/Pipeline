@@ -1,0 +1,260 @@
+
+
+.thread-post-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border: 1px solid rgb(139, 138, 138);
+
+    background-color: rgb(84, 82, 81);
+}
+
+
+.thread-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 96%;
+   
+
+    
+}
+
+.thread-content-text {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+}
+
+.thread_likes-dislikes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+    height: 100%;
+    margin-left: 5px;
+    margin-top: -5px;
+}
+
+.thread_totallikes-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -3px;
+    font-weight: 700;
+}
+
+.thread-content-image {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 95%;
+    width: auto;
+    height: auto;
+
+}
+
+#thread-full-image {
+
+    border-radius: 4px;
+    max-width: 100%;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+    
+}
+
+.thread-content-text {
+    margin-top: 10px;
+    font-weight: 600;
+    height: fit-content;
+    width: 100%;
+}
+
+.thread-content-subpanel-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 15px;
+    font-size: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+
+.thread_subicons {
+    height: 20px;
+    width: 20px;
+    z-index: 1;
+}
+
+.thread-content-likes {
+    display: flex;
+    align-items: center;
+    margin-left: -3px;
+    margin-right: 8px;
+    height: 20px;
+
+}
+
+.thread-content-likes h5 {
+    margin: 0;
+    padding: 0;
+    margin-top: -3px;
+}
+
+
+.thread-input-wrap {
+    width: 100%;
+    height: auto;
+}
+
+.comment_input-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 175px;
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(84, 82, 81);
+}
+
+
+#comment_input {
+    margin: 0;
+    height: 100%;
+    min-height: 140px;
+    border: none;
+    background-color: rgb(84, 82, 81);
+    resize: none;
+    width: 98%;
+    margin: 0;
+    padding: 1%;
+    z-index: 2;
+
+}
+
+
+
+.input-text-button-wrap {
+    display: flex;
+    
+}
+
+.comment-section-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 100px;
+    padding-top: 100px;
+    margin-left: -30px;
+}
+
+#linebreak {
+    width: 90%;
+    border: 2px solid black;
+}
+
+.comment-section-list {
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+ul {
+   
+    padding-left: 20px;
+  
+}
+
+.comment-section-profile a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    width: fit-content;
+}
+
+.comment-avatar {
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+    margin-left: -12px;
+}
+
+.thread-content-user {
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.comment-text {
+    color: black;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    width: 100%;
+}
+
+
+li {
+    border-left: 2px solid black;
+    list-style: none;
+    margin-bottom: 9px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.comment-reply-dropdown {
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.-visible {
+    visibility: visible;
+    opacity: 1;
+    width: 100%;
+    height: fit-content;
+    border-left: 2px solid black;
+    padding-left: 10px;
+    padding-top: 10px;    
+
+}
+
+.reply-button {
+    display: flex;
+    align-items: center;
+    color: black;
+    z-index: 5;
+    padding-left: 20px;
+    margin-left: -20px;
+}
+
+.subicon-href-reply {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.subicon-href-reply:hover {
+    cursor: pointer;
+}
+
+.subicon-href-reply img {
+    margin-right: 1px;
+}
+
+.subicon-more {
+    display: none;
+}

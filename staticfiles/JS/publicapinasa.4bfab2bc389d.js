@@ -1,0 +1,2 @@
+const publicAPI_key = "lfgAOkgFM781N3FbAdTUDyUp9SCmfcRhIZy2408v"
+export default publicAPI_key

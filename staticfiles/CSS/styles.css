@@ -1,0 +1,229 @@
+@import url(topnav.css);
+@import url(maincontent.css);
+@import url(threads.css);
+@import url(create.css);
+@import url(profile.css);
+@import url(create_user.css);
+@import url(user_login.css);
+
+
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(27, 27, 27);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;   /* Firefox */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+
+#loginAlert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    height: 50px;
+    width: 300px;
+    border: 1px solid rgb(139, 138, 138);
+    background-color: rgb(73, 93, 74);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    /* Firefox */
+    -moz-animation: fadeOut 2s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -webkit-animation: fadeOut 2s ease-in 5s forwards;
+    /* Opera */
+    -o-animation: fadeOut 2s ease-in 5s forwards;
+    animation: fadeOut 2s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    margin-right: 20px;
+}
+
+@keyframes fadeOut {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+        border: none;
+
+    }
+}
+@-webkit-keyframes fadeOut {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+        border: none;
+
+    }
+}
+
+
+
+/* eliminate flash of unstyled content */
+
+html {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media screen and (max-width: 750px) {
+    /* --------------- top nav  ------------------------- */
+    .nav-wrapper {
+        justify-content: space-between;
+    }
+
+    #personal-dropdown-wrap {
+        display: none;
+    }
+
+
+    .search-div-wrap {
+        width: 40%;
+        margin-right: 20px;
+    }
+
+    .search-dropdown-wrap {
+        width: 40%;
+    }
+
+    #nav-profile-wrapper  {
+        display: none;
+    }
+    
+    .quick-link-wrap {
+        display: none;
+    }
+    #profile-options {
+        display: none;
+    }
+    /* --------------- main-content  ------------------------- */
+    .content-wrap {
+        width: 95vw;
+        margin-right: 0;
+    }
+    .thumb-post-wrap {
+        overflow-x: hidden;
+    }
+    .sidebar-wrap {
+      display: none;
+    }
+    /* --------------- create post page ------------------------- */
+    .create-sidebar-wrap {
+        display: none;
+    }
+    .create-main-wrap {
+        width: 95vw;
+        margin-right: 0;
+    }
+    .create-wrap {
+        width: 95vw;
+    }
+    .create-header {
+        width: 92vw;
+    }
+
+
+    .create-group-choice-wrap {
+        width: 95vw;
+    }
+
+    .create-box-wrap {
+        width: 95vw;
+        margin-bottom: 20px;
+    }
+    
+    /* --------------- threads page ------------------------- */
+    .thread-post-wrap {
+        width: 95vw;
+    }
+    .thread-content {
+        width: 85vw;
+    }
+    .-visible {
+        position: absolute;
+        z-index: 10;
+        width: 95%;
+        border: 1px solid rgb(139, 138, 138);
+        background-color: rgb(84, 82, 81);
+        padding: 0;
+        left: 2.5%;
+
+    }
+    .subicon-hide {
+        display: none;
+    }
+
+    .subicon-more {
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+        color: black;
+        margin-right: 1px;
+        margin-left: 5px;
+    }
+    .subicon-more:hover {
+        cursor: pointer;
+    }
+
+    /* --------------- sidebar move to top  ------------------------- */
+
+    .sidebar-wrap-m {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width: 95%;
+        border: 1px solid rgb(139, 138, 138);
+        background-color: rgb(84, 82, 81);
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+
+    .sort-by-dropdown {
+        width: 95%;
+        background-color: rgb(84, 82, 81);
+        border: 1px solid rgb(139, 138, 138);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        border-radius: 4px;
+    }
+
+    #sbw-wrap-d {
+        display: flex;
+        justify-content: center;
+        width: 93.5vw;
+        height: 40px;
+    }
+
+    .sbw-btn-d {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid rgb(139, 138, 138);
+        border-left: 1px solid rgb(139, 138, 138);
+
+        width: 30%;
+        height: 100%;
+      
+    }
+
+  }
