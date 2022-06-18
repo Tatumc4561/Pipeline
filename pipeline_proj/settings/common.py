@@ -144,10 +144,10 @@ GOOGLE_APPLICATION_CREDENTIALS = os.path.join(
 )
 
 
-STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 GS_BUCKET_NAME = "the-pipeline"
 
+STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 # import django_on_heroku
 
 # django_on_heroku.settings(locals())
