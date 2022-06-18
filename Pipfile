@@ -42,6 +42,7 @@ whitenoise = "*"
 django-el-pagination = "*"
 django-treebeard = "*"
 django-on-heroku = "*"
+django-storages = {extras = ["google"], version = "*"}
 
 [dev-packages]
 
