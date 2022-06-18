@@ -1,7 +1,7 @@
 from pipeline_proj.settings.common import *
 import dotenv
 
-DEBUG = False
+DEBUG = True
 
 dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
