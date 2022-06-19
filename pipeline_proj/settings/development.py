@@ -17,24 +17,24 @@
 
 # ---------------------------  Production.py not running?
 
-# from pipeline_proj.settings.common import *
+from pipeline_proj.settings.common import *
 
 
-# DEBUG = False
+DEBUG = False
 
-# SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = os.environ["SECRET_KEY"]
 
-# ALLOWED_HOSTS = ["the-pipeline.herokuapp.com"]
-
-
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+ALLOWED_HOSTS = ["the-pipeline.herokuapp.com"]
 
 
-# # dropbox
-# DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
-# DBX_TOKEN = os.environ["DBX_TOKEN"]
-# DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
+# dropbox
+DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
 
-# DROPBOX_ROOT_PATH = "/media/"
+
+DBX_TOKEN = os.environ["DBX_TOKEN"]
+DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
+
+DROPBOX_ROOT_PATH = "/media/"
