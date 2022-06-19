@@ -14,6 +14,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # dropbox
 DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
 
+
 DBX_TOKEN = os.environ.get("DBX_TOKEN")
 DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
+
+dbx = dropbox.Dropbox(DBX_TOKEN)
 DROPBOX_ROOT_PATH = "/media/"
