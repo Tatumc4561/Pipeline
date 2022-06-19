@@ -138,14 +138,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# google cloud
-GOOGLE_APPLICATION_CREDENTIALS = os.path.join(
-    BASE_DIR, "vital-petal-353318-f3d26e2b01f0.json"
-)
+# dropbox
+DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
 
-DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-GS_BUCKET_NAME = "the-pipeline"
-STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+DBX_TOKEN = os.environ.get("DBX_TOKEN")
+DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
+DROPBOX_ROOT_PATH = '/media/'
+
 # import django_on_heroku
 
 # django_on_heroku.settings(locals())
