@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "threads",
     # "el_pagination",
     "treebeard",  # API Library implements efficient tree navigation
-    "whitenoise.runserver_nostatic",
+    # "whitenoise.runserver_nostatic",
 ]
 
 
@@ -49,7 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "pipeline_proj.urls"
