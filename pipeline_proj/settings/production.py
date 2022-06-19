@@ -3,7 +3,7 @@ from pipeline_proj.settings.common import *
 
 DEBUG = False
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = ["the-pipeline.herokuapp.com"]
 
@@ -15,7 +15,7 @@ ALLOWED_HOSTS = ["the-pipeline.herokuapp.com"]
 DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
 
 
-DBX_TOKEN = os.environ.get("DBX_TOKEN")
+DBX_TOKEN = os.environ["DBX_TOKEN"]
 DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
 
 DROPBOX_ROOT_PATH = "/media/"
