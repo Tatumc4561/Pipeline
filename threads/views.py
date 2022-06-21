@@ -1,5 +1,3 @@
-import re
-from tokenize import group
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from .forms import *
