@@ -1,0 +1,56 @@
+
+Initiates project
+_____________________
+django-admin startproject kiwi_first_proj .
+
+
+Create App
+___________________
+python manage.py startapp hello_app
+
+
+Launches Server
+_________________
+python manage.py runserver
+
+
+
+---
+----
+----
+View
+URL
+Template
+----
+
+create urls.py
+
+create templates folder in app
+
+
+create super user
+___________________
+python manage.py migrate
+python manage.py createsuperuser
+
+
+
+Virtual environment
+_____________________
+
+python -m venv env
+Scripts\activate
+pip install django
+    pip show django
+    pip list
+deactivate
+
+Global template folder
+______________________
+ "DIRS": [str(BASE_DIR.joinpath("templates"))],
+
+ 
+
+ Global Static folder
+ _________________________
+STATICFILES_DIRS = [str(BASE_DIR.joinpath("static"))]
