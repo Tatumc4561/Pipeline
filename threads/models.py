@@ -36,7 +36,7 @@ class Thread(MP_Node):
         upload_to="post_images",
         null=True,
         blank=True,
-        # storage=DROPBOX_STORAGE,
+        storage=DROPBOX_STORAGE,
     )
 
     # def posted_date(self):

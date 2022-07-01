@@ -35,7 +35,7 @@ DATABASES["default"].update(db_from_env)
 
 
 # dropbox v2
-DEFAULT_FILE_STORAGE = "django_dropbox_storage.storage.DropboxStorage"
+# DEFAULT_FILE_STORAGE = "django_dropbox_storage.storage.DropboxStorage"
 DBX_TOKEN = os.environ["DBX_TOKEN"]
 
 
