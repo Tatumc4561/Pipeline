@@ -25,7 +25,7 @@ db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES["default"].update(db_from_env)
 
 # dropbox
-DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorpip age"
+DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
 
 
 DBX_TOKEN = os.environ["DBX_TOKEN"]
