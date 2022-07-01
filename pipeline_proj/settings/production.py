@@ -34,7 +34,7 @@ DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
 DROPBOX_ROOT_PATH = "/media/"
 
 
-dbx = dropbox.Dropbox("access_token")
+dbx = dropbox.Dropbox(DBX_TOKEN)
 
 # create file
 filename = "/local_files/file.json"
