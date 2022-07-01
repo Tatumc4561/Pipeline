@@ -14,6 +14,11 @@ import datetime
 register = template.Library()
 
 
+from django_dropbox_storage.storage import DropboxStorage
+
+DROPBOX_STORAGE = DropboxStorage()
+
+
 # Create your models here.
 class Thread(MP_Node):
 
@@ -27,7 +32,12 @@ class Thread(MP_Node):
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
     created = models.DateTimeField(default=datetime.datetime.now)
-    image = models.ImageField(upload_to="post_images", null=True, blank=True)
+    image = models.ImageField(
+        upload_to="post_images",
+        null=True,
+        blank=True,
+        storage=DROPBOX_STORAGE,
+    )
 
     # def posted_date(self):
     #     """Takes in Thread published date and calculates the hours/days in between then and the current time

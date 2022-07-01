@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_dropbox_storage.storage import DropboxStorage
+
+DROPBOX_STORAGE = DropboxStorage()
 
 
 # from groups.models import *
@@ -9,7 +12,10 @@ from django.contrib.auth.models import User
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(
-        upload_to="avatars", blank=True, default="avatars/mario_mushroom.png"
+        upload_to="avatars",
+        blank=True,
+        default="avatars/mario_mushroom.png",
+        storage=DROPBOX_STORAGE,
     )
     my_followers = models.ManyToManyField(
         "self",
@@ -63,7 +69,11 @@ class Channel(models.Model):
     )
     # group mascot
 
-    avatar = models.ImageField(upload_to="group_avatars", blank=True)
+    avatar = models.ImageField(
+        upload_to="group_avatars",
+        blank=True,
+        storage=DROPBOX_STORAGE,
+    )
     group_users = models.ManyToManyField(
         User,
         through="JoinGroup",
