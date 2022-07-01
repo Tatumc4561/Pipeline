@@ -9,7 +9,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 ALLOWED_HOSTS = ["the-pipeline.herokuapp.com"]
 
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -51,3 +51,4 @@ DATABASES["default"].update(db_from_env)
 GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]
 DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 GS_BUCKET_NAME = "the-pipeline"
+STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
