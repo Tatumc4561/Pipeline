@@ -164,3 +164,5 @@ cython_debug/
 
 api.js 
 publicapinasa.js
+
+googlestorages.json

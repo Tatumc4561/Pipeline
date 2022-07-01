@@ -37,10 +37,17 @@ DATABASES["default"].update(db_from_env)
 # dropbox v2
 # DEFAULT_FILE_STORAGE = "django_dropbox_storage.storage.DropboxStorage"
 
-from io import StringIO
+# from io import StringIO
 
-DBX_TOKEN = os.environ["DBX_TOKEN"]
+# DBX_TOKEN = os.environ["DBX_TOKEN"]
 
 
-DROPBOX_ACCESS_TOKEN = DBX_TOKEN
-DROPBOX_ROOT_FOLDER = "/media"
+# DROPBOX_ACCESS_TOKEN = DBX_TOKEN
+# DROPBOX_ROOT_FOLDER = "/media"
+
+
+# google storages
+
+GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]
+DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+GS_BUCKET_NAME = "the-pipeline"

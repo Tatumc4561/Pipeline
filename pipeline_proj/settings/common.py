@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     # "el_pagination",
     "treebeard",  # API Library implements efficient tree navigation
     "whitenoise.runserver_nostatic",
-    "django_dropbox_storage",
+    # "django_dropbox_storage",
 ]
 
 
