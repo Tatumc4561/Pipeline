@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "08ea0f8cf0bd133cc27f948413f4ba042128fbbb740504678c590fddb9786ce0"
+            "sha256": "01e5ab5d9c65a8084d267493f2231c14c166603707496efc3a619f2140fbec41"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -116,6 +116,13 @@
             ],
             "index": "pypi",
             "version": "==1.1.0"
+        },
+        "django-dropbox-storage": {
+            "hashes": [
+                "sha256:950e6b25aad09df982dc0962bf61f6e55f0860477da9e5f4d3bc0f8ec79050ce"
+            ],
+            "index": "pypi",
+            "version": "==0.4.1"
         },
         "django-el-pagination": {
             "hashes": [
@@ -435,7 +442,7 @@
                 "sha256:e847774f8ffd5b398a75bc1c18fbb56564cda3d629fe68fd81971fece2d3c67e",
                 "sha256:ffb7a888a047696e7f8240d649b43fb3644f14f0ee229077e7f6b9f9081635bd"
             ],
-            "markers": "python_full_version >= '3.6.0'",
+            "markers": "python_version >= '3.6'",
             "version": "==2.9.3"
         },
         "python-dotenv": {

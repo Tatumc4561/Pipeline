@@ -1,6 +1,5 @@
 from pipeline_proj.settings.common import *
 import dj_database_url
-import dropbox
 
 
 DEBUG = False
@@ -25,10 +24,18 @@ db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES["default"].update(db_from_env)
 
 # dropbox
-DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
+
+# DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
 
 
-DBX_TOKEN = os.environ["DBX_TOKEN"]
-DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
-dbx = dropbox.Dropbox(DBX_TOKEN)
+# DBX_TOKEN = os.environ["DBX_TOKEN"]
+# DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
+
 # DROPBOX_ROOT_PATH = "/media/"
+
+
+# dropbox v2
+DEFAULT_FILE_STORAGE = "django_dropbox_storage.storage.DropboxStorage"
+DBX_TOKEN = os.environ["DBX_TOKEN"]
+
+DROPBOX_ACCESS_TOKEN = DBX_TOKEN

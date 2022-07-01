@@ -44,6 +44,7 @@ django-treebeard = "*"
 django-on-heroku = "*"
 django-storages = {extras = ["dropbox"], version = "*"}
 dropbox = "*"
+django-dropbox-storage = "*"
 
 [dev-packages]
 
