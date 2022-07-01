@@ -15,7 +15,7 @@ class CustomUser(models.Model):
         upload_to="avatars",
         blank=True,
         default="avatars/mario_mushroom.png",
-        storage=DROPBOX_STORAGE,
+        # storage=DROPBOX_STORAGE,
     )
     my_followers = models.ManyToManyField(
         "self",
@@ -72,7 +72,7 @@ class Channel(models.Model):
     avatar = models.ImageField(
         upload_to="group_avatars",
         blank=True,
-        storage=DROPBOX_STORAGE,
+        # storage=DROPBOX_STORAGE,
     )
     group_users = models.ManyToManyField(
         User,
