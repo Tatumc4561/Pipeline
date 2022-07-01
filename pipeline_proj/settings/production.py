@@ -25,21 +25,10 @@ db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES["default"].update(db_from_env)
 
 # dropbox
-DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
+DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorpip age"
 
 
 DBX_TOKEN = os.environ["DBX_TOKEN"]
 DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
-
-DROPBOX_ROOT_PATH = "/media/"
-
-
 dbx = dropbox.Dropbox(DBX_TOKEN)
-
-# create file
-filename = "/local_files/file.json"
-dbx.files_upload(f.read(), filename, mute=True)
-
-# read file
-filename = "/dropbox_root/file.json"
-f, r = dbx.files_download(filename)
+# DROPBOX_ROOT_PATH = "/media/"
