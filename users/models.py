@@ -1,8 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django_dropbox_storage.storage import DropboxStorage
-
-DROPBOX_STORAGE = DropboxStorage()
 
 
 # from groups.models import *
@@ -15,7 +12,6 @@ class CustomUser(models.Model):
         upload_to="avatars",
         blank=True,
         default="avatars/mario_mushroom.png",
-        storage=DROPBOX_STORAGE,
     )
     my_followers = models.ManyToManyField(
         "self",
@@ -72,7 +68,6 @@ class Channel(models.Model):
     avatar = models.ImageField(
         upload_to="group_avatars",
         blank=True,
-        storage=DROPBOX_STORAGE,
     )
     group_users = models.ManyToManyField(
         User,

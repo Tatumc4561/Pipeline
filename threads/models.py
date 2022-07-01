@@ -14,11 +14,6 @@ import datetime
 register = template.Library()
 
 
-from django_dropbox_storage.storage import DropboxStorage
-
-DROPBOX_STORAGE = DropboxStorage()
-
-
 # Create your models here.
 class Thread(MP_Node):
 
@@ -36,7 +31,6 @@ class Thread(MP_Node):
         upload_to="post_images",
         null=True,
         blank=True,
-        storage=DROPBOX_STORAGE,
     )
 
     # def posted_date(self):
