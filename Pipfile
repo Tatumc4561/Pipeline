@@ -43,6 +43,7 @@ django-el-pagination = "*"
 django-treebeard = "*"
 django-on-heroku = "*"
 django-storages = {extras = ["dropbox"], version = "*"}
+dropbox = "*"
 
 [dev-packages]
 

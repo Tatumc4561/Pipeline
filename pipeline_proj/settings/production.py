@@ -1,5 +1,6 @@
 from pipeline_proj.settings.common import *
 import dj_database_url
+import dropbox
 
 
 DEBUG = False
@@ -31,3 +32,14 @@ DBX_TOKEN = os.environ["DBX_TOKEN"]
 DROPBOX_OAUTH2_TOKEN = DBX_TOKEN
 
 DROPBOX_ROOT_PATH = "/media/"
+
+
+dbx = dropbox.Dropbox("access_token")
+
+# create file
+filename = "/local_files/file.json"
+dbx.files_upload(f.read(), filename, mute=True)
+
+# read file
+filename = "/dropbox_root/file.json"
+f, r = dbx.files_download(filename)
